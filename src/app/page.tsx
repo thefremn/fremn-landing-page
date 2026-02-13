@@ -29,6 +29,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { StickyBanner } from "@/components/ui/sticky-banner";
 /* -----------------------------
    DATA (single source of truth)
 ------------------------------ */
@@ -502,7 +503,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+          <StickyBanner className="h-15 bg-gradient-to-b from-blue-500 to-blue-600">
+          <img
+            src="/p1/lightp.png"
+            alt="Pledge 1% Logo"
+            className="h-14 w-auto mr-2 inline-block"
+          />
+        <p className="mx-0 max-w-[90%] text-white drop-shadow-md">
+          We are part of <a href='https://www.pledge1percent.org/' target="_blank" rel="noopener noreferrer">Pledge 1%</a>
+        </p>
+      </StickyBanner>
       </div>
+    
     </div>
   );
 }

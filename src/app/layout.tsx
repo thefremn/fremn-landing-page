@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 

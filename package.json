@@ -33,6 +33,7 @@
     "@radix-ui/react-tooltip": "^1.1.8",
     "@react-three/fiber": "^10.0.0-alpha.2",
     "@tabler/icons-react": "^3.36.1",
+    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",

@@ -31,7 +31,11 @@ export default function LegalLayout({
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
+        html, body {
+  margin: 0;
+  padding: 0;
+  background: #0B0E17;
+}
         :root {
           --black: #0B0E17;
           --graphite: #1A1F2B;
@@ -425,12 +429,17 @@ export default function LegalLayout({
         <div className="legal-grid" />
 
         <div className="legal-layout">
-
           {/* ── SIDEBAR ── */}
           <aside className="legal-sidebar">
             <Link href="/" className="sidebar-back">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                <path
+                  d="M9 2L4 7l5 5"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
               Back to Home
             </Link>
@@ -452,7 +461,13 @@ export default function LegalLayout({
               {relatedLinks.map((l) => (
                 <Link href={l.href} key={l.href}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path
+                      d="M2 6h8M6 2l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                   {l.label}
                 </Link>
@@ -471,15 +486,37 @@ export default function LegalLayout({
               <div className="legal-meta">
                 <div className="legal-meta-item">
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <rect x="1" y="2" width="11" height="10" rx="1.5" stroke="#6B7A99" strokeWidth="1.1"/>
-                    <path d="M1 5h11M4 1v2M9 1v2" stroke="#6B7A99" strokeWidth="1.1" strokeLinecap="round"/>
+                    <rect
+                      x="1"
+                      y="2"
+                      width="11"
+                      height="10"
+                      rx="1.5"
+                      stroke="#6B7A99"
+                      strokeWidth="1.1"
+                    />
+                    <path
+                      d="M1 5h11M4 1v2M9 1v2"
+                      stroke="#6B7A99"
+                      strokeWidth="1.1"
+                      strokeLinecap="round"
+                    />
                   </svg>
                   Effective Date: {effectiveDate}
                 </div>
                 <div className="legal-meta-item">
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <path d="M6.5 1C3.46 1 1 3.46 1 6.5S3.46 12 6.5 12 12 9.54 12 6.5 9.54 1 6.5 1z" stroke="#6B7A99" strokeWidth="1.1"/>
-                    <path d="M6.5 4v3l2 1.5" stroke="#6B7A99" strokeWidth="1.1" strokeLinecap="round"/>
+                    <path
+                      d="M6.5 1C3.46 1 1 3.46 1 6.5S3.46 12 6.5 12 12 9.54 12 6.5 9.54 1 6.5 1z"
+                      stroke="#6B7A99"
+                      strokeWidth="1.1"
+                    />
+                    <path
+                      d="M6.5 4v3l2 1.5"
+                      stroke="#6B7A99"
+                      strokeWidth="1.1"
+                      strokeLinecap="round"
+                    />
                   </svg>
                   FREMN TECHNOLOGIES LLP
                 </div>
@@ -488,7 +525,11 @@ export default function LegalLayout({
             </div>
 
             {sections.map((section) => (
-              <section className="legal-section" id={section.id} key={section.id}>
+              <section
+                className="legal-section"
+                id={section.id}
+                key={section.id}
+              >
                 <div className="section-header">
                   <span className="section-num">{section.number}</span>
                   <h2 className="section-title">{section.title}</h2>

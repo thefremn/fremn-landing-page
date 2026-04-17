@@ -2,31 +2,40 @@
 
 const testimonials = [
   {
-    quote: "We used to miss at least 8–10 calls a day during lunch. Now FREMN picks up every single one and books appointments automatically. Our front desk team is finally focused on patients in the room.",
-    name: "Dr. Priya Mehta",
-    role: "Owner, Smile Studio Dental",
-    location: "Kolkata",
-    specialty: "Dental",
-    initials: "PM",
+    quote: "In emergency departments, clinical care takes priority and routine patient calls are often missed. A system like FREMN could help ensure patients still receive timely responses and appointment guidance without increasing staff workload.",
+    name: "Dr. Suchismita Paul",
+    role: "MBBS · Junior Doctor",
+    location: "Calcutta Medical College & Hospital, Kolkata",
+    specialty: "Emergency",
+    initials: "SP",
     color: "#1E6BFF",
   },
   {
-    quote: "The WhatsApp booking alone has changed how we operate. Patients love it — they get a confirmation in under a minute. We've seen a 30% drop in no-shows since the reminders kicked in.",
-    name: "Dr. Rohit Bansal",
-    role: "Founder, ClearSight Eye Clinic",
-    location: "Bengaluru",
-    specialty: "Ophthalmology",
-    initials: "RB",
+    quote: "Specialty departments manage significant coordination with patients before procedures. An AI front desk platform like FREMN could reduce repetitive communication tasks and improve how patients interact with clinics prior to scheduled care.",
+    name: "Dr. Anshuman Sarkar",
+    role: "MBBS, MD (Anaesthesiology) · Senior Anaesthesiologist",
+    location: "Tata Medical Center, Kolkata",
+    specialty: "Anaesthesiology",
+    initials: "AS",
     color: "#5BC0EB",
   },
   {
-    quote: "I was skeptical about AI handling patient calls, but FREMN sounds remarkably natural. Patients think they're talking to a staff member. Setup took less than a day.",
-    name: "Dr. Anjali Krishnan",
-    role: "Chief Physician, Wellness First OPD",
-    location: "Chennai",
-    specialty: "General Physician",
-    initials: "AK",
+    quote: "Dental clinics receive frequent patient queries regarding appointments, timings, and procedures. Automating these interactions through FREMN could help clinics respond faster and manage scheduling more efficiently.",
+    name: "Dr. Aaheli Banerjee",
+    role: "BDS · Dental Surgeon",
+    location: "Guru Nanak Institute of Dental Sciences & Research, Kolkata",
+    specialty: "Dental",
+    initials: "AB",
     color: "#0F52BA",
+  },
+  {
+    quote: "Outpatient departments still depend heavily on manual communication systems. An AI receptionist platform like FREMN could improve coordination efficiency and reduce missed patient interactions at the clinic level.",
+    name: "Dr. A. K. Das",
+    role: "MBBS, MD (Internal Medicine), DM (Cardiology) · Senior Cardiologist",
+    location: "Sahid Khudiram Government General Hospital, West Bengal",
+    specialty: "Cardiology",
+    initials: "AD",
+    color: "#1E6BFF",
   },
 ];
 
@@ -85,11 +94,16 @@ export default function Testimonials() {
           font-size: 15px;
           color: #6B7A99;
           margin-bottom: 64px;
+          max-width: 560px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.6;
         }
 
+        /* 2×2 grid for 4 cards */
         .test-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 20px;
         }
 
@@ -123,15 +137,6 @@ export default function Testimonials() {
 
         .test-card:hover::before { opacity: 1; }
 
-        .quote-mark {
-          font-family: 'Syne', sans-serif;
-          font-size: 48px;
-          line-height: 1;
-          font-weight: 800;
-          opacity: 0.15;
-          margin-bottom: -12px;
-        }
-
         .test-quote {
           font-size: 14.5px;
           color: rgba(240,244,255,0.65);
@@ -141,12 +146,19 @@ export default function Testimonials() {
           flex: 1;
         }
 
+        /* Footer: two rows — avatar+text, then specialty badge */
         .test-footer {
           display: flex;
-          align-items: center;
+          flex-direction: column;
           gap: 12px;
           padding-top: 16px;
           border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .test-footer-top {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
         }
 
         .test-avatar {
@@ -168,34 +180,41 @@ export default function Testimonials() {
           font-size: 14px;
           font-weight: 700;
           color: #F0F4FF;
+          line-height: 1.3;
         }
 
         .test-role {
-          font-size: 12px;
+          font-size: 11.5px;
           color: #6B7A99;
-          margin-top: 2px;
+          margin-top: 3px;
+          line-height: 1.5;
         }
 
+        .test-location {
+          font-size: 11px;
+          color: rgba(107,122,153,0.7);
+          margin-top: 2px;
+          line-height: 1.4;
+        }
+
+        /* Specialty badge: own row, left-aligned */
         .test-specialty {
-          margin-left: auto;
+          align-self: flex-start;
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          padding: 3px 8px;
+          padding: 3px 9px;
           border-radius: 5px;
-          flex-shrink: 0;
         }
 
-        /* Stars */
         .test-stars {
           display: flex;
           gap: 3px;
         }
-
         .test-stars svg { width: 14px; height: 14px; }
 
-        /* Bottom pilot CTA */
+        /* Pilot CTA */
         .test-pilot {
           margin-top: 56px;
           display: flex;
@@ -203,12 +222,7 @@ export default function Testimonials() {
           align-items: center;
           gap: 16px;
         }
-
-        .test-pilot p {
-          font-size: 15px;
-          color: #6B7A99;
-        }
-
+        .test-pilot p { font-size: 15px; color: #6B7A99; }
         .test-pilot a {
           display: inline-flex;
           align-items: center;
@@ -224,7 +238,6 @@ export default function Testimonials() {
           box-shadow: 0 0 28px rgba(30,107,255,0.3);
           transition: all 0.25s ease;
         }
-
         .test-pilot a:hover {
           transform: translateY(-2px);
           box-shadow: 0 0 40px rgba(30,107,255,0.5);
@@ -233,7 +246,6 @@ export default function Testimonials() {
         @media (max-width: 900px) {
           .test-grid { grid-template-columns: 1fr; gap: 14px; }
         }
-
         @media (max-width: 600px) {
           .test-section { padding: 72px 20px; }
         }
@@ -244,7 +256,7 @@ export default function Testimonials() {
         <div className="test-inner">
           <p className="test-eyebrow">Real Results</p>
           <h2 className="test-heading">Clinics that never miss<br />a patient anymore</h2>
-          <p className="test-sub">Early pilots. Real doctors. Real feedback.</p>
+          <p className="test-sub">Early clinician feedback supporting outpatient workflow validation for FREMN.</p>
 
           <div className="test-grid">
             {testimonials.map((t, i) => (
@@ -253,7 +265,7 @@ export default function Testimonials() {
                 key={i}
                 style={{ borderTopColor: `${t.color}25` }}
               >
-                <style>{`.test-card:nth-child(${i+1})::before { background: linear-gradient(90deg, ${t.color}, transparent); }`}</style>
+                <style>{`.test-card:nth-child(${i + 1})::before { background: linear-gradient(90deg, ${t.color}, transparent); }`}</style>
 
                 <div className="test-stars">
                   {[...Array(5)].map((_, si) => (
@@ -263,23 +275,30 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <div className="quote-mark" style={{ color: t.color }}>&quot;</div>
                 <p className="test-quote">{t.quote}</p>
 
                 <div className="test-footer">
-                  <div
-                    className="test-avatar"
-                    style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}80)` }}
-                  >
-                    {t.initials}
+                  <div className="test-footer-top">
+                    <div
+                      className="test-avatar"
+                      style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}80)` }}
+                    >
+                      {t.initials}
+                    </div>
+                    <div>
+                      <div className="test-name">{t.name}</div>
+                      <div className="test-role">{t.role}</div>
+                      <div className="test-location">{t.location}</div>
+                    </div>
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <div className="test-name">{t.name}</div>
-                    <div className="test-role">{t.role} · {t.location}</div>
-                  </div>
+
                   <span
                     className="test-specialty"
-                    style={{ color: t.color, background: `${t.color}12`, border: `1px solid ${t.color}20` }}
+                    style={{
+                      color: t.color,
+                      background: `${t.color}12`,
+                      border: `1px solid ${t.color}20`,
+                    }}
                   >
                     {t.specialty}
                   </span>

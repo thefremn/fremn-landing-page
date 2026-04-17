@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,27 +41,30 @@ export default function Navbar() {
 
         .nav-root {
           position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
+          top: 0; left: 0; right: 0;
           z-index: 100;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           font-family: 'DM Sans', sans-serif;
+          /* Always visible dark bg — fades to stronger blur on scroll */
+          background: rgba(11, 14, 23, 0.82);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .nav-root.scrolled {
-          background: rgba(10, 10, 10, 0.75);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          background: rgba(10, 10, 10, 0.92);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
           border-bottom: 1px solid rgba(91, 192, 235, 0.08);
-          box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
         }
 
         .nav-inner {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 32px;
-          height: 72px;
+          height: 64px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -75,46 +79,12 @@ export default function Navbar() {
           flex-shrink: 0;
         }
 
-        .logo-mark {
-          width: 34px;
-          height: 34px;
-          border-radius: 9px;
-          background: linear-gradient(135deg, var(--electric-blue) 0%, var(--cyan) 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          box-shadow: 0 0 16px rgba(30, 107, 255, 0.45);
-        }
-
-        .logo-mark svg {
-          width: 18px;
-          height: 18px;
-        }
-
         .logo-text {
           font-family: 'Syne', sans-serif;
           font-weight: 700;
           font-size: 20px;
           letter-spacing: 0.04em;
           color: var(--white);
-        }
-
-        .logo-text span {
-          color: var(--cyan);
-        }
-
-        .logo-badge {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 10px;
-          font-weight: 500;
-          color: var(--cyan);
-          background: rgba(91, 192, 235, 0.1);
-          border: 1px solid rgba(91, 192, 235, 0.25);
-          border-radius: 4px;
-          padding: 2px 6px;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
         }
 
         /* NAV LINKS */
@@ -127,14 +97,13 @@ export default function Navbar() {
 
         .nav-links a {
           text-decoration: none;
-          font-size: 14.5px;
+          font-size: 14px;
           font-weight: 400;
           color: var(--muted);
-          padding: 8px 14px;
+          padding: 8px 12px;
           border-radius: 8px;
           letter-spacing: 0.01em;
           transition: color 0.2s, background 0.2s;
-          position: relative;
         }
 
         .nav-links a:hover {
@@ -149,26 +118,6 @@ export default function Navbar() {
           gap: 12px;
         }
 
-        .btn-ghost {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 500;
-          color: var(--muted);
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 8px 14px;
-          border-radius: 8px;
-          letter-spacing: 0.01em;
-          transition: color 0.2s, background 0.2s;
-          text-decoration: none;
-        }
-
-        .btn-ghost:hover {
-          color: var(--white);
-          background: rgba(255, 255, 255, 0.05);
-        }
-
         .btn-cta {
           font-family: 'DM Sans', sans-serif;
           font-size: 14px;
@@ -177,7 +126,7 @@ export default function Navbar() {
           background: linear-gradient(135deg, var(--electric-blue), var(--royal-blue));
           border: none;
           cursor: pointer;
-          padding: 10px 20px;
+          padding: 9px 18px;
           border-radius: 9px;
           letter-spacing: 0.02em;
           text-decoration: none;
@@ -188,6 +137,7 @@ export default function Navbar() {
           box-shadow: 0 0 20px rgba(30, 107, 255, 0.3);
           position: relative;
           overflow: hidden;
+          white-space: nowrap;
         }
 
         .btn-cta::before {
@@ -199,54 +149,37 @@ export default function Navbar() {
           transition: opacity 0.25s;
         }
 
-        .btn-cta:hover::before {
-          opacity: 1;
-        }
-
+        .btn-cta:hover::before { opacity: 1; }
         .btn-cta:hover {
           transform: translateY(-1px);
           box-shadow: 0 0 32px rgba(30, 107, 255, 0.5);
         }
 
-        .btn-cta span, .btn-cta svg {
-          position: relative;
-          z-index: 1;
-        }
-
-        .btn-cta svg {
-          transition: transform 0.2s;
-        }
-
-        .btn-cta:hover svg {
-          transform: translateX(3px);
-        }
+        .btn-cta span, .btn-cta svg { position: relative; z-index: 1; }
+        .btn-cta svg { transition: transform 0.2s; }
+        .btn-cta:hover svg { transform: translateX(3px); }
 
         /* PULSE DOT */
         .pulse-dot {
-          width: 7px;
-          height: 7px;
+          width: 7px; height: 7px;
           border-radius: 50%;
           background: var(--cyan);
-          position: relative;
-          flex-shrink: 0;
+          position: relative; flex-shrink: 0;
         }
-
         .pulse-dot::after {
           content: '';
-          position: absolute;
-          inset: -3px;
+          position: absolute; inset: -3px;
           border-radius: 50%;
           border: 1.5px solid var(--cyan);
           animation: pulse 2s ease-out infinite;
           opacity: 0;
         }
-
         @keyframes pulse {
-          0% { transform: scale(0.8); opacity: 0.8; }
-          100% { transform: scale(2); opacity: 0; }
+          0%   { transform: scale(0.8); opacity: 0.8; }
+          100% { transform: scale(2);   opacity: 0; }
         }
 
-        /* MOBILE HAMBURGER */
+        /* HAMBURGER */
         .hamburger {
           display: none;
           flex-direction: column;
@@ -254,52 +187,35 @@ export default function Navbar() {
           cursor: pointer;
           padding: 8px;
           border-radius: 8px;
-          background: none;
-          border: none;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.08);
           transition: background 0.2s;
         }
-
-        .hamburger:hover {
-          background: rgba(255,255,255,0.05);
-        }
+        .hamburger:hover { background: rgba(255,255,255,0.09); }
 
         .hamburger span {
           display: block;
-          width: 22px;
-          height: 2px;
-          background: var(--muted);
+          width: 20px; height: 2px;
+          background: var(--white);          /* always white — never invisible */
           border-radius: 2px;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hamburger.open span:nth-child(1) {
-          transform: translateY(7px) rotate(45deg);
-          background: var(--white);
-        }
-
-        .hamburger.open span:nth-child(2) {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-
-        .hamburger.open span:nth-child(3) {
-          transform: translateY(-7px) rotate(-45deg);
-          background: var(--white);
-        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         /* MOBILE MENU */
         .mobile-menu {
           display: none;
           position: fixed;
-          top: 72px;
-          left: 0;
-          right: 0;
-          background: rgba(10, 10, 10, 0.97);
+          top: 64px; left: 0; right: 0;
+          background: rgba(11, 14, 23, 0.98);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
           border-bottom: 1px solid rgba(91, 192, 235, 0.08);
-          padding: 16px 24px 24px;
-          transform: translateY(-10px);
+          padding: 8px 20px 24px;
+          transform: translateY(-8px);
           opacity: 0;
           pointer-events: none;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -314,48 +230,51 @@ export default function Navbar() {
         .mobile-menu a {
           display: block;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 400;
-          color: var(--muted);
+          color: rgba(240,244,255,0.7);
           padding: 14px 8px;
-          border-bottom: 1px solid rgba(255,255,255,0.04);
+          border-bottom: 1px solid rgba(255,255,255,0.05);
           transition: color 0.2s;
         }
+        .mobile-menu a:last-of-type { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--white); }
 
-        .mobile-menu a:hover {
-          color: var(--white);
-        }
-
-        .mobile-menu .mobile-cta {
-          display: flex;
+        .mobile-cta {
+          display: flex !important;
           align-items: center;
           justify-content: center;
           gap: 8px;
-          margin-top: 16px;
-          font-size: 15px;
-          font-weight: 500;
-          color: #fff;
+          margin-top: 12px;
+          font-size: 15px !important;
+          font-weight: 500 !important;
+          color: #fff !important;
           background: linear-gradient(135deg, var(--electric-blue), var(--royal-blue));
           padding: 13px 20px;
           border-radius: 10px;
           text-decoration: none;
-          border-bottom: none;
+          border-bottom: none !important;
           box-shadow: 0 0 24px rgba(30, 107, 255, 0.35);
         }
 
-        /* DIVIDER LINE */
-        .nav-divider {
-          width: 1px;
-          height: 20px;
-          background: rgba(255,255,255,0.08);
-          margin: 0 4px;
+        @media (max-width: 900px) {
+          .nav-links { display: none; }
         }
 
         @media (max-width: 768px) {
-          .nav-links, .btn-ghost, .nav-divider { display: none; }
-          .hamburger { display: flex; }
-          .mobile-menu { display: block; }
           .nav-inner { padding: 0 20px; }
+          .nav-links { display: none; }
+          .hamburger { display: none; }
+          .mobile-menu { display: none !important; }
+          .nav-actions .btn-cta { display: none; }
+          .nav-root,
+          .nav-root.scrolled {
+            background: #0B0E17;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            box-shadow: none;
+          }
         }
       `}</style>
 
@@ -364,7 +283,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="logo">
-              <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded"/>
+            <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded" />
             <span className="logo-text">FREMN</span>
           </Link>
 
@@ -387,7 +306,6 @@ export default function Navbar() {
               </svg>
             </a>
 
-            {/* Hamburger */}
             <button
               className={`hamburger${menuOpen ? " open" : ""}`}
               onClick={() => setMenuOpen(!menuOpen)}

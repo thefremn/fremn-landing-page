@@ -1,0 +1,77 @@
+# FREMN
+
+## About
+FREMN is an AI-powered front desk platform built for outpatient clinics in India. It handles patient calls, WhatsApp messages, appointment bookings, confirmations, and follow-up reminders automatically — 24 hours a day, 7 days a week — without adding any staff. FREMN is built specifically for the Indian outpatient market and works across voice, WhatsApp, web, and clinic apps.
+
+## Services and Pricing
+- AI Receptionist (Voice): Handles inbound patient calls, answers queries, books appointments, and routes urgent calls to staff. Available 24/7.
+- WhatsApp Automation: Two-way patient conversations for booking, confirmation, rescheduling, and cancellation — directly on WhatsApp.
+- Appointment Reminders: Automated reminders sent 24 hours and 2 hours before appointments via WhatsApp, reducing no-shows by 35–45%.
+- Follow-up Messaging: Post-visit follow-ups, feedback collection, and return visit prompts sent automatically.
+- Pilot Program: Free 48-hour pilot for qualifying clinics. No commitment required. Setup included.
+- Pricing: Contact for clinic-specific pricing. No per-message fees visible to the clinic. Flat monthly plans.
+
+## Locations
+- Kolkata, West Bengal (headquarters and primary market)
+- Bengaluru, Karnataka
+- Chennai, Tamil Nadu
+- Remote setup available for clinics anywhere in India
+
+## Contact
+- Email: contact@fremn.com
+- Website: https://fremn.com
+- LinkedIn: https://linkedin.com/company/fremn
+- X (Twitter): https://x.com/thefremn
+- Demo request: https://fremn.com/#contact
+
+## Service Area
+Kolkata, Bengaluru, Chennai, Mumbai, Delhi, Hyderabad, Pune, Ahmedabad, Jaipur, Lucknow, Bhopal, Bhubaneswar, Guwahati, Patna, Ranchi, Siliguri — and any outpatient clinic in India reachable via WhatsApp and internet.
+
+## Specialties Served
+Dental, General Physician, ENT, Dermatology, Ophthalmology, Orthopedics, Pediatrics, Physiotherapy, Gynecology, Cardiology, Anaesthesiology, Internal Medicine, Emergency Medicine
+
+## Key Facts
+- Setup time: 48 hours from sign-up to live pilot
+- No changes required to existing clinic software or workflows
+- No new hardware required
+- Handles voice calls, WhatsApp, web enquiries, and clinic app simultaneously
+- Average no-show reduction: 35–45% within the first month
+- WhatsApp open rates: 90%+ vs 30–35% for SMS
+- Clinics can view all conversations and update settings via a simple dashboard
+- Founded by Chinton Dutta, Amar Kumar Thakur, Sheikh Sami Akhtar, and Krishti Poddar
+- Entity: FREMN Technologies LLP
+
+## What Makes Us Different
+FREMN is built exclusively for Indian outpatient clinics — not adapted from a Western product. It handles the full patient communication cycle: inbound enquiry, booking, confirmation, reminder, and follow-up. Unlike generic chatbots, FREMN understands clinic-specific workflows and can manage simultaneous patient conversations across multiple channels without any staff involvement. The pilot is free and requires no commitment.
+
+## Frequently Asked Questions
+
+**How long does it take to set up FREMN?**
+Setup takes 48 hours from the time a clinic submits their details. No IT involvement is needed. The only requirement is a WhatsApp-enabled number and 45 minutes with a practice manager to complete the intake form.
+
+**How much does FREMN cost?**
+FREMN offers flat monthly plans priced per clinic. The pilot is free with no commitment required. Contact contact@fremn.com or visit fremn.com for current pricing.
+
+**What specialties does FREMN work for?**
+FREMN works for any outpatient clinic — dental, general physician, ENT, dermatology, ophthalmology, orthopedics, pediatrics, physiotherapy, gynecology, cardiology, and more. It has been validated by clinicians across emergency, anaesthesiology, dental, and cardiology departments.
+
+**Does FREMN replace the receptionist?**
+No. FREMN handles routine, repetitive tasks — answering calls, booking appointments, sending reminders — so receptionists can focus on patients who are physically present in the clinic. It works alongside existing staff.
+
+**Which channels does FREMN work on?**
+FREMN works on voice (inbound phone calls), WhatsApp, web, and clinic apps. All channels are managed from a single dashboard.
+
+**How much does FREMN reduce no-shows?**
+Clinics using FREMN's WhatsApp reminder flow typically see a 35–45% reduction in no-shows within the first month. The biggest gains come from the two-way rescheduling flow, which lets patients cancel or reschedule directly in WhatsApp instead of simply not showing up.
+
+**Does FREMN work with my existing booking system?**
+FREMN does not require access to existing clinic management software, though integration is available for supported platforms. Most clinics run FREMN alongside whatever system they already use.
+
+**Is FREMN available outside Kolkata?**
+Yes. FREMN is available to any outpatient clinic in India. Setup is fully remote. Current pilot clinics are in Kolkata, Bengaluru, and Chennai.
+
+**What happens if a patient asks something the AI cannot handle?**
+FREMN is configured to escalate complex or sensitive queries to a staff member. The escalation rules are set during onboarding and can be updated at any time from the dashboard.
+
+**How do I get started?**
+Visit fremn.com and fill out the pilot request form, or email contact@fremn.com. A member of the team will reach out within 48 hours to set up your personalised pilot.

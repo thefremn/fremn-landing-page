@@ -1,9 +1,11 @@
-// app/blog/[slug]/page.tsx
+// app/(info)/blog/[slug]/page.tsx
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
+import ReadProgressBar from "@/components/custom/read-progress-bar";
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 type FullPost = {
   id: number;
@@ -27,7 +29,9 @@ async function getPost(slug: string): Promise<FullPost | null> {
 
   const { data, error } = await supabase
     .from("blog_posts")
-    .select("id, slug, title, excerpt, author_name, author_bio, tag, published_at, read_time_minutes, body_html")
+    .select(
+      "id, slug, title, excerpt, author_name, author_bio, tag, published_at, read_time_minutes, body_html"
+    )
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -69,6 +73,9 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) notFound();
+
+  // Fix 2: resolve year on the server once — no mismatch possible
+  const currentYear = new Date().getFullYear();
 
   return (
     <>
@@ -115,18 +122,6 @@ export default async function BlogPostPage({
           text-decoration: none; transition: color 0.2s;
         }
         .post-nav-back:hover { color: #5BC0EB; }
-
-        /* ── Progress bar ── */
-        .read-progress {
-          position: fixed; top: 64px; left: 0; right: 0;
-          height: 2px; z-index: 49;
-          background: rgba(255,255,255,0.04);
-        }
-        .read-progress-bar {
-          height: 100%;
-          background: linear-gradient(90deg, #1E6BFF, #5BC0EB);
-          width: 0%; transition: width 0.1s linear;
-        }
 
         /* ── Hero ── */
         .post-hero {
@@ -304,22 +299,22 @@ export default async function BlogPostPage({
         }
       `}</style>
 
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.addEventListener('scroll', function() {
-            var el = document.getElementById('rpbar');
-            if (!el) return;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            el.style.width = Math.min(100, (window.scrollY / docHeight) * 100) + '%';
-          });
-        `
-      }} />
+      {/*
+        Fix 1: ReadProgressBar is a "use client" component.
+        It renders nothing on the server (width: 0) and hydrates
+        cleanly on the client — no mismatch.
+
+        Fix 2: Removed dangerouslySetInnerHTML scroll script entirely.
+        Fix 3: Removed inline .read-progress / .read-progress-bar divs
+               whose style was the direct source of the hydration error.
+      */}
+      <ReadProgressBar />
 
       <div className="post-root">
         <div className="post-glow" />
 
         <nav className="post-nav">
-            <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded"/>
+          <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded" />
           <Link href="/" className="post-nav-logo">FREMN</Link>
           <Link href="/blog" className="post-nav-back">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -328,10 +323,6 @@ export default async function BlogPostPage({
             All posts
           </Link>
         </nav>
-
-        <div className="read-progress">
-          <div className="read-progress-bar" id="rpbar" />
-        </div>
 
         <div className="post-hero">
           {post.tag && <span className="post-tag">{post.tag}</span>}
@@ -376,7 +367,8 @@ export default async function BlogPostPage({
         </div>
 
         <footer className="post-footer">
-          <span>© {new Date().getFullYear()} FREMN. All rights reserved.</span>
+          {/* Fix 4: currentYear resolved server-side — consistent between SSR and client */}
+          <span>© {currentYear} FREMN. All rights reserved.</span>
           <div style={{ display: "flex", gap: "24px" }}>
             <Link href="/blog">Blog</Link>
             <a href="mailto:contact@fremn.com">contact@fremn.com</a>

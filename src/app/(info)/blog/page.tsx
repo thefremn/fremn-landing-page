@@ -326,7 +326,7 @@ export default async function BlogPage() {
         <nav className="blog-nav">
           <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded"/>
           <Link href="/" className="blog-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="blog-nav-link">Request Demo →</Link>
+          <Link href="/#contact" className="blog-nav-link">Request Pilot</Link>
         </nav>
 
         <header className="blog-header">

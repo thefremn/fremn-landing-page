@@ -8,7 +8,7 @@ const testimonials = [
     location: "Calcutta Medical College & Hospital, Kolkata",
     specialty: "Emergency",
     initials: "SP",
-    color: "#1E6BFF",
+    color: "#1B4FD8",
   },
   {
     quote: "Specialty departments manage significant coordination with patients before procedures. An AI front desk platform like FREMN could reduce repetitive communication tasks and improve how patients interact with clinics prior to scheduled care.",
@@ -17,7 +17,7 @@ const testimonials = [
     location: "Tata Medical Center, Kolkata",
     specialty: "Anaesthesiology",
     initials: "AS",
-    color: "#5BC0EB",
+    color: "#0D5FA8",
   },
   {
     quote: "Dental clinics receive frequent patient queries regarding appointments, timings, and procedures. Automating these interactions through FREMN could help clinics respond faster and manage scheduling more efficiently.",
@@ -26,7 +26,7 @@ const testimonials = [
     location: "Guru Nanak Institute of Dental Sciences & Research, Kolkata",
     specialty: "Dental",
     initials: "AB",
-    color: "#0F52BA",
+    color: "#1B4FD8",
   },
   {
     quote: "Outpatient departments still depend heavily on manual communication systems. An AI receptionist platform like FREMN could improve coordination efficiency and reduce missed patient interactions at the clinic level.",
@@ -35,289 +35,114 @@ const testimonials = [
     location: "Sahid Khudiram Government General Hospital, West Bengal",
     specialty: "Cardiology",
     initials: "AD",
-    color: "#1E6BFF",
+    color: "#0D5FA8",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
-
-        .test-section {
-          padding: 100px 32px;
-          font-family: 'DM Sans', sans-serif;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .test-glow {
-          position: absolute;
-          width: 700px; height: 400px;
-          border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(91,192,235,0.05) 0%, transparent 70%);
-          bottom: 0; right: -200px;
-          pointer-events: none;
-        }
-
-        .test-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
-
-        .test-eyebrow {
-          text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .test-heading {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(28px, 4vw, 44px);
-          font-weight: 800;
-          color: #F0F4FF;
-          text-align: center;
-          letter-spacing: -0.02em;
-          margin-bottom: 16px;
-          line-height: 1.15;
-        }
-
-        .test-sub {
-          text-align: center;
-          font-size: 15px;
-          color: #6B7A99;
-          margin-bottom: 64px;
-          max-width: 560px;
-          margin-left: auto;
-          margin-right: auto;
-          line-height: 1.6;
-        }
-
-        /* 2×2 grid for 4 cards */
-        .test-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-        }
-
-        .test-card {
-          background: rgba(26,31,43,0.5);
-          border: 1px solid rgba(255,255,255,0.05);
-          border-radius: 20px;
-          padding: 32px 28px;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .test-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-
-        .test-card:hover {
-          background: rgba(26,31,43,0.75);
-          transform: translateY(-4px);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-        }
-
-        .test-card:hover::before { opacity: 1; }
-
-        .test-quote {
-          font-size: 14.5px;
-          color: rgba(240,244,255,0.65);
-          line-height: 1.75;
-          font-style: italic;
-          font-weight: 300;
-          flex: 1;
-        }
-
-        /* Footer: two rows — avatar+text, then specialty badge */
-        .test-footer {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding-top: 16px;
-          border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .test-footer-top {
-          display: flex;
-          align-items: flex-start;
-          gap: 12px;
-        }
-
-        .test-avatar {
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: 'Syne', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          color: white;
-          flex-shrink: 0;
-        }
-
-        .test-name {
-          font-family: 'Syne', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          color: #F0F4FF;
-          line-height: 1.3;
-        }
-
-        .test-role {
-          font-size: 11.5px;
-          color: #6B7A99;
-          margin-top: 3px;
-          line-height: 1.5;
-        }
-
-        .test-location {
-          font-size: 11px;
-          color: rgba(107,122,153,0.7);
-          margin-top: 2px;
-          line-height: 1.4;
-        }
-
-        /* Specialty badge: own row, left-aligned */
-        .test-specialty {
-          align-self: flex-start;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          padding: 3px 9px;
-          border-radius: 5px;
-        }
-
-        .test-stars {
-          display: flex;
-          gap: 3px;
-        }
-        .test-stars svg { width: 14px; height: 14px; }
-
-        /* Pilot CTA */
-        .test-pilot {
-          margin-top: 56px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 16px;
-        }
-        .test-pilot p { font-size: 15px; color: #6B7A99; }
-        .test-pilot a {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: linear-gradient(135deg, #1E6BFF, #0F52BA);
-          color: white;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 15px;
-          font-weight: 500;
-          padding: 13px 28px;
-          border-radius: 10px;
-          text-decoration: none;
-          box-shadow: 0 0 28px rgba(30,107,255,0.3);
-          transition: all 0.25s ease;
-        }
-        .test-pilot a:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0 40px rgba(30,107,255,0.5);
-        }
-
-        @media (max-width: 900px) {
-          .test-grid { grid-template-columns: 1fr; gap: 14px; }
-        }
-        @media (max-width: 600px) {
-          .test-section { padding: 72px 20px; }
-        }
-      `}</style>
-
-      <section className="test-section" id="testimonials">
-        <div className="test-glow" />
-        <div className="test-inner">
-          <p className="test-eyebrow">Real Results</p>
-          <h2 className="test-heading">Clinics that never miss<br />a patient anymore</h2>
-          <p className="test-sub">Early clinician feedback supporting outpatient workflow validation for FREMN.</p>
-
-          <div className="test-grid">
-            {testimonials.map((t, i) => (
-              <div
-                className="test-card"
-                key={i}
-                style={{ borderTopColor: `${t.color}25` }}
-              >
-                <style>{`.test-card:nth-child(${i + 1})::before { background: linear-gradient(90deg, ${t.color}, transparent); }`}</style>
-
-                <div className="test-stars">
-                  {[...Array(5)].map((_, si) => (
-                    <svg key={si} viewBox="0 0 14 14" fill={t.color}>
-                      <path d="M7 1l1.6 3.3 3.6.5-2.6 2.5.6 3.6L7 9.3l-3.2 1.6.6-3.6L1.8 4.8l3.6-.5z"/>
-                    </svg>
-                  ))}
-                </div>
-
-                <p className="test-quote">{t.quote}</p>
-
-                <div className="test-footer">
-                  <div className="test-footer-top">
-                    <div
-                      className="test-avatar"
-                      style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}80)` }}
-                    >
-                      {t.initials}
-                    </div>
-                    <div>
-                      <div className="test-name">{t.name}</div>
-                      <div className="test-role">{t.role}</div>
-                      <div className="test-location">{t.location}</div>
-                    </div>
-                  </div>
-
-                  <span
-                    className="test-specialty"
-                    style={{
-                      color: t.color,
-                      background: `${t.color}12`,
-                      border: `1px solid ${t.color}20`,
-                    }}
-                  >
-                    {t.specialty}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="test-pilot">
-            <p>Join clinics already running on FREMN AI</p>
-            <a href="#contact">
-              Request your pilot
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
+    <section
+      className="bg-[#F7F9FF] px-6 md:px-12 lg:px-24 py-14 md:py-20"
+      id="testimonials"
+      aria-label="Clinician testimonials"
+    >
+      <div className="max-w-5xl mx-auto">
+        {/* header */}
+        <div className="text-center mb-8 md:mb-10">
+          <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-3">
+            Real Results
+          </p>
+          <h2 className="font-serif text-2xl md:text-3xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px] mb-3">
+            Clinicians who see the value{" "}
+            <em className="italic text-[#1B4FD8]">firsthand.</em>
+          </h2>
+          <p className="font-sans text-[13px] text-[#0D1B3E]/50 max-w-sm mx-auto leading-relaxed">
+            Early clinician feedback supporting outpatient workflow validation for FREMN.
+          </p>
         </div>
-      </section>
-    </>
+
+        {/* grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className="relative rounded-xl p-4 md:p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(27,79,216,0.09)]"
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid rgba(13,27,62,0.07)",
+                boxShadow: "0 1px 8px rgba(13,27,62,0.04)",
+              }}
+            >
+              {/* top accent */}
+              <div
+                className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl"
+                style={{ background: `linear-gradient(to right, ${t.color}, ${t.color}40, transparent)` }}
+                aria-hidden="true"
+              />
+
+              {/* stars */}
+              <div className="flex gap-0.5" aria-label="5 stars">
+                {[...Array(5)].map((_, si) => (
+                  <svg key={si} width="12" height="12" viewBox="0 0 14 14" fill={t.color} aria-hidden="true">
+                    <path d="M7 1l1.6 3.3 3.6.5-2.6 2.5.6 3.6L7 9.3l-3.2 1.6.6-3.6L1.8 4.8l3.6-.5z"/>
+                  </svg>
+                ))}
+              </div>
+
+              {/* quote */}
+              <p className="font-sans text-[12.5px] md:text-[13px] text-[#0D1B3E]/60 leading-[1.7] italic font-normal flex-1">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              {/* footer */}
+              <div className="pt-3 flex items-center justify-between gap-3 flex-wrap" style={{ borderTop: "1px solid rgba(13,27,62,0.06)" }}>
+                <div className="flex items-center gap-2.5">
+                  {/* avatar */}
+                  <div
+                    className="w-[34px] h-[34px] rounded-full flex items-center justify-center font-sans text-[11px] font-semibold text-white flex-shrink-0"
+                    style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}bb)` }}
+                    aria-hidden="true"
+                  >
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div className="font-sans font-semibold text-[12.5px] text-[#0D1B3E]">{t.name}</div>
+                    <div className="font-sans text-[10.5px] text-[#0D1B3E]/55 mt-0.5 leading-[1.4]">{t.role}</div>
+                    <div className="font-sans text-[10px] text-[#0D1B3E]/45 mt-0.5 leading-[1.4]">{t.location}</div>
+                  </div>
+                </div>
+
+                <span
+                  className="self-start font-sans text-[9.5px] font-semibold tracking-[0.06em] uppercase px-2 py-0.5 rounded"
+                  style={{
+                    color: t.color,
+                    background: `${t.color}12`,
+                    border: `1px solid ${t.color}22`,
+                  }}
+                >
+                  {t.specialty}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <p className="font-sans text-[13px] text-[#0D1B3E]/55">
+            Join clinics already running on FREMN AI
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-sans font-semibold text-[13px] text-white bg-gradient-to-r from-[#1B4FD8] to-[#4D9FFF] hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(27,79,216,0.4)] active:scale-[0.99] transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF]"
+          >
+            Request your pilot
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

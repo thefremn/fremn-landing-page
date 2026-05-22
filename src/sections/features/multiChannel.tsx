@@ -3,54 +3,12 @@ import { useState } from "react";
 
 const channels = [
   {
-    id: "voice",
-    label: "Voice",
-    tagline: "Picks up every call",
-    description: "FREMN answers incoming calls with natural-sounding speech, handles booking end-to-end, and never puts a patient on hold.",
-    color: "#1E6BFF",
-    points: ["Answers in under 2 rings", "Natural Hindi & English support", "Transfers complex cases to staff"],
-    mockup: (
-      <div style={{
-        background: "rgba(10,10,10,0.9)",
-        borderRadius: 24,
-        padding: 24,
-        border: "1px solid rgba(255,255,255,0.06)",
-        width: "100%",
-        maxWidth: 320,
-        margin: "0 auto",
-      }}>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:24}}>
-          <div style={{fontSize:12,color:"#6B7A99"}}>Incoming Call</div>
-          <div style={{fontSize:11,color:"#4ade80",display:"flex",alignItems:"center",gap:5}}>
-            <div style={{width:6,height:6,borderRadius:"50%",background:"#4ade80"}}/>
-            Connected
-          </div>
-        </div>
-        <div style={{textAlign:"center",marginBottom:24}}>
-          <div style={{width:64,height:64,borderRadius:"50%",background:"linear-gradient(135deg,#1E6BFF,#5BC0EB)",margin:"0 auto 12px",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 0 28px rgba(30,107,255,0.4)"}}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V7a3 3 0 0 1 3-3z" stroke="white" strokeWidth="1.6"/><path d="M7 12a7 7 0 0 0 14 0" stroke="white" strokeWidth="1.6" strokeLinecap="round"/><path d="M14 19v3" stroke="white" strokeWidth="1.4" strokeLinecap="round"/></svg>
-          </div>
-          <div style={{fontFamily:"Syne,sans-serif",fontSize:15,fontWeight:700,color:"#F0F4FF"}}>FREMN AI</div>
-          <div style={{fontSize:12,color:"#6B7A99",marginTop:4}}>City Dental Clinic</div>
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:3,marginBottom:20,height:36}}>
-          {[4,8,14,20,28,20,14,8,4,8,16,24,16,8,4,10,18,10,6].map((h,i) => (
-            <div key={i} style={{width:3,height:h,borderRadius:2,background:`rgba(30,107,255,${0.3+i%3*0.2})`,flexShrink:0}}/>
-          ))}
-        </div>
-        <div style={{background:"rgba(30,107,255,0.08)",border:"1px solid rgba(30,107,255,0.15)",borderRadius:10,padding:"10px 14px",fontSize:13,color:"rgba(240,244,255,0.75)",lineHeight:1.5,fontStyle:"italic"}}>
-          &quot;I can book you with Dr. Sharma tomorrow at 10:30 AM. Shall I confirm?&quot;
-        </div>
-      </div>
-    ),
-  },
-  {
     id: "whatsapp",
     label: "WhatsApp",
-    tagline: "Replies in seconds",
-    description: "Full appointment booking, reschedule and FAQ support — right inside WhatsApp where your patients already spend their time.",
+    tagline: "Where your patients already live",
+    description: "Full booking, reminders, payments, and history — on WhatsApp, with no app to download.",
     color: "#25D366",
-    points: ["No app download needed", "Rich media support", "Confirmation + reminders sent automatically"],
+    points: ["No app download needed", "Booking, reminders & payments in one chat", "Hindi, Bengali, and English supported"],
     mockup: (
       <div style={{
         background: "#111B21",
@@ -100,8 +58,8 @@ const channels = [
   {
     id: "web",
     label: "Web Widget",
-    tagline: "Converts visitors to patients",
-    description: "A floating chat widget embedded on your clinic website — quietly converting every curious visitor into a confirmed appointment.",
+    tagline: "Converts your website visitors",
+    description: "A floating chat on your clinic website — turns browsers into booked patients.",
     color: "#5BC0EB",
     points: ["Zero-code embed, one script tag", "Matches your clinic's branding", "Works on mobile & desktop"],
     mockup: (
@@ -160,11 +118,11 @@ const channels = [
   },
   {
     id: "app",
-    label: "Mobile App",
-    tagline: "Always in their pocket",
-    description: "Sits in your own app that puts appointments, records, and AI chat one tap away — keeping your clinic top of mind, always.",
+    label: "Clinic App",
+    tagline: "Your clinic in their pocket",
+    description: "Patients book, reschedule, and view their history in a clean app — under your clinic's brand.",
     color: "#A78BFA",
-    points: ["Push notifications for reminders", "View records & prescriptions", "In-app AI chat + quick rebook"],
+    points: ["Book & reschedule with one tap", "View history and prescriptions", "Push notifications for reminders"],
     mockup: (
       <div style={{
         width: "100%",
@@ -231,7 +189,7 @@ const channels = [
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
               <div>
                 <div style={{fontSize:9,color:"rgba(167,139,250,0.5)",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:2}}>Good morning</div>
-                <div style={{fontFamily:"Syne,sans-serif",fontSize:14,fontWeight:800,color:"#F0F4FF",letterSpacing:"-0.02em"}}>Rahul 👋</div>
+                <div style={{fontFamily:"var(--font-sans),sans-serif",fontSize:14,fontWeight:700,color:"#F0F4FF",letterSpacing:"-0.02em"}}>Rahul 👋</div>
               </div>
               <div style={{
                 width:30,height:30,borderRadius:"50%",
@@ -348,11 +306,10 @@ export default function ChannelShowcase() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
         .ch-section {
           padding: 100px 32px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans), sans-serif;
+          background: #FFFFFF;
           position: relative;
           overflow: hidden;
         }
@@ -377,22 +334,22 @@ export default function ChannelShowcase() {
 
         .ch-eyebrow {
           text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
+          font-size: 10px;
+          font-weight: 600;
+          color: #4D9FFF;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           margin-bottom: 16px;
         }
 
         .ch-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-serif), serif;
           font-size: clamp(28px, 4vw, 44px);
-          font-weight: 800;
-          color: #F0F4FF;
+          font-weight: 400;
+          color: #0D1B3E;
           text-align: center;
           letter-spacing: -0.02em;
-          margin-bottom: 48px;
+          margin-bottom: 16px;
           line-height: 1.15;
         }
 
@@ -409,23 +366,23 @@ export default function ChannelShowcase() {
           border-radius: 100px;
           font-size: 14px;
           font-weight: 500;
-          border: 1px solid rgba(255,255,255,0.07);
+          border: 1px solid rgba(13,27,62,0.1);
           background: transparent;
-          color: #6B7A99;
+          color: #5B6A8A;
           cursor: pointer;
           transition: all 0.25s ease;
           font-family: 'DM Sans', sans-serif;
         }
 
         .ch-tab.active {
-          background: rgba(26,31,43,0.9);
-          border-color: rgba(91,192,235,0.25);
-          color: #F0F4FF;
+          background: #EEF3FF;
+          border-color: rgba(27,79,216,0.2);
+          color: #0D1B3E;
         }
 
         .ch-tab:hover:not(.active) {
-          color: rgba(240,244,255,0.6);
-          background: rgba(255,255,255,0.02);
+          color: rgba(13,27,62,0.7);
+          background: rgba(13,27,62,0.03);
         }
 
         .ch-body {
@@ -448,17 +405,17 @@ export default function ChannelShowcase() {
         }
 
         .ch-title {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-serif), serif;
           font-size: clamp(24px, 3vw, 34px);
-          font-weight: 800;
-          color: #F0F4FF;
+          font-weight: 400;
+          color: #0D1B3E;
           line-height: 1.2;
           letter-spacing: -0.01em;
         }
 
         .ch-desc {
           font-size: 15.5px;
-          color: #6B7A99;
+          color: #3D4F6E;
           line-height: 1.7;
         }
 
@@ -469,7 +426,7 @@ export default function ChannelShowcase() {
           align-items: center;
           gap: 10px;
           font-size: 14px;
-          color: rgba(240,244,255,0.65);
+          color: rgba(13,27,62,0.75);
         }
 
         .ch-point-dot {
@@ -505,21 +462,28 @@ export default function ChannelShowcase() {
         }
 
         @media (max-width: 768px) {
-          .ch-section { padding: 72px 20px; }
+          .ch-section { padding: 64px 20px; }
           .ch-body { grid-template-columns: 1fr; gap: 40px; }
           .ch-mockup { order: -1; }
+          .ch-heading { font-size: clamp(26px, 7vw, 38px); }
+          .ch-title { font-size: clamp(22px, 6vw, 28px); }
         }
 
         @media (max-width: 480px) {
-          .ch-tabs { flex-wrap: wrap; }
+          .ch-section { padding: 56px 16px; }
+          .ch-tabs { flex-wrap: wrap; gap: 6px; }
+          .ch-tab { padding: 7px 16px; font-size: 13px; }
         }
       `}</style>
 
       <section className="ch-section" id="channels">
         <div className="ch-glow" style={{background:`radial-gradient(circle, ${ch.color}0F 0%, transparent 70%)`}} />
         <div className="ch-inner">
-          <p className="ch-eyebrow">Multi-Channel</p>
-          <h2 className="ch-heading">Meet patients on their<br />preferred channel</h2>
+          <p className="ch-eyebrow">Works Where Patients Are</p>
+          <h2 className="ch-heading">One system. Every channel<br />they already use.</h2>
+          <p style={{textAlign:"center",fontFamily:"var(--font-sans),sans-serif",fontSize:15,color:"rgba(13,27,62,0.45)",lineHeight:1.6,marginBottom:48,marginTop:0}}>
+            Patients don&apos;t change their habits for you. FREMN meets them where they are.
+          </p>
 
           <div className="ch-tabs">
             {channels.map((c, i) => (

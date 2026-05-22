@@ -1,286 +1,164 @@
 "use client";
 
+const pillars = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M17 12a2 2 0 0 1-2 2H5l-3 3V3a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+        <path d="M6 7.5h8M6 11h5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "WhatsApp-native booking",
+    desc: "Patients book, reschedule, and cancel entirely on WhatsApp — no app to download, no form to fill. Three messages and they're confirmed.",
+    metric: "0",
+    metricLabel: "app downloads for patients",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M16 6A6 6 0 0 0 4 6c0 6.5-2.5 8-2.5 8h17S16 12.5 16 6" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+        <path d="M11.5 18a1.73 1.73 0 0 1-3 0" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Smart reminders & recall",
+    desc: "24-hour and 2-hour reminders sent automatically. No-shows get rebooking messages. Recall reminders bring patients back at the right time.",
+    metric: "35–45%",
+    metricLabel: "fewer no-shows",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.4"/>
+        <path d="M3 18c0-3.9 3.1-5.5 7-5.5s7 1.6 7 5.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+        <path d="M15 3l1.5 1.5M16.5 3l-1.5 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Patient care automation",
+    desc: "Post-visit check-ins, pre-visit history collection, Google review requests, and dormant patient reactivation — all on autopilot.",
+    metric: "24 / 7",
+    metricLabel: "always on, zero effort",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="1.5" y="4" width="17" height="12" rx="2" stroke="currentColor" strokeWidth="1.4"/>
+        <path d="M1.5 8h17" stroke="currentColor" strokeWidth="1.2"/>
+        <path d="M5 12.5h3.5M11.5 12.5h3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Payments & dashboard",
+    desc: "Send UPI payment links on WhatsApp. View revenue, no-shows, and recovery — all in one real-time dashboard.",
+    metric: "100%",
+    metricLabel: "front desk coverage",
+  },
+];
+
 export default function Features() {
-  const features = [
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#5BC0EB" strokeWidth="1.5"/>
-          <path d="M3 9h18" stroke="#5BC0EB" strokeWidth="1.3"/>
-          <path d="M8 3v3M16 3v3" stroke="#5BC0EB" strokeWidth="1.3" strokeLinecap="round"/>
-          <path d="M7 14h4M7 17h6" stroke="#5BC0EB" strokeWidth="1.2" strokeLinecap="round"/>
-        </svg>
-      ),
-      title: "Appointment Booking",
-      description: "Patients book slots instantly via voice or chat. FREMN checks real-time availability and confirms in seconds.",
-      tag: "Core",
-      tagColor: "#5BC0EB",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M4 4l6 6M20 4l-6 6M12 10v10" stroke="#1E6BFF" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="12" cy="10" r="3" stroke="#1E6BFF" strokeWidth="1.5"/>
-        </svg>
-      ),
-      title: "Smart Rescheduling",
-      description: "When patients need to reschedule, FREMN handles it gracefully — no hold music, no callbacks needed.",
-      tag: "Automated",
-      tagColor: "#1E6BFF",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#5BC0EB" strokeWidth="1.5" strokeLinejoin="round"/>
-          <path d="M8 10h8M8 13h5" stroke="#5BC0EB" strokeWidth="1.3" strokeLinecap="round"/>
-        </svg>
-      ),
-      title: "Patient FAQs",
-      description: "Clinic hours, fees, doctors, procedures — FREMN answers common questions without involving your staff.",
-      tag: "Always On",
-      tagColor: "#5BC0EB",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#1E6BFF" strokeWidth="1.5" strokeLinejoin="round"/>
-          <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="#1E6BFF" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      ),
-      title: "Follow-up Reminders",
-      description: "Post-visit follow-ups sent automatically over WhatsApp — improving retention without any manual effort.",
-      tag: "Retention",
-      tagColor: "#1E6BFF",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z" stroke="#5BC0EB" strokeWidth="1.5"/>
-          <path d="M5 10a7 7 0 0 0 14 0" stroke="#5BC0EB" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M12 19v3M9 22h6" stroke="#5BC0EB" strokeWidth="1.3" strokeLinecap="round"/>
-        </svg>
-      ),
-      title: "Voice Support",
-      description: "An AI that talks — answering incoming calls with natural speech and handling end-to-end voice booking.",
-      tag: "Voice AI",
-      tagColor: "#5BC0EB",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="3" width="20" height="14" rx="2" stroke="#1E6BFF" strokeWidth="1.5"/>
-          <path d="M8 21h8M12 17v4" stroke="#1E6BFF" strokeWidth="1.3" strokeLinecap="round"/>
-          <path d="M6 8l3 3 3-3 3 3 3-3" stroke="#5BC0EB" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      title: "Web Widget",
-      description: "Embed FREMN directly on your clinic website — a floating chat widget that converts visitors into booked patients.",
-      tag: "Web",
-      tagColor: "#1E6BFF",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M17.472 14.382a10.06 10.06 0 0 1-3.198 1.393 10.13 10.13 0 0 1-1.02.144 9.916 9.916 0 0 1-5.29-1.582" stroke="#25D366" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M5.516 5.516A9.955 9.955 0 0 1 12 3c5.523 0 10 4.477 10 10s-4.477 10-10 10a9.96 9.96 0 0 1-5.27-1.5L3 21l1.5-4.73A9.956 9.956 0 0 1 2 13" stroke="#25D366" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      title: "WhatsApp Native",
-      description: "Meets patients where they already are — full booking and support flows over WhatsApp, no app download needed.",
-      tag: "WhatsApp",
-      tagColor: "#25D366",
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#5BC0EB" strokeWidth="1.5" strokeLinejoin="round"/>
-          <path d="M9 12l2 2 4-4" stroke="#5BC0EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      title: "DPDP Compliant",
-      description: "Built with India's Digital Personal Data Protection Act in mind — patient data is encrypted and never shared.",
-      tag: "Security",
-      tagColor: "#5BC0EB",
-    },
-  ];
-
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+    <section
+      className="bg-white px-6 md:px-12 lg:px-24 py-20 md:py-28 relative overflow-hidden"
+      id="features"
+      aria-label="What FREMN does"
+    >
+      {/* ambient center glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(27,79,216,0.07) 0%, transparent 70%)",
+        }}
+      />
 
-        .feat-section {
-          padding: 100px 32px;
-          font-family: 'DM Sans', sans-serif;
-          position: relative;
-          overflow: hidden;
-        }
+      <div className="max-w-6xl mx-auto relative z-10">
 
-        .feat-bg {
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(91,192,235,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(91,192,235,0.025) 1px, transparent 1px);
-          background-size: 48px 48px;
-          mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 75%);
-          pointer-events: none;
-        }
+        {/* header */}
+        <div className="text-center mb-14">
+          <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-4">
+            What FREMN Does
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px] mb-4">
+            Your AI Patient Coordinator
+          </h2>
+          <p className="font-sans text-sm md:text-base text-[#0D1B3E]/65 max-w-md mx-auto leading-relaxed">
+            Handle bookings, reminders, follow-ups, and payments with 100% front desk
+            coverage — fully on WhatsApp.
+          </p>
+        </div>
 
-        .feat-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
-
-        .feat-eyebrow {
-          text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .feat-heading {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(28px, 4vw, 44px);
-          font-weight: 800;
-          color: #F0F4FF;
-          text-align: center;
-          letter-spacing: -0.02em;
-          line-height: 1.15;
-          margin-bottom: 16px;
-        }
-
-        .feat-sub {
-          text-align: center;
-          font-size: 16px;
-          color: #6B7A99;
-          max-width: 480px;
-          margin: 0 auto 64px;
-          line-height: 1.65;
-        }
-
-        .feat-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 14px;
-        }
-
-        .feat-card {
-          background: rgba(26,31,43,0.5);
-          border: 1px solid rgba(255,255,255,0.05);
-          border-radius: 16px;
-          padding: 26px 22px;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-          cursor: default;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .feat-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(91,192,235,0.3), transparent);
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-
-        .feat-card:hover {
-          background: rgba(26,31,43,0.8);
-          border-color: rgba(91,192,235,0.12);
-          transform: translateY(-3px);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-        }
-
-        .feat-card:hover::before { opacity: 1; }
-
-        .feat-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          background: rgba(10,10,10,0.6);
-          border: 1px solid rgba(255,255,255,0.06);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .feat-tag {
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          padding: 3px 8px;
-          border-radius: 5px;
-          width: fit-content;
-        }
-
-        .feat-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 15px;
-          font-weight: 700;
-          color: #F0F4FF;
-          line-height: 1.3;
-        }
-
-        .feat-desc {
-          font-size: 13px;
-          color: #6B7A99;
-          line-height: 1.6;
-          flex: 1;
-        }
-
-        @media (max-width: 1024px) {
-          .feat-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-          .feat-section { padding: 72px 20px; }
-          .feat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        }
-
-        @media (max-width: 480px) {
-          .feat-grid { grid-template-columns: 1fr; }
-        }
-      `}</style>
-
-      <section className="feat-section" id="features">
-        <div className="feat-bg" />
-        <div className="feat-inner">
-          <p className="feat-eyebrow">Capabilities</p>
-          <h2 className="feat-heading">Everything your front desk does —<br />done better, automatically</h2>
-          <p className="feat-sub">Built specifically for outpatient clinics. No complex setup, no training period.</p>
-
-          <div className="feat-grid">
-            {features.map((f, i) => (
-              <div className="feat-card" key={i}>
-                <div className="feat-icon">{f.icon}</div>
-                <span
-                  className="feat-tag"
+        {/* 2 × 2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px rounded-2xl overflow-hidden"
+          style={{ background: "#DDE3EF", boxShadow: "0 0 0 1px #DDE3EF" }}
+        >
+          {pillars.map((p, i) => (
+            <div
+              key={i}
+              className="relative flex flex-col gap-6 p-5 md:p-8 group transition-colors duration-200"
+              style={{ background: "#FFFFFF" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(27,79,216,0.03)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#FFFFFF")}
+            >
+              {/* top row: icon + metric */}
+              <div className="flex items-start justify-between gap-4">
+                {/* icon */}
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{
-                    color: f.tagColor,
-                    background: `${f.tagColor}15`,
-                    border: `1px solid ${f.tagColor}25`,
+                    background: "linear-gradient(135deg, rgba(77,159,255,0.15) 0%, rgba(27,79,216,0.08) 100%)",
+                    border: "1px solid rgba(77,159,255,0.2)",
+                    color: "#4D9FFF",
                   }}
                 >
-                  {f.tag}
-                </span>
-                <h3 className="feat-title">{f.title}</h3>
-                <p className="feat-desc">{f.description}</p>
+                  {p.icon}
+                </div>
+
+                {/* metric */}
+                <div className="text-right">
+                  <div className="font-serif text-[28px] leading-none text-[#0D1B3E] tracking-tight">
+                    {p.metric}
+                  </div>
+                  <div className="font-sans text-[10.5px] text-[#0D1B3E]/55 mt-1 leading-[1.35] max-w-[110px] text-right">
+                    {p.metricLabel}
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+
+              {/* divider */}
+              <div className="h-px w-full" style={{ background: "rgba(13,27,62,0.07)" }} aria-hidden="true" />
+
+              {/* text */}
+              <div>
+                <h3 className="font-serif text-[19px] text-[#0D1B3E] leading-snug tracking-[-0.15px] mb-3">
+                  {p.title}
+                </h3>
+                <p className="font-sans text-[13.5px] text-[#0D1B3E]/55 leading-[1.7]">
+                  {p.desc}
+                </p>
+              </div>
+
+              {/* hover top-edge accent */}
+              <div
+                className="absolute top-0 inset-x-0 h-[1.5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ background: "linear-gradient(90deg, transparent, rgba(77,159,255,0.5), transparent)" }}
+                aria-hidden="true"
+              />
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+
+        {/* bottom link */}
+        <div className="text-center mt-12">
+          <a
+            href="#how-it-works"
+            className="inline-flex items-center gap-2 font-sans text-[13.5px] font-medium text-[#0D1B3E]/55 hover:text-[#1B4FD8] transition-colors duration-150"
+          >
+            See exactly how each step works
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 2.5v9M3 8l4 4 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
   );
 }

@@ -1,36 +1,36 @@
+import { AccentBar } from "@/components/custom/AccentBar";
 import Navbar from "@/components/custom/navbar";
 import HeroSection from "@/sections/hero/page";
 import TrustBar from "@/sections/hero/trustBar";
-import ProblemSolution from "@/sections/product/page";
-import HowItWorks from "@/sections/howItWorks/page";
 import Features from "@/sections/features/page";
-import ContactSection from "@/sections/contact/page";
-import Footer from "@/components/custom/footer";
+import HowItWorks from "@/sections/howItWorks/page";
 import ChannelShowcase from "@/sections/features/multiChannel";
 import Testimonials from "@/sections/impact/testimonials";
+import Infographics from "@/sections/impact/infographics";
+import ComparisonTable from "@/sections/comparison/page";
+import FAQ from "@/sections/faq/page";
+import ContactSection from "@/sections/contact/page";
+import Footer from "@/components/custom/footer";
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: `
-          radial-gradient(ellipse at 20% 0%, rgba(30, 107, 255, 0.04) 0%, transparent 60%),
-          radial-gradient(ellipse at 80% 0%, rgba(91, 192, 235, 0.03) 0%, transparent 50%),
-          #0A0A0A
-        `,
-      }}
-    >
+    <div className="min-h-screen font-sans overflow-x-hidden">
+      <AccentBar />
       <Navbar />
-      <HeroSection />
-      <TrustBar />
-      <ProblemSolution />
-      <HowItWorks />
-      <Features />
-      <ChannelShowcase />
-      <Testimonials />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <TrustBar />
+        <Features />
+        <HowItWorks />
+        <ChannelShowcase />
+        <Testimonials />
+        <Infographics />
+        <ComparisonTable />
+        <FAQ />
+        <ContactSection />
+      </main>
       <Footer />
+      <AccentBar />
     </div>
   );
 }

@@ -79,11 +79,10 @@ export default function ContactSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
         .contact-section {
           padding: 100px 32px 120px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-sans), sans-serif;
+          background: #F7F9FF;
           position: relative;
           overflow: hidden;
         }
@@ -116,19 +115,19 @@ export default function ContactSection() {
 
         .contact-eyebrow {
           text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
+          font-size: 10px;
+          font-weight: 600;
+          color: #4D9FFF;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           margin-bottom: 16px;
         }
 
         .contact-heading {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-serif), serif;
           font-size: clamp(28px, 4.5vw, 50px);
-          font-weight: 800;
-          color: #F0F4FF;
+          font-weight: 400;
+          color: #0D1B3E;
           text-align: center;
           letter-spacing: -0.02em;
           line-height: 1.1;
@@ -136,27 +135,24 @@ export default function ContactSection() {
         }
 
         .contact-heading span {
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-style: italic;
+          color: #4D9FFF;
         }
 
         .contact-sub {
           text-align: center;
           font-size: 15px;
-          color: #6B7A99;
+          color: #3D4F6E;
           margin-bottom: 48px;
           line-height: 1.65;
         }
 
         .contact-card {
-          background: rgba(26,31,43,0.6);
-          border: 1px solid rgba(255,255,255,0.06);
+          background: #FFFFFF;
+          border: 1px solid rgba(13,27,62,0.08);
           border-radius: 24px;
           padding: 40px;
-          backdrop-filter: blur(16px);
-          box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+          box-shadow: 0 8px 40px rgba(13,27,62,0.07);
         }
 
         .form-grid {
@@ -176,19 +172,19 @@ export default function ContactSection() {
         .form-label {
           font-size: 12px;
           font-weight: 500;
-          color: #6B7A99;
+          color: #3D4F6E;
           letter-spacing: 0.04em;
         }
 
         .form-label span { color: #f87171; margin-left: 2px; }
 
         .form-input, .form-select, .form-textarea {
-          background: rgba(10,10,10,0.6);
-          border: 1px solid rgba(255,255,255,0.07);
+          background: #F5F7FB;
+          border: 1px solid rgba(13,27,62,0.1);
           border-radius: 10px;
           padding: 11px 14px;
           font-size: 14px;
-          color: #F0F4FF;
+          color: #0D1B3E;
           font-family: 'DM Sans', sans-serif;
           outline: none;
           transition: border-color 0.2s, box-shadow 0.2s;
@@ -208,17 +204,18 @@ export default function ContactSection() {
         }
 
         .form-select {
-          background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7A99' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235B6A8A' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-color: #F5F7FB;
           background-repeat: no-repeat;
           background-position: right 14px center;
           padding-right: 36px;
           cursor: pointer;
-          color: #F0F4FF;
+          color: #0D1B3E;
         }
 
         .form-select option {
-          background: #1A1F2B;
-          color: #F0F4FF;
+          background: #FFFFFF;
+          color: #0D1B3E;
         }
 
         .form-textarea {
@@ -243,7 +240,7 @@ export default function ContactSection() {
         .form-submit {
           width: 100%;
           padding: 14px 24px;
-          background: linear-gradient(135deg, #1E6BFF, #0F52BA);
+          background: linear-gradient(135deg, #1B4FD8, #4D9FFF);
           color: white;
           font-family: 'DM Sans', sans-serif;
           font-size: 15px;
@@ -257,13 +254,13 @@ export default function ContactSection() {
           gap: 8px;
           margin-top: 8px;
           transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
-          box-shadow: 0 0 28px rgba(30,107,255,0.3);
+          box-shadow: 0 0 28px rgba(27,79,216,0.4);
           letter-spacing: 0.02em;
         }
 
         .form-submit:hover:not(:disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 0 40px rgba(30,107,255,0.5);
+          box-shadow: 0 0 40px rgba(27,79,216,0.55);
         }
 
         .form-submit:active:not(:disabled) { transform: translateY(0); }
@@ -292,7 +289,7 @@ export default function ContactSection() {
           gap: 6px;
           margin-top: 16px;
           font-size: 12px;
-          color: #6B7A99;
+          color: #3D4F6E;
         }
 
         /* Success state */
@@ -317,13 +314,13 @@ export default function ContactSection() {
         }
 
         .success-title {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-serif), serif;
           font-size: 22px;
-          font-weight: 700;
-          color: #F0F4FF;
+          font-weight: 400;
+          color: #0D1B3E;
         }
 
-        .success-sub { font-size: 14px; color: #6B7A99; line-height: 1.6; }
+        .success-sub { font-size: 14px; color: #3D4F6E; line-height: 1.6; }
 
         .reach-row {
           display: flex;
@@ -339,12 +336,12 @@ export default function ContactSection() {
           align-items: center;
           gap: 6px;
           font-size: 13px;
-          color: #6B7A99;
+          color: #3D4F6E;
           text-decoration: none;
           transition: color 0.2s;
         }
 
-        .reach-link:hover { color: #5BC0EB; }
+        .reach-link:hover { color: #4D9FFF; }
 
         @media (max-width: 640px) {
           .contact-section { padding: 72px 20px 80px; }

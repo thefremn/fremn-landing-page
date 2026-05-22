@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from 'next/script';
-
+import "@/app/globals.css";
+import { instrumentSerif, dmSans } from "@/app/fonts";
 export const metadata: Metadata = {
   title: "FREMN",
   description: "AI receptionist for outpatient clinics. Voice, WhatsApp and Web — 24/7 with zero extra headcount.",
@@ -227,7 +228,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="hydrated">
+    <html lang="en" className={`hydrated ${instrumentSerif.variable} ${dmSans.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema1 }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema2 }} />

@@ -1,311 +1,242 @@
 "use client";
 
+import React, { useState } from "react";
+
+/* ── Minimal stroke icons, 16×16, currentColor ───────────────── */
+const Icon = ({ d, d2 }: { d: string; d2?: string }) => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d={d} stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round"/>
+    {d2 && <path d={d2} stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>}
+  </svg>
+);
+
+const PhoneMissed   = () => <Icon d="M3 2.5h3l1.5 3.5-2 1.5c.8 1.5 2.5 3.2 4 4l1.5-2 3.5 1.5V14c-8 1.5-13.5-5-11.5-11.5z" />;
+const MessageDots   = () => <Icon d="M13 2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2.5l2.5 3 2.5-3H13a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" d2="M5 6.5h6M5 9h4" />;
+const ClipboardList = () => <Icon d="M5 2h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" d2="M6 2v2h4V2M5.5 7h5M5.5 10h5M5.5 13h3" />;
+const CalCheck      = () => <Icon d="M2 4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4z" d2="M5 1v4M11 1v4M2 7h12M5.5 11l2 2 4-3.5" />;
+const CalRefresh    = () => <Icon d="M2 4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v5H2V4z" d2="M5 1v4M11 1v4M2 9h12M5 13a4 4 0 0 0 7 0M5 13l-1.5-1.5M5 13l1.5-1.5" />;
+const Users         = () => <Icon d="M11 8c1.2.4 3 1.3 3 3.5M2 11.5c0-2.2 1.8-3.5 4-3.5s4 1.3 4 3.5" d2="M6 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM10.5 3a2 2 0 0 1 0 4" />;
+const Shield        = () => <Icon d="M8 2L3 4v4c0 3 2.5 5.5 5 6 2.5-.5 5-3 5-6V4L8 2z" d2="M5.5 8l2 2 3-3" />;
+const Bell          = () => <Icon d="M8 2a4 4 0 0 1 4 4c0 4 2 5 2 5H2s2-1 2-5a4 4 0 0 1 4-4z" d2="M6.5 15a1.5 1.5 0 0 0 3 0" />;
+const Clock         = () => <Icon d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2z" d2="M8 5v3.5l2.5 1.5" />;
+const UserReturn    = () => <Icon d="M8 9c-2 0-5 1-5 3v1h10v-1c0-2-3-3-5-3z" d2="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM11 13c0-1.5 1-2.5 1-2.5" />;
+const CalRepeat     = () => <Icon d="M2 4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v4H2V4z" d2="M5 1v4M11 1v4M2 8h12M4 12h6M4 12l1.5-1.5M4 12l1.5 1.5M12 14l-1.5-1.5M12 14l-1.5 1.5M10 14h2" />;
+const Tooth         = () => <Icon d="M6 2C4.5 2 3 3 3 5c0 1.5.5 2.5 1 4l.5 4c0 .5.5 1 1 1h1l.5-3 1-1 1 1 .5 3h1c.5 0 1-.5 1-1l.5-4c.5-1.5 1-2.5 1-4 0-2-1.5-3-3-3H6z" />;
+const HeartCheck    = () => <Icon d="M8 13.5S2 9.5 2 5.5a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 2-1.5 4-6 8z" d2="M5.5 6l1.5 1.5 3-3" />;
+const FileText      = () => <Icon d="M4 2h5.5L12 4.5V14H4V2z" d2="M9 2v3h3M6 7.5h5M6 10h5M6 12.5h3" />;
+const Star          = () => <Icon d="M8 2l1.5 3.5H13l-2.8 2 1 3.5L8 9.3l-3.2 1.7 1-3.5L3 5.5h3.5L8 2z" />;
+const UserSpark     = () => <Icon d="M8 9c-2 0-5 1-5 3v1h7" d2="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 10v4M10 12h4" />;
+const Receipt       = () => <Icon d="M3 2h10v12l-2-1.5-2 1.5-2-1.5L5 14 3 14V2z" d2="M6 6h5M6 9h5M6 12h3" />;
+const CreditCard    = () => <Icon d="M2 4h12a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" d2="M1 8h14M4 11.5h2" />;
+const GridCal       = () => <Icon d="M2 4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4z" d2="M5 1v4M11 1v4M2 7h12M2 10h12M5.5 7v7M10.5 7v7" />;
+const UserCircle    = () => <Icon d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2z" d2="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM4.5 13a3.5 3.5 0 0 1 7 0" />;
+const BarChart      = () => <Icon d="M2 14h12" d2="M4 14V9M8 14V6M12 14V4" />;
+const TrendUp       = () => <Icon d="M2 12L6.5 7 9 9.5 14 4" d2="M10 4h4v4" />;
+const Layers        = () => <Icon d="M8 2l6 3-6 3-6-3 6-3z" d2="M2 8l6 3 6-3M2 11l6 3 6-3" />;
+const StarMedal     = () => <Icon d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5L8 2z" d2="M6 12l-1 3M10 12l1 3M6 15h4" />;
+
+type Feature = { Icon: () => React.ReactElement; name: string; desc: string };
+type Step = { number: string; label: string; short: string; tagline: string; features: Feature[] };
+
+const steps: Step[] = [
+  {
+    number: "01", label: "Patient calls your clinic", short: "Missed calls",
+    tagline: "Busy with a patient? FREMN makes sure no call goes to waste.",
+    features: [
+      { Icon: PhoneMissed,   name: "Missed call recovery",   desc: "Patient calls, you're busy — they get available slots on WhatsApp in 60 seconds." },
+      { Icon: MessageDots,   name: "SMS backup",             desc: "No WhatsApp? Patient gets an SMS — nobody falls through the gap." },
+      { Icon: ClipboardList, name: "Callback list",          desc: "Patients who need a call back appear in your dashboard — your receptionist never forgets." },
+    ],
+  },
+  {
+    number: "02", label: "Patient books on WhatsApp", short: "Booking",
+    tagline: "The entire booking happens on WhatsApp — no app, no form, no phone tag.",
+    features: [
+      { Icon: CalCheck,   name: "WhatsApp booking",          desc: "Patient picks a slot, selects their doctor, and confirms — in 3 messages." },
+      { Icon: CalRefresh, name: "Reschedule & cancel",       desc: "Patients change or cancel on WhatsApp — your schedule updates instantly." },
+      { Icon: Users,      name: "Multi-doctor scheduling",   desc: "Each doctor has their own slots — patients pick who they want to see." },
+      { Icon: Shield,     name: "Double-booking prevention", desc: "Slots are held while a patient confirms — no overlaps, ever." },
+    ],
+  },
+  {
+    number: "03", label: "FREMN fills your chair", short: "Reminders",
+    tagline: "Reminders go out automatically — confirmed patients show up, empty slots get filled.",
+    features: [
+      { Icon: Bell,       name: "24-hour reminder",              desc: "Day-before reminder — patient replies YES to confirm or NO to reschedule." },
+      { Icon: Clock,      name: "Same-day reminder",             desc: "2-hour reminder on the day — only if the patient hasn't already confirmed." },
+      { Icon: UserReturn, name: "No-show recovery",              desc: "Patient misses their slot — FREMN automatically reaches out to rebook them." },
+      { Icon: CalRepeat,  name: "Recall reminders",              desc: "FREMN messages patients when it's time for their next cleaning, scaling, or check-up." },
+      { Icon: Tooth,      name: "Incomplete treatment follow-up",desc: "Patient skips RCT session 2 — FREMN sends a gentle reminder to come back and finish." },
+    ],
+  },
+  {
+    number: "04", label: "Care after every visit", short: "Follow-up",
+    tagline: "Patients feel looked after — and keep coming back.",
+    features: [
+      { Icon: HeartCheck, name: "Post-visit check-in",           desc: "\"How are you feeling?\" sent 48 hours after every visit — concerns flagged to you immediately." },
+      { Icon: FileText,   name: "Pre-visit medical history",     desc: "Patients fill their history on WhatsApp before arriving — ready when they walk in." },
+      { Icon: Star,       name: "Google review request",         desc: "Happy patients get a one-tap Google review link — automatically after every positive visit." },
+      { Icon: UserSpark,  name: "Dormant patient reactivation",  desc: "Patients you haven't seen in 6+ months — FREMN reaches out to bring them back." },
+    ],
+  },
+  {
+    number: "05", label: "Billing & payments", short: "Payments",
+    tagline: "Generate invoices and collect payments — no paper, no phone calls.",
+    features: [
+      { Icon: Receipt,    name: "Invoice generation",            desc: "Generate a patient invoice in seconds after every appointment." },
+      { Icon: CreditCard, name: "WhatsApp payment collection",   desc: "Payment link on WhatsApp — patients pay by UPI, card, or net banking instantly." },
+    ],
+  },
+  {
+    number: "06", label: "Know your clinic at a glance", short: "Dashboard",
+    tagline: "Everything you need to run a smarter clinic — one dashboard, updated in real time.",
+    features: [
+      { Icon: GridCal,   name: "Appointments dashboard",    desc: "All today's appointments — confirmed, pending, no-show — in one live view." },
+      { Icon: UserCircle,name: "Patient profiles",          desc: "Every patient's history, treatments, and all messages in one place." },
+      { Icon: BarChart,  name: "Revenue dashboard",         desc: "Today's and this month's revenue — the moment you open FREMN." },
+      { Icon: TrendUp,   name: "No-show revenue report",    desc: "See exactly how much revenue FREMN recovered for you each month." },
+      { Icon: Layers,    name: "Revenue by treatment",      desc: "Which treatments bring the most revenue — cleanings, RCT, crowns — at a glance." },
+      { Icon: StarMedal, name: "Monthly reputation report", desc: "New Google reviews, rating trend, and AI-drafted responses to negative reviews." },
+    ],
+  },
+];
+
 export default function HowItWorks() {
-  const steps = [
-    {
-      number: "01",
-      title: "Patient Reaches Out",
-      description: "A patient calls, sends a WhatsApp message, or uses the web widget on your clinic's site — any time of day.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 3a9 9 0 0 1 7.79 13.5l.71 4.25-4.25-.71A9 9 0 1 1 14 3z" stroke="#5BC0EB" strokeWidth="1.6" strokeLinejoin="round"/>
-          <path d="M10 11h8M10 15h5" stroke="#5BC0EB" strokeWidth="1.4" strokeLinecap="round"/>
-        </svg>
-      ),
-      detail: "Voice · WhatsApp · Web Widget",
-      color: "#5BC0EB",
-    },
-    {
-      number: "02",
-      title: "FREMN AI Responds",
-      description: "The AI understands the patient's intent — booking, query, reschedule or follow-up — and responds naturally in under 10 seconds.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="9" stroke="#1E6BFF" strokeWidth="1.6"/>
-          <path d="M10 14l3 3 5-6" stroke="#1E6BFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="21" cy="7" r="3" fill="#1E6BFF" opacity="0.5"/>
-        </svg>
-      ),
-      detail: "NLP · Intent Detection · Instant Reply",
-      color: "#1E6BFF",
-    },
-    {
-      number: "03",
-      title: "Appointment Confirmed",
-      description: "FREMN checks availability, books the slot, and sends a confirmation to the patient — all without staff involvement.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect x="4" y="6" width="20" height="18" rx="3" stroke="#0F52BA" strokeWidth="1.6"/>
-          <path d="M4 11h20" stroke="#0F52BA" strokeWidth="1.4"/>
-          <path d="M9 4v4M19 4v4" stroke="#0F52BA" strokeWidth="1.4" strokeLinecap="round"/>
-          <path d="M9 17l2.5 2.5L19 14" stroke="#5BC0EB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      detail: "Calendar Sync · Auto-Confirmation",
-      color: "#0F52BA",
-    },
-    {
-      number: "04",
-      title: "Staff Gets Notified",
-      description: "Your team receives a clean summary of every booked appointment and patient interaction — zero manual data entry.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 4a7 7 0 0 1 7 7v4l2 3H5l2-3v-4a7 7 0 0 1 7-7z" stroke="#5BC0EB" strokeWidth="1.6" strokeLinejoin="round"/>
-          <path d="M11.5 21a2.5 2.5 0 0 0 5 0" stroke="#5BC0EB" strokeWidth="1.4"/>
-        </svg>
-      ),
-      detail: "Dashboard · WhatsApp Alert · Email",
-      color: "#5BC0EB",
-    },
-    {
-      number: "05",
-      title: "Patient Gets Reminders",
-      description: "FREMN sends automated reminders and follow-ups to patients, reducing no-shows and keeping your schedule full.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          {/* Phone body */}
-          <rect x="8" y="2" width="12" height="20" rx="3" stroke="#22C55E" strokeWidth="1.6"/>
-          {/* Screen lines suggesting message */}
-          <path d="M11 9h6M11 12.5h4" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round"/>
-          {/* Pulse / signal arcs emanating top-right */}
-          <path d="M21 6.5a4 4 0 0 1 0 5.5" stroke="#22C55E" strokeWidth="1.4" strokeLinecap="round" opacity="0.4"/>
-          <path d="M23 4.5a7 7 0 0 1 0 9.5" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round" opacity="0.2"/>
-          {/* Home button dot */}
-          <circle cx="14" cy="19" r="1" fill="#22C55E" opacity="0.6"/>
-        </svg>
-      ),
-      detail: "Calendar · SMS · Reminders",
-      color: "#008000",
-    },
-  ];
+  const [active, setActive] = useState(0);
+  const step = steps[active];
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+    <section
+      className="bg-[#F7F9FF] px-6 md:px-12 lg:px-24 py-20 md:py-28"
+      id="how-it-works"
+      aria-label="How FREMN works — 6-step journey"
+    >
+      <div className="max-w-6xl mx-auto">
 
-        .hiw-section {
-          padding: 100px 32px;
-          font-family: 'DM Sans', sans-serif;
-          position: relative;
-          overflow: hidden;
-        }
+        {/* header */}
+        <div className="text-center mb-12">
+          <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-4">
+            How It Works
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px] mb-4">
+            From missed call to loyal patient —{" "}
+            <em className="italic text-[#1B4FD8]">automatically.</em>
+          </h2>
+          <p className="font-sans text-sm md:text-base text-[#0D1B3E]/60 max-w-sm mx-auto">
+            Six steps. Zero staff. Every patient looked after.
+          </p>
+        </div>
 
-        .hiw-glow {
-          position: absolute;
-          width: 500px; height: 500px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.05) 0%, transparent 70%);
-          right: -100px; top: 50%;
-          transform: translateY(-50%);
-          pointer-events: none;
-        }
+        {/* Step tabs */}
+        <div
+          className="flex gap-2 justify-center mb-8 overflow-x-auto pb-1"
+          style={{ scrollbarWidth: "none" }}
+          role="tablist"
+          aria-label="Journey steps"
+        >
+          {steps.map((s, i) => (
+            <button
+              key={s.number}
+              role="tab"
+              aria-selected={active === i}
+              aria-controls={`step-panel-${i}`}
+              onClick={() => setActive(i)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full font-sans text-[12px] font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF] whitespace-nowrap flex-shrink-0"
+              style={
+                active === i
+                  ? { background: "linear-gradient(135deg,#1B4FD8,#4D9FFF)", color: "white", boxShadow: "0 2px 12px rgba(27,79,216,0.4)" }
+                  : { background: "rgba(13,27,62,0.04)", border: "1px solid rgba(13,27,62,0.09)", color: "rgba(13,27,62,0.45)" }
+              }
+            >
+              <span className="text-[10px] font-semibold" style={{ color: active === i ? "rgba(255,255,255,0.75)" : "#1B4FD8" }}>
+                {s.number}
+              </span>
+              {s.short}
+            </button>
+          ))}
+        </div>
 
-        .hiw-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
+        {/* Active step panel */}
+        <div
+          id={`step-panel-${active}`}
+          role="tabpanel"
+          aria-label={step.label}
+          className="rounded-2xl overflow-hidden"
+          style={{ background: "#FFFFFF", border: "1px solid rgba(13,27,62,0.08)", boxShadow: "0 2px 16px rgba(13,27,62,0.05)" }}
+        >
+          {/* Step header */}
+          <div className="relative px-4 py-5 md:px-8 md:py-8 overflow-hidden" style={{ borderBottom: "1px solid rgba(13,27,62,0.07)" }}>
+            {/* decorative step number */}
+            <span
+              className="absolute right-6 top-1/2 -translate-y-1/2 font-serif leading-none select-none pointer-events-none"
+              style={{ fontSize: "clamp(72px,10vw,120px)", color: "rgba(13,27,62,0.04)", letterSpacing: "-0.04em" }}
+              aria-hidden="true"
+            >
+              {step.number}
+            </span>
 
-        .hiw-eyebrow {
-          text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
+            <div className="relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+              {/* step badge */}
+              <div
+                className="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-white text-[12px] font-sans font-semibold"
+                style={{ background: "linear-gradient(135deg,#1B4FD8,#4D9FFF)", boxShadow: "0 2px 12px rgba(27,79,216,0.35)" }}
+                aria-hidden="true"
+              >
+                {step.number}
+              </div>
 
-        .hiw-heading {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(28px, 4vw, 44px);
-          font-weight: 800;
-          color: #F0F4FF;
-          text-align: center;
-          letter-spacing: -0.02em;
-          line-height: 1.15;
-          margin-bottom: 16px;
-        }
+              <div className="flex-1 min-w-0">
+                <p className="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase text-[#4D9FFF] mb-1">
+                  Step {step.number}
+                </p>
+                <h3 className="font-serif text-[22px] md:text-[26px] text-[#0D1B3E] leading-snug tracking-[-0.2px]">
+                  {step.label}
+                </h3>
+              </div>
 
-        .hiw-sub {
-          text-align: center;
-          font-size: 16px;
-          color: #6B7A99;
-          max-width: 500px;
-          margin: 0 auto 72px;
-          line-height: 1.65;
-        }
+              <p className="font-sans text-[13px] text-[#0D1B3E]/60 leading-[1.65] max-w-xs flex-shrink-0">
+                {step.tagline}
+              </p>
+            </div>
+          </div>
 
-        /* Steps grid */
-        .steps-grid {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 2px;
-          position: relative;
-        }
-
-        /* Connecting line */
-        .steps-grid::before {
-          content: '';
-          position: absolute;
-          top: 44px;
-          left: calc(12.5% + 20px);
-          right: calc(12.5% + 20px);
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(91,192,235,0.3) 20%, rgba(30,107,255,0.4) 50%, rgba(91,192,235,0.3) 80%, transparent);
-          z-index: 0;
-        }
-
-        .step-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 32px 20px;
-          border-radius: 18px;
-          background: rgba(26,31,43,0.4);
-          border: 1px solid rgba(255,255,255,0.04);
-          transition: border-color 0.3s, background 0.3s, transform 0.3s;
-          cursor: default;
-          position: relative;
-          z-index: 1;
-        }
-
-        .step-card:hover {
-          background: rgba(26,31,43,0.7);
-          border-color: rgba(91,192,235,0.15);
-          transform: translateY(-4px);
-        }
-
-        .step-number {
-          font-family: 'Syne', sans-serif;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          color: #6B7A99;
-          margin-bottom: 16px;
-          text-transform: uppercase;
-        }
-
-        .step-icon-wrap {
-          width: 64px;
-          height: 64px;
-          border-radius: 18px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 20px;
-          background: rgba(26,31,43,0.9);
-          border: 1px solid rgba(255,255,255,0.06);
-          position: relative;
-          transition: box-shadow 0.3s;
-        }
-
-        .step-card:hover .step-icon-wrap {
-          box-shadow: 0 0 24px rgba(91,192,235,0.15);
-        }
-
-        .step-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 16px;
-          font-weight: 700;
-          color: #F0F4FF;
-          margin-bottom: 10px;
-          line-height: 1.3;
-        }
-
-        .step-desc {
-          font-size: 13.5px;
-          color: #6B7A99;
-          line-height: 1.6;
-          margin-bottom: 16px;
-        }
-
-        .step-detail {
-          font-size: 11px;
-          color: rgba(91,192,235,0.6);
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          padding: 4px 10px;
-          border-radius: 6px;
-          background: rgba(91,192,235,0.06);
-          border: 1px solid rgba(91,192,235,0.1);
-        }
-
-        /* CTA below steps */
-        .hiw-cta {
-          display: flex;
-          justify-content: center;
-          margin-top: 56px;
-        }
-
-        .hiw-cta a {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: transparent;
-          color: #5BC0EB;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 15px;
-          font-weight: 500;
-          padding: 12px 24px;
-          border-radius: 10px;
-          text-decoration: none;
-          border: 1px solid rgba(91,192,235,0.2);
-          transition: all 0.25s ease;
-        }
-
-        .hiw-cta a:hover {
-          background: rgba(91,192,235,0.06);
-          border-color: rgba(91,192,235,0.4);
-          transform: translateY(-1px);
-        }
-
-        @media (max-width: 900px) {
-          .steps-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-          }
-          .steps-grid::before { display: none; }
-        }
-
-        @media (max-width: 520px) {
-          .hiw-section { padding: 72px 20px; }
-          .steps-grid { grid-template-columns: 1fr; gap: 10px; }
-        }
-      `}</style>
-
-      <section className="hiw-section" id="how-it-works">
-        <div className="hiw-glow" />
-        <div className="hiw-inner">
-          <p className="hiw-eyebrow">How It Works</p>
-          <h2 className="hiw-heading">From missed call to booked<br />appointment in 60 seconds</h2>
-          <p className="hiw-sub">A seamless four-step flow that runs entirely on autopilot — no training, no scripts, no staff overhead.</p>
-
-          <div className="steps-grid">
-            {steps.map((step, i) => (
-              <div className="step-card" key={i}>
-                <div className="step-number">{step.number}</div>
-                <div className="step-icon-wrap">{step.icon}</div>
-                <h3 className="step-title">{step.title}</h3>
-                <p className="step-desc">{step.description}</p>
-                <span className="step-detail">{step.detail}</span>
+          {/* Feature list */}
+          <div className="p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+            {step.features.map((f, i) => (
+              <div key={i} className="flex items-start gap-4 group">
+                {/* icon container */}
+                <div
+                  className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5 transition-colors duration-150 group-hover:bg-[rgba(27,79,216,0.1)]"
+                  style={{ background: "rgba(27,79,216,0.06)", border: "1px solid rgba(27,79,216,0.12)", color: "#1B4FD8" }}
+                >
+                  <f.Icon />
+                </div>
+                <div>
+                  <p className="font-sans font-semibold text-[13.5px] text-[#0D1B3E] mb-1 leading-snug">{f.name}</p>
+                  <p className="font-sans text-[12.5px] text-[#0D1B3E]/60 leading-[1.6]">{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="hiw-cta">
-            <a href="#contact">
-              See a live demo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
         </div>
-      </section>
-    </>
+
+        {/* Progress dots */}
+        <div className="flex items-center justify-center gap-1.5 mt-5" aria-hidden="true">
+          {steps.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className="rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF]"
+              style={active === i
+                ? { width: 24, height: 5, background: "#4D9FFF" }
+                : { width: 5, height: 5, background: "rgba(13,27,62,0.22)" }
+              }
+              aria-label={`Go to step ${i + 1}`}
+            />
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }

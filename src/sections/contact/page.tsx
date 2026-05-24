@@ -11,9 +11,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // ────────────────────────────────────────────────────────────────────────────
 
 const specialties = [
-  "Dental", "General Physician", "ENT", "Dermatology",
-  "Ophthalmology", "Orthopedics", "Pediatrics", "Physiotherapy",
-  "Gynecology", "Cardiology", "Other",
+  "General Dentistry", "Orthodontics", "Dental Implants",
+  "Pediatric Dentistry", "Oral Surgery", "Endodontics",
+  "Periodontics", "Prosthodontics", "Cosmetic Dentistry", "Other",
 ];
 
 type FormState = {
@@ -127,7 +127,7 @@ export default function ContactSection() {
           font-family: var(--font-serif), serif;
           font-size: clamp(28px, 4.5vw, 50px);
           font-weight: 400;
-          color: #0D1B3E;
+          color: #111827;
           text-align: center;
           letter-spacing: -0.02em;
           line-height: 1.1;
@@ -184,7 +184,7 @@ export default function ContactSection() {
           border-radius: 10px;
           padding: 11px 14px;
           font-size: 14px;
-          color: #0D1B3E;
+          color: #111827;
           font-family: 'DM Sans', sans-serif;
           outline: none;
           transition: border-color 0.2s, box-shadow 0.2s;
@@ -210,12 +210,12 @@ export default function ContactSection() {
           background-position: right 14px center;
           padding-right: 36px;
           cursor: pointer;
-          color: #0D1B3E;
+          color: #111827;
         }
 
         .form-select option {
           background: #FFFFFF;
-          color: #0D1B3E;
+          color: #111827;
         }
 
         .form-textarea {
@@ -317,7 +317,7 @@ export default function ContactSection() {
           font-family: var(--font-serif), serif;
           font-size: 22px;
           font-weight: 400;
-          color: #0D1B3E;
+          color: #111827;
         }
 
         .success-sub { font-size: 14px; color: #3D4F6E; line-height: 1.6; }
@@ -479,7 +479,7 @@ export default function ContactSection() {
                     </>
                   ) : (
                     <>
-                      Request Pilot Demo
+                      Book Now!
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>

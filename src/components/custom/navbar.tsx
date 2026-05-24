@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { label: "Features",     href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Pricing",      href: "#contact" },
+  { label: "Features",      href: "#features" },
+  { label: "Integrations",  href: "#integrations" },
+  { label: "Testimonials",  href: "#testimonials" },
+  { label: "Compare",       href: "#comparison" },
+  { label: "Pricing",       href: "#pricing" },
+  { label: "Blog",          href: "/blog" },
 ];
 
 export default function Navbar() {
@@ -46,24 +48,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF] rounded-lg"
+            className="flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF] rounded-lg"
             aria-label="FREMN — home"
           >
-            {/* LogoMark */}
-            <div
-              className="w-[38px] h-[38px] rounded-[9px] flex-shrink-0 bg-gradient-to-br from-[#1B4FD8] to-[#4D9FFF] flex items-center justify-center text-white shadow-[0_2px_12px_rgba(27,79,216,0.4)]"
-              aria-hidden="true"
-            >
-              <span className="font-serif text-[20px] leading-none select-none">F</span>
-            </div>
-            <div>
-              <span className="font-sans font-semibold text-[#0D1B3E] tracking-[0.06em] text-[15px] leading-none block">
-                FREMN
-              </span>
-              <span className="font-sans text-[9px] text-[#0D1B3E]/55 tracking-[0.08em] uppercase block mt-0.5">
-                AI Front Desk for Dental Clinics
-              </span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="FREMN" className="h-9 w-auto" />
           </Link>
 
           {/* Desktop links */}
@@ -72,7 +61,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block px-3.5 py-2 text-[13px] font-sans font-medium text-[#0D1B3E]/55 hover:text-[#0D1B3E] transition-colors duration-150 rounded-lg hover:bg-[#0D1B3E]/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF]"
+                  className="block px-3.5 py-2 text-[13px] font-sans font-medium text-[#111827]/55 hover:text-[#111827] transition-colors duration-150 rounded-lg hover:bg-[#111827]/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF]"
                 >
                   {link.label}
                 </a>
@@ -85,7 +74,7 @@ export default function Navbar() {
             href="#contact"
             className="hidden md:inline-flex items-center gap-1.5 px-5 py-[9px] rounded-lg font-sans font-semibold text-[13px] text-white bg-gradient-to-r from-[#1B4FD8] to-[#4D9FFF] transition-all duration-150 hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(27,79,216,0.35)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
-            Book a Free Demo
+            Book Now!
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 6h7M7 3l3 3-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -100,17 +89,17 @@ export default function Navbar() {
             aria-controls="mobile-menu"
           >
             <span
-              className="block w-[18px] h-[1.5px] bg-[#0D1B3E] rounded-full transition-all duration-[250ms]"
+              className="block w-[18px] h-[1.5px] bg-[#111827] rounded-full transition-all duration-[250ms]"
               style={{ transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : undefined }}
               aria-hidden="true"
             />
             <span
-              className="block w-[18px] h-[1.5px] bg-[#0D1B3E] rounded-full transition-all duration-200"
+              className="block w-[18px] h-[1.5px] bg-[#111827] rounded-full transition-all duration-200"
               style={{ opacity: menuOpen ? 0 : 1, transform: menuOpen ? "scaleX(0)" : undefined }}
               aria-hidden="true"
             />
             <span
-              className="block w-[18px] h-[1.5px] bg-[#0D1B3E] rounded-full transition-all duration-[250ms]"
+              className="block w-[18px] h-[1.5px] bg-[#111827] rounded-full transition-all duration-[250ms]"
               style={{ transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : undefined }}
               aria-hidden="true"
             />
@@ -134,7 +123,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="w-full text-center py-3.5 text-[17px] font-sans font-medium text-[#0D1B3E]/65 hover:text-[#0D1B3E] hover:bg-[#0D1B3E]/[0.03] rounded-xl transition-colors"
+              className="w-full text-center py-3.5 text-[17px] font-sans font-medium text-[#111827]/65 hover:text-[#111827] hover:bg-[#111827]/[0.03] rounded-xl transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -146,7 +135,7 @@ export default function Navbar() {
             className="w-full text-center py-3.5 rounded-xl font-sans font-semibold text-[15px] text-white bg-gradient-to-r from-[#1B4FD8] to-[#4D9FFF] hover:shadow-[0_8px_24px_rgba(27,79,216,0.4)] transition-shadow"
             onClick={() => setMenuOpen(false)}
           >
-            Book a Free Demo →
+            Book Now!
           </a>
         </nav>
       </div>

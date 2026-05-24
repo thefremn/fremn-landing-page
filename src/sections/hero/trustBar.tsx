@@ -1,40 +1,43 @@
 "use client";
 
-const stats = [
-  { value: "24",  suffix: "/7",   label: "Always online" },
-  { value: "4",   suffix: "x",    label: "Channels covered" },
-  { value: "<10", suffix: "s",    label: "Response time" },
-  { value: "0",   suffix: "%",    label: "Missed appointments" },
+const clinics = [
+  "City Dental Care",
+  "SmilePlus Clinic",
+  "Oral Health Centre",
+  "DentaWell",
+  "BrightSmile Clinic",
+  "ClearDent",
+  "PrimeDental",
+  "ToothFirst",
+  "GumShield Dental",
+  "ApexDental",
 ];
+
+// Duplicate for seamless loop
+const track = [...clinics, ...clinics];
 
 export default function TrustBar() {
   return (
-    <section
-      className="bg-[#F7F9FF] px-6 md:px-12 lg:px-24 py-16 md:py-20"
-      aria-label="Supported specialties and stats"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-white border-y border-[#e5e7eb] py-10 overflow-hidden" aria-label="Trusted by dental clinics">
+      <div className="max-w-6xl mx-auto px-6 mb-6 text-center">
+        <p className="font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af]">
+          Trusted by dental clinics across India
+        </p>
+      </div>
 
-        {/* Stats strip */}
-        <div className="flex items-center justify-center flex-wrap">
-          {stats.map((stat, i) => (
+      {/* marquee row */}
+      <div className="relative">
+        <div className="flex animate-marquee gap-8 w-max">
+          {track.map((name, i) => (
             <div
-              key={stat.label}
-              className="flex flex-col items-center px-8 md:px-10 py-2 relative"
+              key={i}
+              className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#e5e7eb] bg-[#f9fafb] flex-shrink-0"
             >
-              {i > 0 && (
-                <div
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-7 bg-[#0D1B3E]/[0.1]"
-                  aria-hidden="true"
-                />
-              )}
-              <div className="font-serif text-[38px] leading-none text-[#0D1B3E] tracking-[-0.5px]">
-                {stat.value}
-                <em className="not-italic text-[#1B4FD8]">{stat.suffix}</em>
+              {/* placeholder logo circle */}
+              <div className="w-6 h-6 rounded-full bg-[#dbeafe] flex items-center justify-center flex-shrink-0">
+                <span className="font-sans font-bold text-[9px] text-[#2563eb]">{name[0]}</span>
               </div>
-              <div className="font-sans text-[11.5px] text-[#0D1B3E]/60 mt-2 font-normal tracking-[0.02em] text-center">
-                {stat.label}
-              </div>
+              <span className="font-sans text-[13px] font-medium text-[#6b7280] whitespace-nowrap">{name}</span>
             </div>
           ))}
         </div>

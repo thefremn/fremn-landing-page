@@ -298,7 +298,7 @@ export default function TeamPage() {
 
         <nav className="team-nav">
           <Link href="/" className="team-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="team-nav-link">Request Demo →</Link>
+          <Link href="/#contact" className="team-nav-link">Book Now!</Link>
         </nav>
 
         <header className="team-header">

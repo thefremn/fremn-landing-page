@@ -330,7 +330,7 @@ export default async function CareersPage() {
 
         <nav className="careers-nav">
           <Link href="/" className="careers-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="careers-nav-link">Request Demo →</Link>
+          <Link href="/#contact" className="careers-nav-link">Book Now!</Link>
         </nav>
 
         <header className="careers-header">
@@ -452,7 +452,7 @@ export default async function CareersPage() {
         <footer className="careers-footer">
           <span>© {new Date().getFullYear()} FREMN. All rights reserved.</span>
           <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/#contact">Request Demo</Link>
+            <Link href="/#contact">Book Now!</Link>
             <a href="mailto:contact@fremn.com">contact@fremn.com</a>
           </div>
         </footer>

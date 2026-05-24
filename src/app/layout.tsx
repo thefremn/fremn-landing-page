@@ -1,12 +1,27 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from 'next/script';
 import "@/app/globals.css";
-import { instrumentSerif, dmSans } from "@/app/fonts";
+import { inter } from "@/app/fonts";
+export const viewport: Viewport = {
+  themeColor: "#2563eb",
+};
+
 export const metadata: Metadata = {
-  title: "FREMN",
-  description: "AI receptionist for outpatient clinics. Voice, WhatsApp and Web — 24/7 with zero extra headcount.",
+  metadataBase: new URL("https://fremn.com"),
+  title: "FREMN — AI Receptionist for Outpatient Healthcare",
+  description: "The AI front desk for outpatient clinics. Automatically handle bookings, reminders, missed call recovery, and payment collection on WhatsApp — 24/7. Never miss a patient call again.",
+  keywords: [
+    "AI dental receptionist", "AI clinic front desk", "WhatsApp appointment booking",
+    "outpatient clinic automation", "automated appointment reminders", "missed call recovery",
+    "AI phone answering service", "dental virtual receptionist", "after hours clinic answering",
+    "healthcare AI receptionist India", "WhatsApp booking system", "clinic management software",
+  ],
+  twitter: { card: "summary_large_image", site: "@fremnai" },
+  openGraph: {
+    images: [{ url: "/assets/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 const schema1 = `{
@@ -228,7 +243,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`hydrated ${instrumentSerif.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`hydrated ${inter.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema1 }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema2 }} />

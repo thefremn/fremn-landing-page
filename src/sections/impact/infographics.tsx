@@ -53,12 +53,12 @@ function CompareBar({ label, before, after, unit, higherIsBetter, animate }: {
 
   return (
     <div className="flex flex-col gap-2.5">
-      <span className="font-sans text-[12px] font-medium text-[#0D1B3E]/70">{label}</span>
+      <span className="font-sans text-[12px] font-medium text-[#111827]/70">{label}</span>
 
       {/* Before */}
       <div className="flex items-center gap-3">
-        <span className="font-sans text-[10px] text-[#0D1B3E]/40 w-[52px] flex-shrink-0">Before</span>
-        <div className="flex-1 h-[7px] rounded-full bg-[#0D1B3E]/[0.06] overflow-hidden">
+        <span className="font-sans text-[10px] text-[#111827]/40 w-[52px] flex-shrink-0">Before</span>
+        <div className="flex-1 h-[7px] rounded-full bg-[#111827]/[0.06] overflow-hidden">
           <div
             className="h-full rounded-full"
             style={{
@@ -75,8 +75,8 @@ function CompareBar({ label, before, after, unit, higherIsBetter, animate }: {
 
       {/* After */}
       <div className="flex items-center gap-3">
-        <span className="font-sans text-[10px] text-[#0D1B3E]/40 w-[52px] flex-shrink-0">With FREMN</span>
-        <div className="flex-1 h-[7px] rounded-full bg-[#0D1B3E]/[0.06] overflow-hidden">
+        <span className="font-sans text-[10px] text-[#111827]/40 w-[52px] flex-shrink-0">With FREMN</span>
+        <div className="flex-1 h-[7px] rounded-full bg-[#111827]/[0.06] overflow-hidden">
           <div
             className="h-full rounded-full"
             style={{
@@ -140,11 +140,11 @@ export default function Infographics() {
             <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-4">
               By The Numbers
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px] mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] leading-[1.15] tracking-[-0.3px] mb-4">
               The math behind every{" "}
               <em className="italic text-[#1B4FD8]">filled chair.</em>
             </h2>
-            <p className="font-sans text-sm text-[#0D1B3E]/50 max-w-xs mx-auto leading-relaxed">
+            <p className="font-sans text-sm text-[#111827]/50 max-w-xs mx-auto leading-relaxed">
               Real outcomes from the FREMN platform across Indian dental clinics.
             </p>
           </div>
@@ -165,10 +165,10 @@ export default function Infographics() {
                   style={{ color: m.color }}>
                   {m.value}
                 </span>
-                <p className="font-sans font-semibold text-[12px] md:text-[13px] text-[#0D1B3E]/80 leading-snug relative z-10">
+                <p className="font-sans font-semibold text-[12px] md:text-[13px] text-[#111827]/80 leading-snug relative z-10">
                   {m.label}
                 </p>
-                <p className="font-sans text-[10.5px] text-[#0D1B3E]/45 leading-snug relative z-10">
+                <p className="font-sans text-[10.5px] text-[#111827]/45 leading-snug relative z-10">
                   {m.sub}
                 </p>
               </div>
@@ -177,7 +177,7 @@ export default function Infographics() {
 
           {/* ── 60-second journey ───────────────────────────────── */}
           <div className="mb-14 md:mb-20">
-            <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#0D1B3E]/40 mb-6 text-center">
+            <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#111827]/40 mb-6 text-center">
               What happens in 60 seconds after a missed call
             </p>
 
@@ -222,10 +222,10 @@ export default function Infographics() {
                       </span>
 
                       <div className="text-center">
-                        <p className="font-sans font-semibold text-[11.5px] text-[#0D1B3E]/80 leading-snug">
+                        <p className="font-sans font-semibold text-[11.5px] text-[#111827]/80 leading-snug">
                           {step.label}
                         </p>
-                        <p className="font-sans text-[10px] text-[#0D1B3E]/40 leading-snug mt-0.5">
+                        <p className="font-sans text-[10px] text-[#111827]/40 leading-snug mt-0.5">
                           {step.desc}
                         </p>
                       </div>
@@ -263,11 +263,11 @@ export default function Infographics() {
                 <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-2">
                   Before vs After
                 </p>
-                <h3 className="font-serif text-[22px] md:text-[26px] text-[#0D1B3E] leading-snug tracking-[-0.2px]">
+                <h3 className="font-serif text-[22px] md:text-[26px] text-[#111827] leading-snug tracking-[-0.2px]">
                   The difference{" "}
                   <em className="italic text-[#1B4FD8]">FREMN makes.</em>
                 </h3>
-                <p className="font-sans text-[13px] text-[#0D1B3E]/50 leading-relaxed mt-3">
+                <p className="font-sans text-[13px] text-[#111827]/50 leading-relaxed mt-3">
                   Averaged across clinics in the first 3 months on FREMN.
                 </p>
               </div>

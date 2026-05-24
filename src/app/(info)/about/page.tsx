@@ -179,7 +179,7 @@ export default function AboutPage() {
 
         <nav className="about-nav">
           <Link href="/" className="about-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="about-nav-link">Request Demo →</Link>
+          <Link href="/#contact" className="about-nav-link">Book Now!</Link>
         </nav>
 
         <header className="about-header">
@@ -236,7 +236,7 @@ export default function AboutPage() {
         <footer className="about-footer">
           <span>© {new Date().getFullYear()} FREMN</span>
           <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/#contact">Request Demo</Link>
+            <Link href="/#contact">Book Now!</Link>
             <a href="mailto:contact@fremn.com">contact@fremn.com</a>
           </div>
         </footer>

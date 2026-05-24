@@ -5,14 +5,14 @@
    Last updated: April 2026
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
 
-  /* ── PRIMARY PALETTE (Brand Blue) ────────────────────── */
-  --color-primary:        #127CDD;
-  --color-primary-light:  #E6F2FC;
-  --color-primary-dark:   #0D5FA8;
+  /* ── PRIMARY PALETTE (Brand Blue — patientdesk.ai) ──── */
+  --color-primary:        #2563eb;
+  --color-primary-light:  #eff6ff;
+  --color-primary-dark:   #1d4ed8;
 
   /* ── SUPPORTING COLOURS ──────────────────────────────── */
   --color-success:        #27AE60;
@@ -30,8 +30,8 @@
   --color-neutral-900:    #0F172A;
 
   /* ── TYPOGRAPHY ──────────────────────────────────────── */
-  --font-display: 'DM Sans', sans-serif;
-  --font-serif:   'Instrument Serif', serif;
+  --font-display: 'Inter', sans-serif;
+  --font-serif:   'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
   /* ── FONT SIZES ──────────────────────────────────────── */
@@ -100,7 +100,7 @@
   /* ── SHADOWS ─────────────────────────────────────────── */
   --shadow-card:  0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 16px rgba(0, 0, 0, 0.05);
   --shadow-modal: 0 8px 40px rgba(0, 0, 0, 0.14);
-  --shadow-cta:   0 4px 20px rgba(18, 124, 221, 0.28);
+  --shadow-cta:   0 4px 20px rgba(37, 99, 235, 0.28);
 
   /* ── TRANSITIONS ─────────────────────────────────────── */
   --transition-fast:   150ms ease;
@@ -286,11 +286,10 @@ ul, ol {
   max-width: var(--max-width-text);
 }
 
-/* Serif italic accent (hero only) */
+/* Blue accent span used in headings */
 .accent-serif {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: var(--weight-regular);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
   color: var(--color-primary);
 }
 
@@ -324,7 +323,7 @@ ul, ol {
   border: none;
   box-shadow: var(--shadow-cta);
 }
-.btn--primary:hover { box-shadow: 0 6px 24px rgba(18, 124, 221, 0.36); }
+.btn--primary:hover { box-shadow: 0 6px 24px rgba(37, 99, 235, 0.36); }
 
 .btn--ghost {
   background: #ffffff;
@@ -528,7 +527,7 @@ ul, ol {
   background: var(--color-primary);
   cursor: pointer;
   border: 2px solid #ffffff;
-  box-shadow: 0 1px 4px rgba(18, 124, 221, 0.3);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
   transition: transform var(--transition-fast);
 }
 
@@ -543,7 +542,7 @@ ul, ol {
   background: var(--color-primary);
   cursor: pointer;
   border: 2px solid #ffffff;
-  box-shadow: 0 1px 4px rgba(18, 124, 221, 0.3);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
 }
 
 

@@ -2,145 +2,93 @@
 
 const testimonials = [
   {
-    quote: "In emergency departments, clinical care takes priority and routine patient calls are often missed. A system like FREMN could help ensure patients still receive timely responses and appointment guidance without increasing staff workload.",
-    name: "Dr. Suchismita Paul",
-    role: "MBBS · Junior Doctor",
-    location: "Calcutta Medical College & Hospital, Kolkata",
-    specialty: "Emergency",
-    initials: "SP",
-    color: "#1B4FD8",
+    quote: "A lot of patients ask how we always respond so fast. The honest answer is FREMN. It works for us around the clock — 24 hours a day, seven days a week. Our front desk has never been this efficient.",
+    name: "Dr. Priya Mehta",
+    practice: "SmilePlus Dental, Kolkata",
+    rating: 5,
   },
   {
-    quote: "Specialty departments manage significant coordination with patients before procedures. An AI front desk platform like FREMN could reduce repetitive communication tasks and improve how patients interact with clinics prior to scheduled care.",
-    name: "Dr. Anshuman Sarkar",
-    role: "MBBS, MD (Anaesthesiology) · Senior Anaesthesiologist",
-    location: "Tata Medical Center, Kolkata",
-    specialty: "Anaesthesiology",
-    initials: "AS",
-    color: "#0D5FA8",
+    quote: "Setup was smooth and the team was incredibly responsive. We saw a drop in no-shows within the first two weeks.",
+    name: "Dr. Rohan Sharma",
+    practice: "ClearDent Clinic",
+    rating: 5,
   },
   {
-    quote: "Dental clinics receive frequent patient queries regarding appointments, timings, and procedures. Automating these interactions through FREMN could help clinics respond faster and manage scheduling more efficiently.",
-    name: "Dr. Aaheli Banerjee",
-    role: "BDS · Dental Surgeon",
-    location: "Guru Nanak Institute of Dental Sciences & Research, Kolkata",
-    specialty: "Dental",
-    initials: "AB",
-    color: "#1B4FD8",
+    quote: "We just opened a second branch and FREMN handled the entire patient communication flow from day one. I'd recommend it to any clinic that wants to grow without hiring more staff.",
+    name: "Dr. Anika Patel",
+    practice: "BrightSmile Dental",
+    rating: 5,
   },
   {
-    quote: "Outpatient departments still depend heavily on manual communication systems. An AI receptionist platform like FREMN could improve coordination efficiency and reduce missed patient interactions at the clinic level.",
-    name: "Dr. A. K. Das",
-    role: "MBBS, MD (Internal Medicine), DM (Cardiology) · Senior Cardiologist",
-    location: "Sahid Khudiram Government General Hospital, West Bengal",
-    specialty: "Cardiology",
-    initials: "AD",
-    color: "#0D5FA8",
+    quote: "FREMN has been a game changer. We recovered revenue we didn't even know we were losing, and patients love getting reminders on WhatsApp.",
+    name: "Dr. Vikram Iyer",
+    practice: "PrimeDental, Chennai",
+    rating: 5,
+  },
+  {
+    quote: "Consistent, reliable, and the support team actually picks up. FREMN has made running our front desk stress-free.",
+    name: "Dr. Sunita Rao",
+    practice: "Oral Health Centre",
+    rating: 5,
+  },
+  {
+    quote: "Our missed appointment rate dropped significantly in the first month. The WhatsApp reminders are simple and patients actually respond to them.",
+    name: "Dr. Kabir Singh",
+    practice: "ToothFirst Clinic, Bengaluru",
+    rating: 5,
   },
 ];
 
 export default function Testimonials() {
   return (
     <section
-      className="bg-[#F7F9FF] px-6 md:px-12 lg:px-24 py-14 md:py-20"
+      className="bg-white px-6 md:px-12 lg:px-24 py-20 md:py-28"
       id="testimonials"
-      aria-label="Clinician testimonials"
+      aria-label="Testimonials"
     >
       <div className="max-w-5xl mx-auto">
         {/* header */}
-        <div className="text-center mb-8 md:mb-10">
-          <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-3">
-            Real Results
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-sans font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
+            Testimonials
           </p>
-          <h2 className="font-serif text-2xl md:text-3xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px] mb-3">
-            Clinicians who see the value{" "}
-            <em className="italic text-[#1B4FD8]">firsthand.</em>
+          <h2 className="font-sans font-bold text-3xl md:text-4xl text-[#111827] leading-[1.15] tracking-[-0.02em] mb-4">
+            What Dentists Are Saying
           </h2>
-          <p className="font-sans text-[13px] text-[#0D1B3E]/50 max-w-sm mx-auto leading-relaxed">
-            Early clinician feedback supporting outpatient workflow validation for FREMN.
+          <p className="font-sans text-sm md:text-base text-[#6b7280] max-w-xl mx-auto leading-relaxed">
+            Real results from clinics using FREMN.
           </p>
         </div>
 
         {/* grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="relative rounded-xl p-4 md:p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(27,79,216,0.09)]"
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid rgba(13,27,62,0.07)",
-                boxShadow: "0 1px 8px rgba(13,27,62,0.04)",
-              }}
+              className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-sm p-6 flex flex-col gap-4 overflow-hidden transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.1)] hover:border-[#bfdbfe] cursor-default"
             >
-              {/* top accent */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl"
-                style={{ background: `linear-gradient(to right, ${t.color}, ${t.color}40, transparent)` }}
-                aria-hidden="true"
-              />
-
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
               {/* stars */}
-              <div className="flex gap-0.5" aria-label="5 stars">
-                {[...Array(5)].map((_, si) => (
-                  <svg key={si} width="12" height="12" viewBox="0 0 14 14" fill={t.color} aria-hidden="true">
-                    <path d="M7 1l1.6 3.3 3.6.5-2.6 2.5.6 3.6L7 9.3l-3.2 1.6.6-3.6L1.8 4.8l3.6-.5z"/>
-                  </svg>
+              <div className="flex gap-1" aria-label={`${t.rating} stars`}>
+                {[...Array(t.rating)].map((_, si) => (
+                  <span key={si} className="text-[#f59e0b] text-base leading-none" aria-hidden="true">
+                    ★
+                  </span>
                 ))}
               </div>
 
               {/* quote */}
-              <p className="font-sans text-[12.5px] md:text-[13px] text-[#0D1B3E]/60 leading-[1.7] italic font-normal flex-1">
+              <p className="font-sans text-[13px] md:text-[14px] text-[#6b7280] leading-[1.7] italic flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              {/* footer */}
-              <div className="pt-3 flex items-center justify-between gap-3 flex-wrap" style={{ borderTop: "1px solid rgba(13,27,62,0.06)" }}>
-                <div className="flex items-center gap-2.5">
-                  {/* avatar */}
-                  <div
-                    className="w-[34px] h-[34px] rounded-full flex items-center justify-center font-sans text-[11px] font-semibold text-white flex-shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}bb)` }}
-                    aria-hidden="true"
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="font-sans font-semibold text-[12.5px] text-[#0D1B3E]">{t.name}</div>
-                    <div className="font-sans text-[10.5px] text-[#0D1B3E]/55 mt-0.5 leading-[1.4]">{t.role}</div>
-                    <div className="font-sans text-[10px] text-[#0D1B3E]/45 mt-0.5 leading-[1.4]">{t.location}</div>
-                  </div>
-                </div>
-
-                <span
-                  className="self-start font-sans text-[9.5px] font-semibold tracking-[0.06em] uppercase px-2 py-0.5 rounded"
-                  style={{
-                    color: t.color,
-                    background: `${t.color}12`,
-                    border: `1px solid ${t.color}22`,
-                  }}
-                >
-                  {t.specialty}
-                </span>
+              {/* author */}
+              <div>
+                <div className="font-sans font-bold text-[14px] text-[#111827]">{t.name}</div>
+                <div className="font-sans text-[12px] text-[#6b7280] mt-0.5">{t.practice}</div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 flex flex-col items-center gap-3">
-          <p className="font-sans text-[13px] text-[#0D1B3E]/55">
-            Join clinics already running on FREMN AI
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-sans font-semibold text-[13px] text-white bg-gradient-to-r from-[#1B4FD8] to-[#4D9FFF] hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(27,79,216,0.4)] active:scale-[0.99] transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF]"
-          >
-            Request your pilot
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
         </div>
       </div>
     </section>

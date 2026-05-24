@@ -31,9 +31,9 @@ const channels = [
         <div style={{padding:16,display:"flex",flexDirection:"column",gap:8,minHeight:220,background:"rgba(11,20,26,0.9)"}}>
           {[
             {from:"patient",text:"Hi, need to book a cleaning appointment"},
-            {from:"ai",text:"Hello! 😊 We have slots tomorrow — 11 AM or 3 PM. Which works for you?"},
+            {from:"ai",text:"Hello! We have slots tomorrow — 11 AM or 3 PM. Which works for you?"},
             {from:"patient",text:"11 AM please"},
-            {from:"ai",text:"✅ Confirmed! Appointment with Dr. Rao tomorrow at 11:00 AM. We'll remind you an hour before."},
+            {from:"ai",text:"Confirmed. Appointment with Dr. Rao tomorrow at 11:00 AM. We'll remind you an hour before."},
           ].map((msg,i)=>(
             <div key={i} style={{maxWidth:"78%",alignSelf:msg.from==="ai"?"flex-start":"flex-end"}}>
               <div style={{
@@ -346,7 +346,7 @@ export default function ChannelShowcase() {
           font-family: var(--font-serif), serif;
           font-size: clamp(28px, 4vw, 44px);
           font-weight: 400;
-          color: #0D1B3E;
+          color: #111827;
           text-align: center;
           letter-spacing: -0.02em;
           margin-bottom: 16px;
@@ -377,7 +377,7 @@ export default function ChannelShowcase() {
         .ch-tab.active {
           background: #EEF3FF;
           border-color: rgba(27,79,216,0.2);
-          color: #0D1B3E;
+          color: #111827;
         }
 
         .ch-tab:hover:not(.active) {
@@ -408,7 +408,7 @@ export default function ChannelShowcase() {
           font-family: var(--font-serif), serif;
           font-size: clamp(24px, 3vw, 34px);
           font-weight: 400;
-          color: #0D1B3E;
+          color: #111827;
           line-height: 1.2;
           letter-spacing: -0.01em;
         }

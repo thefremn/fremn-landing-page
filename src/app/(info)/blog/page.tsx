@@ -1,8 +1,7 @@
-// app/blog/page.tsx
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
+
 export const metadata: Metadata = {
   title: "Blog — FREMN",
   description: "Insights on clinic automation, AI front desks, and the future of healthcare operations.",
@@ -56,363 +55,164 @@ export default async function BlogPage() {
   const [featured, ...rest] = posts;
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+    <div
+      className="min-h-screen font-sans"
+      style={{
+        background:
+          "radial-gradient(ellipse 100% 60% at 50% 100%, rgba(96,165,250,0.18) 0%, rgba(147,197,253,0.08) 45%, transparent 70%), " +
+          "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
+      }}
+    >
+      {/* ── Navbar ── */}
+      <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between h-[64px]">
+          <Link href="/" aria-label="FREMN — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
+          </Link>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
+          >
+            Book Now!
+          </Link>
+        </div>
+      </nav>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      {/* ── Page header ── */}
+      <header className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pt-16 pb-12">
+        <p className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
+          From the team
+        </p>
+        <h1 className="font-sans font-extrabold text-4xl md:text-5xl text-[#111827] leading-[1.1] tracking-[-0.02em] mb-4">
+          Insights on <span className="text-[#2563eb]">clinic automation</span>
+        </h1>
+        <p className="font-sans text-[16px] text-[#6b7280] max-w-lg leading-[1.65]">
+          Deep dives into AI front desks, appointment workflows, and how modern clinics are reclaiming their time.
+        </p>
+        <div className="mt-10 h-px bg-[#e5e7eb]" />
+      </header>
 
-        .blog-root {
-          min-height: 100vh;
-          background: #0B0E17;
-          font-family: 'DM Sans', sans-serif;
-          color: #F0F4FF;
-          position: relative;
-          overflow-x: hidden;
-        }
-
-        .blog-glow-top {
-          position: fixed; top: -200px; left: 50%;
-          transform: translateX(-50%);
-          width: 900px; height: 500px; border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(30,107,255,0.07) 0%, transparent 65%);
-          pointer-events: none; z-index: 0;
-        }
-        .blog-glow-right {
-          position: fixed; top: 40%; right: -200px;
-          width: 500px; height: 500px; border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.04) 0%, transparent 70%);
-          pointer-events: none; z-index: 0;
-        }
-
-        /* ── Nav ── */
-        .blog-nav {
-          position: sticky; top: 0; z-index: 50;
-          padding: 0 40px; height: 64px;
-          display: flex; align-items: center; justify-content: space-between;
-          background: rgba(11,14,23,0.8);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .blog-nav-logo {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px; font-weight: 800;
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text; text-decoration: none;
-        }
-        .blog-nav-link {
-          font-size: 13px; color: #6B7A99;
-          text-decoration: none; transition: color 0.2s;
-        }
-        .blog-nav-link:hover { color: #5BC0EB; }
-
-        /* ── Page header ── */
-        .blog-header {
-          padding: 80px 40px 0;
-          max-width: 1200px; margin: 0 auto;
-          position: relative; z-index: 1;
-        }
-        .blog-header-eyebrow {
-          font-size: 11px; font-weight: 500;
-          color: #5BC0EB; letter-spacing: 0.12em;
-          text-transform: uppercase; margin-bottom: 14px;
-        }
-        .blog-header-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(36px, 5vw, 62px);
-          font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em; color: #F0F4FF;
-          margin-bottom: 16px;
-        }
-        .blog-header-title span {
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .blog-header-sub {
-          font-size: 16px; color: #6B7A99;
-          max-width: 480px; line-height: 1.65; margin-bottom: 60px;
-        }
-        .blog-divider {
-          width: 100%; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
-          margin-bottom: 60px;
-        }
-
-        /* ── Content ── */
-        .blog-content {
-          max-width: 1200px; margin: 0 auto;
-          padding: 0 40px 120px;
-          position: relative; z-index: 1;
-        }
-
-        /* ── Section labels ── */
-        .section-label {
-          font-size: 10.5px; font-weight: 500;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          margin-bottom: 20px;
-          display: flex; align-items: center; gap: 8px;
-        }
-        .section-label.blue { color: #5BC0EB; }
-        .section-label.blue::after {
-          content: ''; flex: 1; height: 1px;
-          background: rgba(91,192,235,0.15);
-        }
-        .section-label.muted { color: #6B7A99; }
-        .section-label.muted::after {
-          content: ''; flex: 1; height: 1px;
-          background: rgba(255,255,255,0.05);
-        }
-
-        /* ── Featured card ── */
-        .featured-card {
-          background: rgba(26,31,43,0.5);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 20px;
-          padding: 48px 52px;
-          text-decoration: none; color: inherit;
-          display: flex; flex-direction: column; gap: 18px;
-          margin-bottom: 64px;
-          transition: border-color 0.3s, box-shadow 0.3s;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-          position: relative; overflow: hidden;
-        }
-        .featured-card::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, #1E6BFF, #5BC0EB);
-          opacity: 0; transition: opacity 0.3s;
-        }
-        .featured-card:hover {
-          border-color: rgba(30,107,255,0.2);
-          box-shadow: 0 32px 80px rgba(0,0,0,0.5);
-        }
-        .featured-card:hover::before { opacity: 1; }
-
-        .post-tag {
-          display: inline-flex; align-items: center;
-          background: rgba(30,107,255,0.1);
-          border: 1px solid rgba(30,107,255,0.2);
-          color: #5BC0EB;
-          font-size: 11px; font-weight: 500;
-          letter-spacing: 0.06em; text-transform: uppercase;
-          padding: 4px 10px; border-radius: 100px; width: fit-content;
-        }
-        .featured-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(22px, 3vw, 36px);
-          font-weight: 800; line-height: 1.15;
-          letter-spacing: -0.025em; color: #F0F4FF;
-          max-width: 680px;
-        }
-        .featured-excerpt {
-          font-size: 15px; color: #6B7A99;
-          line-height: 1.7; max-width: 600px;
-        }
-        .post-meta {
-          display: flex; align-items: center; gap: 8px; padding-top: 4px;
-        }
-        .author-initial {
-          width: 28px; height: 28px; border-radius: 50%;
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 11px; font-weight: 700; color: white; flex-shrink: 0;
-        }
-        .post-meta-text { font-size: 12.5px; color: #6B7A99; }
-        .post-meta-text strong { color: #A0AABB; font-weight: 500; }
-        .post-meta-dot { color: rgba(107,122,153,0.35); }
-        .featured-arrow {
-          display: flex; align-items: center; gap: 6px;
-          font-size: 13px; font-weight: 500; color: #1E6BFF;
-          margin-top: 4px; transition: gap 0.2s;
-        }
-        .featured-card:hover .featured-arrow { gap: 10px; }
-
-        /* ── Grid cards ── */
-        .posts-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-        }
-        .post-card {
-          background: rgba(26,31,43,0.45);
-          border: 1px solid rgba(255,255,255,0.055);
-          border-radius: 16px;
-          padding: 28px 28px 24px;
-          text-decoration: none; color: inherit;
-          display: flex; flex-direction: column; gap: 12px;
-          transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-          position: relative; overflow: hidden;
-        }
-        .post-card::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, #1E6BFF, #5BC0EB);
-          opacity: 0; transition: opacity 0.25s;
-        }
-        .post-card:hover {
-          transform: translateY(-4px);
-          border-color: rgba(30,107,255,0.18);
-          box-shadow: 0 20px 48px rgba(0,0,0,0.4);
-        }
-        .post-card:hover::before { opacity: 1; }
-        .post-card-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 16px; font-weight: 700;
-          line-height: 1.3; letter-spacing: -0.015em; color: #F0F4FF;
-        }
-        .post-card-excerpt {
-          font-size: 13px; color: #6B7A99; line-height: 1.65; flex: 1;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .post-card-meta {
-          display: flex; align-items: center; gap: 8px;
-          padding-top: 12px; margin-top: auto;
-          border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* ── Empty state ── */
-        .empty-state {
-          text-align: center; padding: 80px 20px; color: #6B7A99;
-        }
-        .empty-state-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px; font-weight: 700; color: #A0AABB; margin-bottom: 8px;
-        }
-
-        /* ── Footer ── */
-        .blog-footer {
-          border-top: 1px solid rgba(255,255,255,0.05);
-          padding: 32px 40px;
-          display: flex; align-items: center; justify-content: space-between;
-          max-width: 1200px; margin: 0 auto;
-          font-size: 13px; color: #6B7A99;
-          position: relative; z-index: 1;
-        }
-        .blog-footer a { color: #6B7A99; text-decoration: none; transition: color 0.2s; }
-        .blog-footer a:hover { color: #5BC0EB; }
-
-        /* ── Animations ── */
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .blog-header   { animation: fadeUp 0.55s cubic-bezier(0.16,1,0.3,1) both; }
-        .featured-card { animation: fadeUp 0.55s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
-        .posts-grid    { animation: fadeUp 0.55s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
-
-        /* ── Responsive ── */
-        @media (max-width: 900px) {
-          .posts-grid { grid-template-columns: repeat(2, 1fr); }
-          .blog-header, .blog-content { padding-left: 24px; padding-right: 24px; }
-          .blog-nav { padding: 0 24px; }
-          .featured-card { padding: 36px 32px; }
-        }
-        @media (max-width: 600px) {
-          .posts-grid { grid-template-columns: 1fr; }
-          .blog-header { padding-top: 52px; }
-          .blog-footer { flex-direction: column; gap: 12px; text-align: center; }
-        }
-      `}</style>
-
-      <div className="blog-root">
-        <div className="blog-glow-top" />
-        <div className="blog-glow-right" />
-
-        <nav className="blog-nav">
-          <Image src="/logo.png" alt="Fremn Logo" width={30} height={30} className="rounded"/>
-          <Link href="/" className="blog-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="blog-nav-link">Request Pilot</Link>
-        </nav>
-
-        <header className="blog-header">
-          <p className="blog-header-eyebrow">From the team</p>
-          <h1 className="blog-header-title">
-            Insights on <span>clinic</span><br />automation
-          </h1>
-          <p className="blog-header-sub">
-            Deep dives into AI front desks, appointment workflows, and how modern clinics are reclaiming their time.
-          </p>
-          <div className="blog-divider" />
-        </header>
-
-        <main className="blog-content">
-          {posts.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-state-title">No posts yet</div>
-              <p>Check back soon — we are writing something good.</p>
-            </div>
-          ) : (
-            <>
-              {featured && (
-                <>
-                  <p className="section-label blue">Featured</p>
-                  <Link href={`/blog/${featured.slug}`} className="featured-card">
-                    {featured.tag && <span className="post-tag">{featured.tag}</span>}
-                    <h2 className="featured-title">{featured.title}</h2>
-                    <p className="featured-excerpt">{featured.excerpt}</p>
-                    <div className="post-meta">
-                      <div className="author-initial">{featured.author_name.charAt(0)}</div>
-                      <div className="post-meta-text">
-                        <strong>{featured.author_name}</strong>
-                        <span className="post-meta-dot"> · </span>
-                        {formatDate(featured.published_at)}
-                        {featured.read_time_minutes && (
-                          <><span className="post-meta-dot"> · </span>{featured.read_time_minutes} min read</>
-                        )}
-                      </div>
-                    </div>
-                    <span className="featured-arrow">
-                      Read article
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7h10M8 3l4 4-4 4" stroke="#1E6BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </Link>
-                </>
-              )}
-
-              {rest.length > 0 && (
-                <>
-                  <p className="section-label muted">All posts</p>
-                  <div className="posts-grid">
-                    {rest.map((post) => (
-                      <Link key={post.id} href={`/blog/${post.slug}`} className="post-card">
-                        {post.tag && <span className="post-tag">{post.tag}</span>}
-                        <h3 className="post-card-title">{post.title}</h3>
-                        <p className="post-card-excerpt">{post.excerpt}</p>
-                        <div className="post-card-meta">
-                          <div className="author-initial">{post.author_name.charAt(0)}</div>
-                          <span className="post-meta-text">
-                            <strong>{post.author_name}</strong>
-                            <span className="post-meta-dot"> · </span>
-                            {formatDate(post.published_at)}
-                            {post.read_time_minutes && (
-                              <><span className="post-meta-dot"> · </span>{post.read_time_minutes} min</>
-                            )}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              )}
-            </>
-          )}
-        </main>
-
-        <footer className="blog-footer">
-          <span>© {new Date().getFullYear()} FREMN. All rights reserved.</span>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/#contact">Request Demo</Link>
-            <a href="mailto:contact@fremn.com">contact@fremn.com</a>
+      {/* ── Content ── */}
+      <main className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-24">
+        {posts.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="font-sans font-semibold text-[18px] text-[#111827] mb-2">No posts yet</p>
+            <p className="font-sans text-[14px] text-[#6b7280]">Check back soon — we are writing something good.</p>
           </div>
-        </footer>
+        ) : (
+          <>
+            {/* Featured */}
+            {featured && (
+              <div className="mb-14">
+                <p className="font-sans text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[#2563eb] mb-5 flex items-center gap-2">
+                  Featured
+                  <span className="flex-1 h-px bg-[#dbeafe]" />
+                </p>
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="group relative block rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.07)] p-10 md:p-12 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe]"
+                >
+                  <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                  {featured.tag && (
+                    <span className="inline-flex items-center px-3 py-1 rounded-full font-sans text-[11px] font-semibold tracking-[0.06em] uppercase text-[#2563eb] bg-[#eff6ff] border border-[#dbeafe] mb-4">
+                      {featured.tag}
+                    </span>
+                  )}
+                  <h2 className="font-sans font-bold text-[22px] md:text-[32px] text-[#111827] leading-[1.2] tracking-[-0.02em] mb-3 max-w-2xl">
+                    {featured.title}
+                  </h2>
+                  <p className="font-sans text-[15px] text-[#6b7280] leading-[1.7] max-w-xl mb-6">
+                    {featured.excerpt}
+                  </p>
+
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 rounded-full bg-[#2563eb] flex items-center justify-center flex-shrink-0">
+                      <span className="font-sans font-bold text-[11px] text-white">{featured.author_name.charAt(0)}</span>
+                    </div>
+                    <span className="font-sans text-[13px] text-[#6b7280]">
+                      <span className="font-semibold text-[#374151]">{featured.author_name}</span>
+                      {" · "}
+                      {formatDate(featured.published_at)}
+                      {featured.read_time_minutes && <>{" · "}{featured.read_time_minutes} min read</>}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-5 font-sans text-[13px] font-semibold text-[#2563eb] transition-all duration-150 group-hover:gap-3">
+                    Read article
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {/* All posts grid */}
+            {rest.length > 0 && (
+              <>
+                <p className="font-sans text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[#9ca3af] mb-5 flex items-center gap-2">
+                  All posts
+                  <span className="flex-1 h-px bg-[#e5e7eb]" />
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {rest.map((post) => (
+                    <Link
+                      key={post.id}
+                      href={`/blog/${post.slug}`}
+                      className="group relative flex flex-col rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe]"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                      {post.tag && (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full font-sans text-[10px] font-semibold tracking-[0.06em] uppercase text-[#2563eb] bg-[#eff6ff] border border-[#dbeafe] mb-3 w-fit">
+                          {post.tag}
+                        </span>
+                      )}
+                      <h3 className="font-sans font-bold text-[15px] text-[#111827] leading-[1.35] tracking-[-0.01em] mb-2">
+                        {post.title}
+                      </h3>
+                      <p className="font-sans text-[13px] text-[#6b7280] leading-[1.65] flex-1 line-clamp-3 mb-4">
+                        {post.excerpt}
+                      </p>
+
+                      <div className="flex items-center gap-2.5 pt-4 border-t border-[#f3f4f6] mt-auto">
+                        <div className="w-6 h-6 rounded-full bg-[#2563eb] flex items-center justify-center flex-shrink-0">
+                          <span className="font-sans font-bold text-[10px] text-white">{post.author_name.charAt(0)}</span>
+                        </div>
+                        <span className="font-sans text-[12px] text-[#6b7280]">
+                          <span className="font-semibold text-[#374151]">{post.author_name}</span>
+                          {" · "}
+                          {formatDate(post.published_at)}
+                          {post.read_time_minutes && <>{" · "}{post.read_time_minutes} min</>}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </main>
+
+      {/* ── Footer ── */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-10">
+        <div className="flex items-center justify-between flex-wrap gap-3 pt-8 border-t border-[#e5e7eb]">
+          <span className="font-sans text-[12.5px] text-[#9ca3af]">
+            © {new Date().getFullYear()} FREMN Technologies LLP. All rights reserved.
+          </span>
+          <div className="flex gap-5">
+            <Link href="/#contact" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              Book Now!
+            </Link>
+            <a href="mailto:contact@fremn.com" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              contact@fremn.com
+            </a>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

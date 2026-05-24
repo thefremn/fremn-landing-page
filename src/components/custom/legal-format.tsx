@@ -30,444 +30,150 @@ export default function LegalLayout({
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-        html, body {
-  margin: 0;
-  padding: 0;
-  background: #0B0E17;
-}
-        :root {
-          --black: #0B0E17;
-          --graphite: #1A1F2B;
-          --electric-blue: #1E6BFF;
-          --royal-blue: #0F52BA;
-          --cyan: #5BC0EB;
-          --white: #F0F4FF;
-          --muted: #6B7A99;
-          --border: rgba(255,255,255,0.06);
-        }
-
-        .legal-page {
-          min-height: 100vh;
-          background: #0B0E17;
-          font-family: 'DM Sans', sans-serif;
-          color: var(--white);
-          position: relative;
-          overflow-x: hidden;
-        }
-
-        /* Ambient glows */
-        .legal-glow-1 {
-          position: fixed;
-          width: 600px; height: 600px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(30,107,255,0.06) 0%, transparent 70%);
-          top: -150px; left: -150px;
-          pointer-events: none;
-          z-index: 0;
-        }
-        .legal-glow-2 {
-          position: fixed;
-          width: 400px; height: 400px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.04) 0%, transparent 70%);
-          bottom: 0; right: -100px;
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        /* Grid texture */
-        .legal-grid {
-          position: fixed;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(91,192,235,0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(91,192,235,0.02) 1px, transparent 1px);
-          background-size: 56px 56px;
-          mask-image: radial-gradient(ellipse at 30% 20%, black 20%, transparent 70%);
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        /* LAYOUT */
-        .legal-layout {
-          max-width: 1100px;
-          margin: 0 auto;
-          padding: 120px 32px 100px;
-          display: grid;
-          grid-template-columns: 240px 1fr;
-          gap: 64px;
-          align-items: start;
-          position: relative;
-          z-index: 1;
-        }
-
-        /* ── SIDEBAR ── */
-        .legal-sidebar {
-          position: sticky;
-          top: 100px;
-        }
-
-        .sidebar-back {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 12.5px;
-          color: var(--muted);
-          text-decoration: none;
-          margin-bottom: 28px;
-          transition: color 0.2s;
-        }
-        .sidebar-back:hover { color: var(--cyan); }
-
-        .sidebar-label {
-          font-size: 10px;
-          font-weight: 600;
-          color: var(--muted);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 12px;
-        }
-
-        .sidebar-nav {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          margin-bottom: 32px;
-        }
-
-        .sidebar-nav a {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 13px;
-          color: var(--muted);
-          text-decoration: none;
-          padding: 7px 10px;
-          border-radius: 8px;
-          border: 1px solid transparent;
-          transition: all 0.2s;
-          line-height: 1.4;
-        }
-
-        .sidebar-nav a:hover {
-          color: var(--white);
-          background: rgba(255,255,255,0.03);
-          border-color: var(--border);
-        }
-
-        .sidebar-nav-num {
-          font-family: 'Syne', sans-serif;
-          font-size: 10px;
-          font-weight: 700;
-          color: rgba(91,192,235,0.4);
-          flex-shrink: 0;
-          width: 18px;
-        }
-
-        .sidebar-divider {
-          height: 1px;
-          background: var(--border);
-          margin: 16px 0;
-        }
-
-        .sidebar-related-label {
-          font-size: 10px;
-          font-weight: 600;
-          color: var(--muted);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-        }
-
-        .sidebar-related {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .sidebar-related a {
-          font-size: 12.5px;
-          color: var(--muted);
-          text-decoration: none;
-          padding: 6px 10px;
-          border-radius: 8px;
-          border: 1px solid var(--border);
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          transition: all 0.2s;
-        }
-
-        .sidebar-related a:hover {
-          color: var(--cyan);
-          border-color: rgba(91,192,235,0.2);
-          background: rgba(91,192,235,0.04);
-        }
-
-        /* ── MAIN CONTENT ── */
-        .legal-main {}
-
-        /* Hero block */
-        .legal-hero {
-          margin-bottom: 56px;
-          padding-bottom: 40px;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .legal-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(91,192,235,0.07);
-          border: 1px solid rgba(91,192,235,0.2);
-          border-radius: 100px;
-          padding: 4px 12px 4px 8px;
-          font-size: 11px;
-          font-weight: 500;
-          color: var(--cyan);
-          letter-spacing: 0.04em;
-          margin-bottom: 20px;
-        }
-
-        .legal-badge-dot {
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--cyan);
-        }
-
-        .legal-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(32px, 4vw, 52px);
-          font-weight: 800;
-          color: var(--white);
-          letter-spacing: -0.02em;
-          line-height: 1.1;
-          margin-bottom: 16px;
-        }
-
-        .legal-meta {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          flex-wrap: wrap;
-          margin-bottom: 20px;
-        }
-
-        .legal-meta-item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 12.5px;
-          color: var(--muted);
-        }
-
-        .legal-intro {
-          font-size: 15.5px;
-          color: rgba(240,244,255,0.55);
-          line-height: 1.75;
-          max-width: 640px;
-          font-weight: 300;
-        }
-
-        /* Sections */
-        .legal-section {
-          margin-bottom: 48px;
-          padding-bottom: 48px;
-          border-bottom: 1px solid rgba(255,255,255,0.04);
-          scroll-margin-top: 100px;
-        }
-
-        .legal-section:last-child {
-          border-bottom: none;
-          margin-bottom: 0;
-        }
-
-        .section-header {
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          margin-bottom: 20px;
-        }
-
-        .section-num {
-          font-family: 'Syne', sans-serif;
-          font-size: 11px;
-          font-weight: 700;
-          color: rgba(91,192,235,0.5);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          padding-top: 6px;
-          flex-shrink: 0;
-          width: 28px;
-        }
-
-        .section-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px;
-          font-weight: 700;
-          color: var(--white);
-          line-height: 1.3;
-          letter-spacing: -0.01em;
-        }
-
-        /* Content prose */
-        .legal-prose {
-          padding-left: 42px;
-        }
-
-        .legal-prose p {
-          font-size: 14.5px;
-          color: rgba(240,244,255,0.58);
-          line-height: 1.8;
-          margin-bottom: 14px;
-          font-weight: 300;
-        }
-
-        .legal-prose p:last-child { margin-bottom: 0; }
-
-        .legal-prose strong {
-          color: rgba(240,244,255,0.8);
-          font-weight: 500;
-        }
-
-        /* List */
         .legal-list {
           list-style: none;
           padding: 0;
           margin: 12px 0 16px;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 9px;
         }
-
         .legal-list li {
           display: flex;
           align-items: flex-start;
           gap: 10px;
           font-size: 14px;
-          color: rgba(240,244,255,0.55);
-          line-height: 1.6;
+          color: #4b5563;
+          line-height: 1.65;
         }
-
         .legal-list li::before {
           content: '';
-          width: 5px;
-          height: 5px;
+          width: 5px; height: 5px;
           border-radius: 50%;
-          background: var(--cyan);
+          background: #2563eb;
           flex-shrink: 0;
           margin-top: 8px;
           opacity: 0.5;
         }
-
-        /* Highlight box */
         .legal-highlight {
-          background: rgba(30,107,255,0.06);
-          border: 1px solid rgba(30,107,255,0.15);
-          border-left: 3px solid var(--electric-blue);
+          background: #eff6ff;
+          border: 1px solid #dbeafe;
+          border-left: 3px solid #2563eb;
           border-radius: 0 10px 10px 0;
           padding: 14px 18px;
           margin: 16px 0;
           font-size: 13.5px;
-          color: rgba(240,244,255,0.65);
+          color: #374151;
           line-height: 1.65;
         }
-
-        .legal-highlight strong {
-          color: rgba(240,244,255,0.85);
-          font-weight: 500;
-        }
-
-        /* Contact chip */
+        .legal-highlight strong { color: #111827; font-weight: 600; }
         .legal-contact-chip {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          background: rgba(26,31,43,0.8);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
           border-radius: 8px;
           padding: 8px 14px;
           font-size: 13px;
-          color: var(--cyan);
+          color: #2563eb;
           text-decoration: none;
           margin-top: 8px;
           transition: all 0.2s;
+          font-family: var(--font-sans, sans-serif);
         }
-
         .legal-contact-chip:hover {
-          border-color: rgba(91,192,235,0.3);
-          background: rgba(91,192,235,0.06);
+          border-color: #bfdbfe;
+          background: #eff6ff;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
           .legal-layout {
-            grid-template-columns: 1fr;
-            gap: 40px;
-            padding: 100px 20px 80px;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+            padding: 32px 20px 80px !important;
           }
-          .legal-sidebar {
-            position: static;
-            display: flex;
-            flex-direction: column;
-          }
-          .sidebar-nav { display: none; }
+          .legal-sidebar { position: static !important; }
+          .legal-sidebar-nav { display: none !important; }
         }
-
         @media (max-width: 480px) {
-          .legal-title { font-size: 28px; }
-          .legal-prose { padding-left: 0; }
-          .section-header { flex-direction: column; gap: 4px; }
-          .section-num { padding-top: 0; }
+          .legal-prose { padding-left: 0 !important; }
+          .legal-section-header { flex-direction: column; gap: 4px; }
+          .legal-section-num { padding-top: 0 !important; }
         }
       `}</style>
 
-      <div className="legal-page">
-        <div className="legal-glow-1" />
-        <div className="legal-glow-2" />
-        <div className="legal-grid" />
+      <div
+        className="min-h-screen font-sans"
+        style={{
+          background:
+            "radial-gradient(ellipse 100% 60% at 50% 100%, rgba(96,165,250,0.18) 0%, rgba(147,197,253,0.08) 45%, transparent 70%), " +
+            "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
+        }}
+      >
+        {/* ── Navbar ── */}
+        <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
+          <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between h-[64px]">
+            <Link href="/" aria-label="FREMN — home">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
+            >
+              Book Now!
+            </Link>
+          </div>
+        </nav>
 
-        <div className="legal-layout">
-          {/* ── SIDEBAR ── */}
-          <aside className="legal-sidebar">
-            <Link href="/" className="sidebar-back">
+        {/* ── Two-column layout ── */}
+        <div
+          className="legal-layout max-w-6xl mx-auto px-6 md:px-12 lg:px-24 py-16"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: "64px", alignItems: "start" }}
+        >
+          {/* ── Sidebar ── */}
+          <aside className="legal-sidebar" style={{ position: "sticky", top: "88px" }}>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150 mb-7"
+            >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M9 2L4 7l5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               Back to Home
             </Link>
 
-            <div className="sidebar-label">On this page</div>
-            <nav className="sidebar-nav">
+            <div className="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase text-[#9ca3af] mb-3">
+              On this page
+            </div>
+            <nav className="legal-sidebar-nav flex flex-col gap-0.5 mb-6">
               {sections.map((s) => (
-                <a href={`#${s.id}`} key={s.id}>
-                  <span className="sidebar-nav-num">{s.number}</span>
+                <a
+                  href={`#${s.id}`}
+                  key={s.id}
+                  className="flex items-center gap-2 font-sans text-[13px] text-[#6b7280] hover:text-[#111827] px-2.5 py-1.5 rounded-lg hover:bg-[#f3f4f6] transition-all duration-150"
+                >
+                  <span className="font-sans text-[10px] font-bold text-[#2563eb]/40 w-[18px] flex-shrink-0">{s.number}</span>
                   {s.title}
                 </a>
               ))}
             </nav>
 
-            <div className="sidebar-divider" />
+            <div className="h-px bg-[#e5e7eb] mb-5" />
 
-            <div className="sidebar-related-label">Also read</div>
-            <div className="sidebar-related">
+            <div className="font-sans text-[10px] font-semibold tracking-[0.1em] uppercase text-[#9ca3af] mb-3">
+              Also read
+            </div>
+            <div className="flex flex-col gap-2">
               {relatedLinks.map((l) => (
-                <Link href={l.href} key={l.href}>
+                <Link
+                  href={l.href}
+                  key={l.href}
+                  className="flex items-center gap-1.5 font-sans text-[12.5px] text-[#6b7280] hover:text-[#2563eb] px-2.5 py-1.5 rounded-lg border border-[#e5e7eb] hover:border-[#bfdbfe] hover:bg-[#eff6ff] transition-all duration-150"
+                >
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path
-                      d="M2 6h8M6 2l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   {l.label}
                 </Link>
@@ -475,69 +181,74 @@ export default function LegalLayout({
             </div>
           </aside>
 
-          {/* ── MAIN ── */}
-          <main className="legal-main">
-            <div className="legal-hero">
-              <div className="legal-badge">
-                <div className="legal-badge-dot" />
+          {/* ── Main content ── */}
+          <main>
+            {/* Hero block */}
+            <div className="mb-12 pb-10 border-b border-[#e5e7eb]">
+              <span className="inline-flex items-center gap-1.5 bg-[#eff6ff] border border-[#dbeafe] rounded-full px-3 py-1 font-sans text-[11px] font-semibold text-[#2563eb] tracking-[0.04em] mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb]" />
                 {badge}
-              </div>
-              <h1 className="legal-title">{title}</h1>
-              <div className="legal-meta">
-                <div className="legal-meta-item">
+              </span>
+              <h1 className="font-sans font-extrabold text-[28px] md:text-[42px] text-[#111827] leading-[1.1] tracking-[-0.025em] mb-4">
+                {title}
+              </h1>
+              <div className="flex items-center gap-5 flex-wrap mb-5">
+                <div className="flex items-center gap-1.5 font-sans text-[12.5px] text-[#9ca3af]">
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <rect
-                      x="1"
-                      y="2"
-                      width="11"
-                      height="10"
-                      rx="1.5"
-                      stroke="#6B7A99"
-                      strokeWidth="1.1"
-                    />
-                    <path
-                      d="M1 5h11M4 1v2M9 1v2"
-                      stroke="#6B7A99"
-                      strokeWidth="1.1"
-                      strokeLinecap="round"
-                    />
+                    <rect x="1" y="2" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.1"/>
+                    <path d="M1 5h11M4 1v2M9 1v2" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
                   </svg>
                   Effective Date: {effectiveDate}
                 </div>
-                <div className="legal-meta-item">
+                <div className="flex items-center gap-1.5 font-sans text-[12.5px] text-[#9ca3af]">
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <path
-                      d="M6.5 1C3.46 1 1 3.46 1 6.5S3.46 12 6.5 12 12 9.54 12 6.5 9.54 1 6.5 1z"
-                      stroke="#6B7A99"
-                      strokeWidth="1.1"
-                    />
-                    <path
-                      d="M6.5 4v3l2 1.5"
-                      stroke="#6B7A99"
-                      strokeWidth="1.1"
-                      strokeLinecap="round"
-                    />
+                    <path d="M6.5 1C3.46 1 1 3.46 1 6.5S3.46 12 6.5 12 12 9.54 12 6.5 9.54 1 6.5 1z" stroke="currentColor" strokeWidth="1.1"/>
+                    <path d="M6.5 4v3l2 1.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
                   </svg>
                   FREMN TECHNOLOGIES LLP
                 </div>
               </div>
-              <p className="legal-intro">{intro}</p>
+              <p className="font-sans text-[15px] text-[#6b7280] leading-[1.75] max-w-2xl">
+                {intro}
+              </p>
             </div>
 
+            {/* Sections */}
             {sections.map((section) => (
               <section
-                className="legal-section"
                 id={section.id}
                 key={section.id}
+                className="mb-12 pb-12 border-b border-[#f3f4f6] last:border-0 last:mb-0 last:pb-0"
+                style={{ scrollMarginTop: "100px" }}
               >
-                <div className="section-header">
-                  <span className="section-num">{section.number}</span>
-                  <h2 className="section-title">{section.title}</h2>
+                <div className="legal-section-header flex items-start gap-3.5 mb-5">
+                  <span className="legal-section-num font-sans text-[11px] font-bold text-[#2563eb]/40 tracking-[0.1em] uppercase pt-1.5 flex-shrink-0 w-7">
+                    {section.number}
+                  </span>
+                  <h2 className="font-sans font-bold text-[19px] text-[#111827] leading-[1.3] tracking-[-0.01em]">
+                    {section.title}
+                  </h2>
                 </div>
-                <div className="legal-prose">{section.content}</div>
+                <div className="legal-prose font-sans text-[14.5px] text-[#4b5563] leading-[1.8]" style={{ paddingLeft: "42px" }}>
+                  {section.content}
+                </div>
               </section>
             ))}
           </main>
+        </div>
+
+        {/* ── Footer bar ── */}
+        <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-10">
+          <div className="flex items-center justify-between flex-wrap gap-3 pt-6 border-t border-[#e5e7eb]">
+            <span className="font-sans text-[12.5px] text-[#9ca3af]">
+              © {new Date().getFullYear()} FREMN Technologies LLP. All rights reserved.
+            </span>
+            <div className="flex gap-5">
+              <Link href="/privacy-policy" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">Privacy Policy</Link>
+              <Link href="/terms-of-service" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">Terms &amp; Conditions</Link>
+              <Link href="/dpdp-compliance" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">DPDP Compliance</Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

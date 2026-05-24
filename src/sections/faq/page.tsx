@@ -4,44 +4,36 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Does my patient need to download an app?",
-    a: "No. Everything happens on WhatsApp — the app they already have on their phone. No new app, no account, no friction.",
+    q: "Can FREMN handle calls when my receptionist is busy?",
+    a: "Absolutely. When a patient calls and your line is busy or unanswered, FREMN automatically sends them a WhatsApp message within 60 seconds with your available appointment slots. The patient can confirm their booking directly on WhatsApp — without calling back, without an app, and without your staff doing anything manually.",
   },
   {
-    q: "Which languages does FREMN support?",
-    a: "FREMN currently supports Hindi, Bengali, and English. Patients can message in their preferred language and FREMN responds accordingly.",
+    q: "Can FREMN collect payments and send invoices?",
+    a: "Yes. After every appointment, FREMN generates an invoice and sends a payment link on WhatsApp. Patients can pay instantly by UPI, debit/credit card, or net banking — no paper, no phone calls, no chasing. Outstanding balances are tracked and friendly reminders are sent automatically.",
   },
   {
-    q: "What happens when a patient misses my call?",
-    a: "Within 60 seconds, FREMN sends the patient a WhatsApp message with available booking slots. If they don't have WhatsApp, they receive an SMS instead.",
+    q: "Do you charge per conversation, or are there additional charges?",
+    a: "Your plan includes a set number of conversations each month covering your typical volume. Overage is only charged if you exceed that limit at a flat per-conversation rate. There are no hidden fees — everything is transparent in your monthly plan so you know exactly what you're paying for upfront.",
   },
   {
-    q: "Can patients still call and speak to someone?",
-    a: "Yes. FREMN handles the routine — bookings, reminders, FAQs. Complex or urgent cases are flagged to your staff immediately with full context.",
+    q: "Can FREMN work with my existing clinic phone number?",
+    a: "Yes! FREMN connects to your existing phone line. Your patients will continue to see the same number they already know. No number porting, no disruption to your current setup.",
   },
   {
-    q: "How do appointment reminders work?",
-    a: "FREMN sends a reminder 24 hours before the appointment and a second one 2 hours before — but only if the patient hasn't already confirmed. Patients reply YES to confirm or NO to reschedule.",
+    q: "How does FREMN reduce no-shows?",
+    a: "FREMN sends automated reminders 24 hours before the appointment and again 2 hours before if the patient hasn't confirmed. Patients reply YES to confirm or NO to reschedule — directly on WhatsApp. If a patient misses their slot anyway, FREMN automatically follows up to rebook them. Clinics typically see a significant drop in no-shows within the first month.",
   },
   {
-    q: "Does FREMN integrate with my existing appointment system?",
-    a: "Yes. FREMN syncs with your calendar and appointment setup during onboarding. Your existing workflow doesn't change — FREMN adds to it.",
+    q: "Does it integrate with my clinic management software?",
+    a: "Yes. FREMN integrates with major clinic and practice management platforms including Practo, Clinicea, Dentulu, Google Calendar, and custom HMS systems via API. It syncs appointment data in real time and prevents double-bookings automatically.",
   },
   {
-    q: "How does WhatsApp payment collection work?",
-    a: "After an appointment, FREMN sends a payment link directly on WhatsApp. Patients pay via UPI, debit/credit card, or net banking — all within the chat.",
+    q: "Is FREMN available 24/7?",
+    a: "Yes, absolutely. FREMN operates around the clock with no breaks, no sick leave, and no out-of-office periods. It handles inbound calls and WhatsApp messages from patients at any hour — ensuring your clinic never misses an opportunity, even at 2 AM.",
   },
   {
-    q: "Is patient data secure?",
-    a: "Yes. FREMN is built in alignment with India's Digital Personal Data Protection Act (DPDP Act), 2023. Patient data is encrypted, never sold, and processed only to run your front desk.",
-  },
-  {
-    q: "How long does setup take?",
-    a: "Most clinics are live within 48 hours of signing up. Our team handles the entire setup — you just confirm your availability slots and doctor list.",
-  },
-  {
-    q: "What does FREMN cost?",
-    a: "Pricing is in ₹ INR and based on your clinic size and the features you need. Book a demo and we'll walk you through a plan that fits your practice.",
+    q: "How cost-effective is it compared to hiring a receptionist?",
+    a: "Very cost-effective. FREMN pays for itself with just one recovered appointment per month. It is significantly cheaper than hiring a full-time or even part-time receptionist, with no training, no HR overhead, and no turnover risk. It also handles volume that would require multiple staff members during peak hours.",
   },
 ];
 
@@ -59,10 +51,10 @@ export default function FAQ() {
         {/* header */}
         <div className="mb-14">
           <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-4">
-            Common Questions
+            FAQ
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-[#0D1B3E] leading-[1.15] tracking-[-0.3px]">
-            Everything you need to know
+          <h2 className="font-serif text-3xl md:text-4xl text-[#111827] leading-[1.15] tracking-[-0.3px]">
+            Frequently Asked Questions
           </h2>
         </div>
 
@@ -96,7 +88,7 @@ export default function FAQ() {
                   {/* question */}
                   <span
                     className="flex-1 font-sans font-medium text-[15px] leading-[1.5] transition-colors duration-150"
-                    style={{ color: isOpen ? "#0D1B3E" : "rgba(13,27,62,0.7)" }}
+                    style={{ color: isOpen ? "#111827" : "rgba(13,27,62,0.7)" }}
                   >
                     {faq.q}
                   </span>
@@ -122,7 +114,7 @@ export default function FAQ() {
                 {/* answer */}
                 {isOpen && (
                   <div className="pl-4 sm:pl-[calc(11px+24px)] pb-5 sm:pb-6">
-                    <p className="font-sans text-[14px] text-[#0D1B3E]/55 leading-[1.75]">
+                    <p className="font-sans text-[14px] text-[#111827]/55 leading-[1.75]">
                       {faq.a}
                     </p>
                   </div>
@@ -133,7 +125,7 @@ export default function FAQ() {
         </div>
 
         {/* bottom */}
-        <p className="font-sans text-[13px] text-[#0D1B3E]/55 mt-12">
+        <p className="font-sans text-[13px] text-[#111827]/55 mt-12">
           Still have questions?{" "}
           <a
             href="mailto:contact@fremn.com"

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { X, Mail, Phone } from "lucide-react";
 
 const productLinks = [
   { label: "Features",        href: "#features" },
@@ -13,8 +14,10 @@ const productLinks = [
 
 const companyLinks = [
   { label: "Book Now!", href: "#contact" },
+  { label: "About",            href: "/about" },
+  { label: "Team",             href: "/team" },
+  { label: "Careers",          href: "/careers" },
   { label: "Contact Us",       href: "mailto:contact@fremn.com" },
-  { label: "Phone",            href: "tel:+919073644046", display: "+91 9073644046" },
 ];
 
 export default function Footer() {
@@ -52,6 +55,14 @@ export default function Footer() {
               FREMN Technologies LLP · Kolkata, India · Built for Indian dentists
             </p>
 
+            <a
+              href="tel:+919073644046"
+              className="inline-flex items-center gap-1.5 font-sans text-[12px] text-[#9ca3af] hover:text-[#2563eb] transition-colors duration-150 w-fit"
+            >
+              <Phone size={12} />
+              +91 90736 44046
+            </a>
+
             {/* socials */}
             <div className="flex items-center gap-2 mt-1">
               <a
@@ -61,7 +72,7 @@ export default function Footer() {
                 className="w-8 h-8 rounded-lg border border-[#e5e7eb] flex items-center justify-center text-[#6b7280] hover:text-[#2563eb] hover:border-[#bfdbfe] bg-white/60 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]/30"
                 aria-label="LinkedIn"
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <rect x="1" y="1" width="12" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.2"/>
                   <path d="M4.5 10V6M4.5 5V4.5M6.5 10V7.5c0-.8.5-1.5 1.5-1.5s1.5.7 1.5 1.5V10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
                 </svg>
@@ -73,7 +84,7 @@ export default function Footer() {
                 className="w-8 h-8 rounded-lg border border-[#e5e7eb] flex items-center justify-center text-[#6b7280] hover:text-[#2563eb] hover:border-[#bfdbfe] bg-white/60 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]/30"
                 aria-label="Instagram"
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <rect x="1" y="1" width="12" height="12" rx="3" stroke="currentColor" strokeWidth="1.2"/>
                   <circle cx="7" cy="7" r="2.5" stroke="currentColor" strokeWidth="1.2"/>
                   <circle cx="10.2" cy="3.8" r="0.6" fill="currentColor"/>
@@ -86,19 +97,14 @@ export default function Footer() {
                 className="w-8 h-8 rounded-lg border border-[#e5e7eb] flex items-center justify-center text-[#6b7280] hover:text-[#2563eb] hover:border-[#bfdbfe] bg-white/60 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]/30"
                 aria-label="X / Twitter"
               >
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                  <path d="M1.5 1.5l10 10M11.5 1.5l-10 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
-                </svg>
+                <X size={13} />
               </a>
               <a
                 href="mailto:contact@fremn.com"
                 className="w-8 h-8 rounded-lg border border-[#e5e7eb] flex items-center justify-center text-[#6b7280] hover:text-[#2563eb] hover:border-[#bfdbfe] bg-white/60 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]/30"
                 aria-label="Email"
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <rect x="1" y="3.5" width="12" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
-                  <path d="M1.5 4.5l5.5 3.5 5.5-3.5" stroke="currentColor" strokeWidth="1.2"/>
-                </svg>
+                <Mail size={14} />
               </a>
             </div>
           </div>

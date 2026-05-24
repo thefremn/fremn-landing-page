@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const faqs = [
   {
@@ -39,9 +39,23 @@ const faqs = [
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       className="bg-white px-6 md:px-12 lg:px-24 py-20 md:py-28"
       id="faq"
       aria-label="Frequently asked questions"
@@ -49,7 +63,14 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto">
 
         {/* header */}
-        <div className="mb-14">
+        <div
+          className="mb-14"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
           <p className="text-[10px] font-sans font-semibold tracking-[0.12em] uppercase text-[#4D9FFF] mb-4">
             FAQ
           </p>
@@ -58,7 +79,7 @@ export default function FAQ() {
           </h2>
         </div>
 
-        {/* accordion — divider style */}
+        {/* accordion */}
         <div>
           {faqs.map((faq, i) => {
             const isOpen = open === i;
@@ -70,6 +91,9 @@ export default function FAQ() {
                 style={{
                   borderTop: "1px solid rgba(13,27,62,0.08)",
                   ...(i === faqs.length - 1 ? { borderBottom: "1px solid rgba(13,27,62,0.08)" } : {}),
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "translateY(0)" : "translateY(10px)",
+                  transition: `opacity 0.4s ease ${0.15 + i * 0.05}s, transform 0.4s ease ${0.15 + i * 0.05}s`,
                 }}
               >
                 <button
@@ -77,7 +101,6 @@ export default function FAQ() {
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
                 >
-                  {/* number */}
                   <span
                     className="font-sans text-[11px] font-semibold tracking-[0.08em] flex-shrink-0 mt-0.5 transition-colors duration-150"
                     style={{ color: isOpen ? "#1B4FD8" : "rgba(13,27,62,0.4)" }}
@@ -85,7 +108,6 @@ export default function FAQ() {
                     {num}
                   </span>
 
-                  {/* question */}
                   <span
                     className="flex-1 font-sans font-medium text-[15px] leading-[1.5] transition-colors duration-150"
                     style={{ color: isOpen ? "#111827" : "rgba(13,27,62,0.7)" }}
@@ -93,7 +115,6 @@ export default function FAQ() {
                     {faq.q}
                   </span>
 
-                  {/* toggle icon */}
                   <span
                     className="flex-shrink-0 mt-0.5 transition-colors duration-200"
                     style={{ color: isOpen ? "#1B4FD8" : "rgba(13,27,62,0.38)" }}
@@ -104,28 +125,39 @@ export default function FAQ() {
                       height="16"
                       viewBox="0 0 16 16"
                       fill="none"
-                      style={{ transition: "transform 0.2s", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
+                      style={{ transition: "transform 0.25s ease", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
                     >
                       <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
                     </svg>
                   </span>
                 </button>
 
-                {/* answer */}
-                {isOpen && (
+                {/* smooth accordion */}
+                <div
+                  style={{
+                    maxHeight: isOpen ? "400px" : "0",
+                    overflow: "hidden",
+                    transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                >
                   <div className="pl-4 sm:pl-[calc(11px+24px)] pb-5 sm:pb-6">
                     <p className="font-sans text-[14px] text-[#111827]/55 leading-[1.75]">
                       {faq.a}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* bottom */}
-        <p className="font-sans text-[13px] text-[#111827]/55 mt-12">
+        <p
+          className="font-sans text-[13px] text-[#111827]/55 mt-12"
+          style={{
+            opacity: inView ? 1 : 0,
+            transition: "opacity 0.5s ease 0.6s",
+          }}
+        >
           Still have questions?{" "}
           <a
             href="mailto:contact@fremn.com"

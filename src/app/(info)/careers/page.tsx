@@ -1,4 +1,3 @@
-// app/careers/page.tsx
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -14,9 +13,9 @@ type Role = {
   title: string;
   department: string;
   location: string;
-  type: string; // "Full-time" | "Part-time" | "Contract" | "Internship"
-  tags: string[]; // e.g. ["Next.js", "UI Systems"]
-  email_subject: string; // pre-filled subject line for mailto
+  type: string;
+  tags: string[];
+  email_subject: string;
 };
 
 // ── Supabase ──────────────────────────────────────────────────────────────────
@@ -45,418 +44,201 @@ export default async function CareersPage() {
   const roles = await getRoles();
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        .careers-root {
-          min-height: 100vh;
-          background: #0B0E17;
-          font-family: 'DM Sans', sans-serif;
-          color: #F0F4FF;
-          position: relative;
-          overflow-x: hidden;
-        }
-
-        .careers-glow-top {
-          position: fixed; top: -200px; left: 50%;
-          transform: translateX(-50%);
-          width: 900px; height: 500px; border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(30,107,255,0.07) 0%, transparent 65%);
-          pointer-events: none; z-index: 0;
-        }
-        .careers-glow-right {
-          position: fixed; top: 40%; right: -200px;
-          width: 500px; height: 500px; border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.04) 0%, transparent 70%);
-          pointer-events: none; z-index: 0;
-        }
-
-        /* ── Nav ── */
-        .careers-nav {
-          position: sticky; top: 0; z-index: 50;
-          padding: 0 40px; height: 64px;
-          display: flex; align-items: center; justify-content: space-between;
-          background: rgba(11,14,23,0.8);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .careers-nav-logo {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px; font-weight: 800;
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text; text-decoration: none;
-        }
-        .careers-nav-link {
-          font-size: 13px; color: #6B7A99;
-          text-decoration: none; transition: color 0.2s;
-        }
-        .careers-nav-link:hover { color: #5BC0EB; }
-
-        /* ── Header ── */
-        .careers-header {
-          padding: 80px 40px 0;
-          max-width: 1100px; margin: 0 auto;
-          position: relative; z-index: 1;
-        }
-        .careers-eyebrow {
-          font-size: 11px; color: #5BC0EB;
-          letter-spacing: 0.12em; text-transform: uppercase;
-          margin-bottom: 14px; font-weight: 500;
-        }
-        .careers-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(36px, 5vw, 62px);
-          font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em; margin-bottom: 18px;
-        }
-        .careers-title span {
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .careers-sub {
-          font-size: 16px; color: #6B7A99;
-          max-width: 520px; line-height: 1.7; margin-bottom: 60px;
-        }
-        .careers-divider {
-          width: 100%; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-          margin-bottom: 60px;
-        }
-
-        /* ── Content ── */
-        .careers-content {
-          max-width: 1100px; margin: 0 auto;
-          padding: 0 40px 120px;
-          position: relative; z-index: 1;
-        }
-
-        .section { margin-bottom: 64px; max-width: 720px; }
-        .section-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px; font-weight: 700;
-          margin-bottom: 14px; color: #F0F4FF;
-        }
-        .section p {
-          font-size: 15px; color: #6B7A99;
-          line-height: 1.75; margin-bottom: 12px;
-        }
-
-        /* ── Section label (matches blog style) ── */
-        .section-label {
-          font-size: 10.5px; font-weight: 500;
-          color: #5BC0EB; letter-spacing: 0.1em;
-          text-transform: uppercase; margin-bottom: 24px;
-          display: flex; align-items: center; gap: 8px;
-          max-width: 1020px;
-        }
-        .section-label::after {
-          content: ''; flex: 1; height: 1px;
-          background: rgba(91,192,235,0.15);
-        }
-
-        /* ── Roles grid ── */
-        .roles-section { margin-bottom: 64px; }
-
-        .roles-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
-          max-width: 1020px;
-        }
-
-        .role-card {
-          background: rgba(26,31,43,0.5);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 16px;
-          padding: 26px 28px;
-          display: flex; flex-direction: column; gap: 14px;
-          position: relative; overflow: hidden;
-          transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-        }
-        .role-card::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, #1E6BFF, #5BC0EB);
-          opacity: 0; transition: opacity 0.25s;
-        }
-        .role-card:hover {
-          border-color: rgba(30,107,255,0.2);
-          transform: translateY(-3px);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-        }
-        .role-card:hover::before { opacity: 1; }
-
-        .role-card-top {
-          display: flex; align-items: flex-start;
-          justify-content: space-between; gap: 12px;
-        }
-        .role-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 17px; font-weight: 700;
-          color: #F0F4FF; line-height: 1.2;
-        }
-        .role-type {
-          flex-shrink: 0;
-          font-size: 11px; font-weight: 500;
-          letter-spacing: 0.05em;
-          padding: 3px 9px; border-radius: 100px;
-          background: rgba(30,107,255,0.1);
-          border: 1px solid rgba(30,107,255,0.2);
-          color: #5BC0EB; white-space: nowrap;
-        }
-
-        .role-meta {
-          display: flex; align-items: center; gap: 14px;
-          font-size: 12.5px; color: #6B7A99;
-          flex-wrap: wrap;
-        }
-        .role-meta-item {
-          display: flex; align-items: center; gap: 5px;
-        }
-
-        .role-tags {
-          display: flex; flex-wrap: wrap; gap: 6px;
-        }
-        .role-tag {
-          font-size: 11px; color: #8090AE;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.07);
-          padding: 3px 9px; border-radius: 6px;
-        }
-
-        .role-apply {
-          display: inline-flex; align-items: center; gap: 6px;
-          margin-top: auto;
-          font-size: 13px; font-weight: 500;
-          color: #1E6BFF; text-decoration: none;
-          transition: gap 0.2s, color 0.2s;
-        }
-        .role-card:hover .role-apply { gap: 9px; color: #5BC0EB; }
-
-        /* ── Empty roles state ── */
-        .roles-empty {
-          max-width: 1020px;
-          background: rgba(26,31,43,0.4);
-          border: 1px solid rgba(255,255,255,0.05);
-          border-radius: 16px;
-          padding: 40px 36px;
-          display: flex; align-items: center; gap: 20px;
-        }
-        .roles-empty-icon {
-          width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-          background: rgba(30,107,255,0.08);
-          border: 1px solid rgba(30,107,255,0.15);
-          display: flex; align-items: center; justify-content: center;
-        }
-        .roles-empty-text h3 {
-          font-family: 'Syne', sans-serif;
-          font-size: 16px; font-weight: 700;
-          color: #D0D8EE; margin-bottom: 4px;
-        }
-        .roles-empty-text p { font-size: 14px; color: #6B7A99; }
-
-        /* ── Speculative CTA ── */
-        .speculative-strip {
-          max-width: 1020px;
-          background: rgba(26,31,43,0.45);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 16px;
-          padding: 28px 32px;
-          display: flex; align-items: center;
-          justify-content: space-between; gap: 24px;
-          margin-top: 20px;
-        }
-        .speculative-strip-text p {
-          font-size: 14px; color: #6B7A99; line-height: 1.6;
-          margin: 0;
-        }
-        .speculative-strip-text strong { color: #A0AABB; font-weight: 500; }
-        .speculative-btn {
-          flex-shrink: 0;
-          display: inline-flex; align-items: center; gap: 7px;
-          padding: 11px 22px;
-          background: linear-gradient(135deg, #1E6BFF, #0F52BA);
-          color: white; font-family: 'DM Sans', sans-serif;
-          font-size: 13.5px; font-weight: 500;
-          border-radius: 10px; text-decoration: none;
-          box-shadow: 0 0 24px rgba(30,107,255,0.25);
-          transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
-        }
-        .speculative-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0 36px rgba(30,107,255,0.45);
-        }
-
-        /* ── Footer ── */
-        .careers-footer {
-          border-top: 1px solid rgba(255,255,255,0.05);
-          padding: 32px 40px;
-          display: flex; justify-content: space-between; align-items: center;
-          max-width: 1100px; margin: 0 auto;
-          font-size: 13px; color: #6B7A99;
-          position: relative; z-index: 1;
-        }
-        .careers-footer a {
-          color: #6B7A99; text-decoration: none; transition: color 0.2s;
-        }
-        .careers-footer a:hover { color: #5BC0EB; }
-
-        /* ── Animations ── */
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .careers-header  { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-        .careers-content { animation: fadeUp 0.5s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
-
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-          .careers-header, .careers-content { padding-left: 24px; padding-right: 24px; }
-          .careers-nav { padding: 0 24px; }
-          .roles-grid { grid-template-columns: 1fr; }
-          .speculative-strip { flex-direction: column; align-items: flex-start; }
-          .careers-footer { flex-direction: column; gap: 16px; }
-        }
-      `}</style>
-
-      <div className="careers-root">
-        <div className="careers-glow-top" />
-        <div className="careers-glow-right" />
-
-        <nav className="careers-nav">
-          <Link href="/" className="careers-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="careers-nav-link">Book Now!</Link>
-        </nav>
-
-        <header className="careers-header">
-          <p className="careers-eyebrow">Careers</p>
-          <h1 className="careers-title">
-            Build what clinics <br /><span>actually need</span>
-          </h1>
-          <p className="careers-sub">
-            We are a small team solving a very real problem. If you care about building thoughtful systems that operate at scale, you will feel at home here.
-          </p>
-          <div className="careers-divider" />
-        </header>
-
-        <main className="careers-content">
-
-          <div className="section">
-            <h2 className="section-title">Why FREMN</h2>
-            <p>Every improvement we ship reduces friction for real clinics, real staff, and real patients.</p>
-            <p>There is no abstraction layer between effort and impact.</p>
+    <div
+      className="min-h-screen font-sans"
+      style={{
+        background:
+          "radial-gradient(ellipse 100% 60% at 50% 100%, rgba(96,165,250,0.18) 0%, rgba(147,197,253,0.08) 45%, transparent 70%), " +
+          "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
+      }}
+    >
+      {/* ── Navbar ── */}
+      <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between h-[64px]">
+          <Link href="/" aria-label="FREMN — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="flex items-center gap-1.5 font-sans text-[13px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M11 7H3M6 3l-4 4 4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Home
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
+            >
+              Book Now!
+            </Link>
           </div>
+        </div>
+      </nav>
 
-          <div className="section">
-            <h2 className="section-title">How We Work</h2>
-            <p>We value clarity over noise. Speed over perfection. Ownership over hierarchy.</p>
-            <p>You will not be handed tasks. You will be trusted with outcomes.</p>
-            <p>We move quickly, but not carelessly.</p>
+      {/* ── Header ── */}
+      <header className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pt-16 pb-12">
+        <p className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
+          Careers
+        </p>
+        <h1 className="font-sans font-extrabold text-4xl md:text-5xl text-[#111827] leading-[1.1] tracking-[-0.025em] mb-4">
+          Build what clinics <span className="text-[#2563eb]">actually need</span>
+        </h1>
+        <p className="font-sans text-[16px] text-[#6b7280] max-w-xl leading-[1.7] mb-10">
+          We are a small team solving a very real problem. If you care about building thoughtful systems that operate at scale, you will feel at home here.
+        </p>
+        <div className="h-px bg-[#e5e7eb]" />
+      </header>
+
+      {/* ── Content ── */}
+      <main className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-24">
+
+        {/* Why + How sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+          <div className="rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-7">
+            <h2 className="font-sans font-bold text-[17px] text-[#111827] mb-3">Why FREMN</h2>
+            <p className="font-sans text-[14.5px] text-[#6b7280] leading-[1.75] mb-2">
+              Every improvement we ship reduces friction for real clinics, real staff, and real patients.
+            </p>
+            <p className="font-sans text-[14.5px] text-[#6b7280] leading-[1.75]">
+              There is no abstraction layer between effort and impact.
+            </p>
           </div>
+          <div className="rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-7">
+            <h2 className="font-sans font-bold text-[17px] text-[#111827] mb-3">How We Work</h2>
+            <p className="font-sans text-[14.5px] text-[#6b7280] leading-[1.75] mb-2">
+              We value clarity over noise. Speed over perfection. Ownership over hierarchy.
+            </p>
+            <p className="font-sans text-[14.5px] text-[#6b7280] leading-[1.75] mb-2">
+              You will not be handed tasks. You will be trusted with outcomes.
+            </p>
+            <p className="font-sans text-[14.5px] text-[#6b7280] leading-[1.75]">
+              We move quickly, but not carelessly.
+            </p>
+          </div>
+        </div>
 
-          {/* ── Open Roles ── */}
-          <div className="roles-section">
-            <p className="section-label">Open Roles</p>
+        {/* Open roles */}
+        <p className="font-sans text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[#2563eb] mb-6 flex items-center gap-2">
+          Open Roles
+          <span className="flex-1 h-px bg-[#dbeafe]" />
+        </p>
 
-            {roles.length === 0 ? (
-              <div className="roles-empty">
-                <div className="roles-empty-icon">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2a8 8 0 1 1 0 16A8 8 0 0 1 10 2zm0 4v5m0 2v1" stroke="#5BC0EB" strokeWidth="1.4" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <div className="roles-empty-text">
-                  <h3>No open roles right now</h3>
-                  <p>We hire deliberately and rarely — check back soon, or send a speculative application below.</p>
-                </div>
-              </div>
-            ) : (
-              <div className="roles-grid">
-                {roles.map((role) => {
-                  const subject = encodeURIComponent(role.email_subject || `Application — ${role.title}`);
-                  const body = encodeURIComponent(`Hi FREMN team,\n\nI'd like to apply for the ${role.title} role.\n\n[Your intro here]\n\nCV attached.`);
-                  const mailto = `mailto:contact@fremn.com?subject=${subject}&body=${body}`;
-
-                  return (
-                    <div key={role.id} className="role-card">
-                      <div className="role-card-top">
-                        <div className="role-title">{role.title}</div>
-                        <span className="role-type">{role.type}</span>
-                      </div>
-
-                      <div className="role-meta">
-                        <span className="role-meta-item">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <path d="M6 1a3.5 3.5 0 0 1 3.5 3.5C9.5 7.5 6 11 6 11S2.5 7.5 2.5 4.5A3.5 3.5 0 0 1 6 1z" stroke="#6B7A99" strokeWidth="1.1"/>
-                            <circle cx="6" cy="4.5" r="1.2" stroke="#6B7A99" strokeWidth="1.1"/>
-                          </svg>
-                          {role.location}
-                        </span>
-                        <span className="role-meta-item">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <rect x="1" y="3" width="10" height="7" rx="1.5" stroke="#6B7A99" strokeWidth="1.1"/>
-                            <path d="M4 3V2.5A1.5 1.5 0 0 1 8 2.5V3" stroke="#6B7A99" strokeWidth="1.1"/>
-                          </svg>
-                          {role.department}
-                        </span>
-                      </div>
-
-                      {role.tags?.length > 0 && (
-                        <div className="role-tags">
-                          {role.tags.map((tag) => (
-                            <span key={tag} className="role-tag">{tag}</span>
-                          ))}
-                        </div>
-                      )}
-
-                      <a href={mailto} className="role-apply">
-                        Mail your CV
-                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                          <path d="M1.5 6.5h10M8 3l3.5 3.5L8 10" stroke="#1E6BFF" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Speculative applications — always shown */}
-            <div className="speculative-strip">
-              <div className="speculative-strip-text">
-                <p>
-                  <strong>Don&apos;t see your role?</strong> We welcome speculative applications.
-                  Tell us who you are and what you want to build.
-                </p>
-              </div>
-              <a
-                href={`mailto:contact@fremn.com?subject=${encodeURIComponent("Speculative Application — FREMN")}&body=${encodeURIComponent("Hi FREMN team,\n\nI'd love to work with you. Here's a bit about me and what I'd bring:\n\n[Your intro here]\n\nCV attached.")}`}
-                className="speculative-btn"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <rect x="1" y="3" width="12" height="8" rx="1.5" stroke="white" strokeWidth="1.2"/>
-                  <path d="M1 4l6 4 6-4" stroke="white" strokeWidth="1.2"/>
-                </svg>
-                Mail your CV
-              </a>
+        {roles.length === 0 ? (
+          <div className="flex items-center gap-4 rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-7 mb-5">
+            <div className="w-11 h-11 rounded-full bg-[#eff6ff] border border-[#dbeafe] flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 2a7 7 0 1 1 0 14A7 7 0 0 1 9 2zm0 4v4m0 2v1" stroke="#2563eb" strokeWidth="1.4" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div className="font-sans font-semibold text-[15px] text-[#111827] mb-1">No open roles right now</div>
+              <p className="font-sans text-[13.5px] text-[#6b7280]">We hire deliberately and rarely — check back soon, or send a speculative application below.</p>
             </div>
           </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+            {roles.map((role) => {
+              const subject = encodeURIComponent(role.email_subject || `Application — ${role.title}`);
+              const body = encodeURIComponent(`Hi FREMN team,\n\nI'd like to apply for the ${role.title} role.\n\n[Your intro here]\n\nCV attached.`);
+              const mailto = `mailto:contact@fremn.com?subject=${subject}&body=${body}`;
 
-        </main>
+              return (
+                <div
+                  key={role.id}
+                  className="group relative flex flex-col gap-3.5 rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] overflow-hidden"
+                >
+                  <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
-        <footer className="careers-footer">
-          <span>© {new Date().getFullYear()} FREMN. All rights reserved.</span>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/#contact">Book Now!</Link>
-            <a href="mailto:contact@fremn.com">contact@fremn.com</a>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="font-sans font-bold text-[16px] text-[#111827] leading-snug">{role.title}</div>
+                    <span className="flex-shrink-0 inline-flex items-center px-2.5 py-1 rounded-full font-sans text-[11px] font-semibold text-[#2563eb] bg-[#eff6ff] border border-[#dbeafe]">
+                      {role.type}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-4 flex-wrap font-sans text-[12.5px] text-[#9ca3af]">
+                    <span className="flex items-center gap-1.5">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M6 1a3.5 3.5 0 0 1 3.5 3.5C9.5 7.5 6 11 6 11S2.5 7.5 2.5 4.5A3.5 3.5 0 0 1 6 1z" stroke="currentColor" strokeWidth="1.1"/>
+                        <circle cx="6" cy="4.5" r="1.2" stroke="currentColor" strokeWidth="1.1"/>
+                      </svg>
+                      {role.location}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <rect x="1" y="3" width="10" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.1"/>
+                        <path d="M4 3V2.5A1.5 1.5 0 0 1 8 2.5V3" stroke="currentColor" strokeWidth="1.1"/>
+                      </svg>
+                      {role.department}
+                    </span>
+                  </div>
+
+                  {role.tags?.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {role.tags.map((tag) => (
+                        <span key={tag} className="font-sans text-[11px] text-[#6b7280] bg-[#f3f4f6] border border-[#e5e7eb] px-2.5 py-0.5 rounded-md">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <a
+                    href={mailto}
+                    className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-[#2563eb] hover:gap-2.5 transition-all duration-150 mt-auto"
+                  >
+                    Mail your CV
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                      <path d="M1.5 6.5h10M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              );
+            })}
           </div>
-        </footer>
+        )}
+
+        {/* Speculative strip */}
+        <div className="flex items-center justify-between flex-wrap gap-5 rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-7">
+          <div>
+            <p className="font-sans font-semibold text-[15px] text-[#111827] mb-1">Don&apos;t see your role?</p>
+            <p className="font-sans text-[13.5px] text-[#6b7280]">
+              We welcome speculative applications. Tell us who you are and what you want to build.
+            </p>
+          </div>
+          <a
+            href={`mailto:contact@fremn.com?subject=${encodeURIComponent("Speculative Application — FREMN")}&body=${encodeURIComponent("Hi FREMN team,\n\nI'd love to work with you. Here's a bit about me and what I'd bring:\n\n[Your intro here]\n\nCV attached.")}`}
+            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full font-sans font-semibold text-[14px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] shadow-[0_4px_20px_rgba(37,99,235,0.3)] hover:shadow-[0_8px_32px_rgba(37,99,235,0.4)] transition-all duration-200"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="3" width="12" height="8" rx="1.5" stroke="white" strokeWidth="1.2"/>
+              <path d="M1 4l6 4 6-4" stroke="white" strokeWidth="1.2"/>
+            </svg>
+            Mail your CV
+          </a>
+        </div>
+      </main>
+
+      {/* ── Footer bar ── */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-10">
+        <div className="flex items-center justify-between flex-wrap gap-3 pt-6 border-t border-[#e5e7eb]">
+          <span className="font-sans text-[12.5px] text-[#9ca3af]">
+            © {new Date().getFullYear()} FREMN Technologies LLP. All rights reserved.
+          </span>
+          <div className="flex gap-5">
+            <Link href="/#contact" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              Book Now!
+            </Link>
+            <a href="mailto:contact@fremn.com" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              contact@fremn.com
+            </a>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

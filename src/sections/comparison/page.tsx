@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
+
 type Cell = { type: "yes" | "no" | "partial" | "na"; label?: string };
 
 const features = [
@@ -64,8 +66,23 @@ function CellDisplay({ cell, isFremnCol }: { cell: Cell; isFremnCol: boolean }) 
 }
 
 export default function ComparisonTable() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="bg-white px-6 md:px-12 lg:px-24 py-20 md:py-28"
       id="comparison"
       aria-label="How FREMN compares"
@@ -73,7 +90,14 @@ export default function ComparisonTable() {
       <div className="max-w-5xl mx-auto">
 
         {/* header */}
-        <div className="text-center mb-10 md:mb-14">
+        <div
+          className="text-center mb-10 md:mb-14"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
           <p className="text-[11px] font-sans font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
             How We Compare
           </p>
@@ -94,7 +118,14 @@ export default function ComparisonTable() {
         </p>
 
         {/* table with scroll fade */}
-        <div className="relative">
+        <div
+          className="relative"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s",
+          }}
+        >
           {/* right-edge fade — visible only when content overflows on mobile */}
           <div
             className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 md:hidden"
@@ -195,7 +226,13 @@ export default function ComparisonTable() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div
+          className="text-center mt-12"
+          style={{
+            opacity: inView ? 1 : 0,
+            transition: "opacity 0.5s ease 0.35s",
+          }}
+        >
           <a
             href="#contact"
             className="inline-flex items-center gap-1.5 px-7 py-3 rounded-full font-sans font-semibold text-sm text-white bg-[#2563eb] hover:bg-[#1d4ed8] shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:shadow-[0_8px_32px_rgba(37,99,235,0.45)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"

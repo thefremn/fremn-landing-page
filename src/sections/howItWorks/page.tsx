@@ -1,16 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { PhoneCall, MessageSquare, CalendarCheck, Clock } from "lucide-react";
 
 const steps = [
   {
     num: "01",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <path d="M15.5 13.5c-.8-.4-1.6-.1-2 .5l-.8 1.2c-1.5-.8-3-2.3-3.8-3.8L10 10.5c.6-.4.9-1.2.5-2L9 5.8C8.6 5 7.6 4.7 6.9 5.2L5.2 6.4C4.5 6.9 4.2 7.8 4.5 8.7c1 3.2 3.6 5.8 6.8 6.8.9.3 1.8 0 2.3-.7l1.2-1.7c.5-.7.2-1.7-.6-2.1h.3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M14 4.5a6 6 0 0 1 4.5 4.5M14 7.5A3 3 0 0 1 16.5 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
+    icon: <PhoneCall size={22} aria-hidden="true" />,
     title: "Patient Calls",
     desc: "Your line is busy or it's after hours",
     color: "#6b7280",
@@ -19,12 +15,7 @@ const steps = [
   },
   {
     num: "02",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <path d="M4 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6l-4 4V6a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M8 10h.01M11 10h.01M14 10h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
+    icon: <MessageSquare size={22} aria-hidden="true" />,
     title: "FREMN Replies",
     desc: "WhatsApp message sent in under 60 seconds",
     color: "#16a34a",
@@ -33,13 +24,7 @@ const steps = [
   },
   {
     num: "03",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <rect x="3" y="4" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M3 9h16M8 2v4M14 2v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M7 13.5l2.5 2L15 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    icon: <CalendarCheck size={22} aria-hidden="true" />,
     title: "Slot Confirmed",
     desc: "Booked in 3 messages, any time of day",
     color: "#2563eb",
@@ -48,12 +33,7 @@ const steps = [
   },
   {
     num: "04",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M11 7v4l2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    icon: <Clock size={22} aria-hidden="true" />,
     title: "Auto Reminder",
     desc: "Sent 24 hrs before — no-show prevented",
     color: "#7c3aed",
@@ -191,7 +171,14 @@ export default function HowItWorks() {
       <div className="max-w-6xl mx-auto">
 
         {/* header */}
-        <div className="text-center mb-16">
+        <div
+          className="text-center mb-16"
+          style={{
+            opacity: play ? 1 : 0,
+            transform: play ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
           <p className="text-[11px] font-sans font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
             How It Works
           </p>
@@ -213,7 +200,15 @@ export default function HowItWorks() {
           />
 
           {steps.map((s, i) => (
-            <div key={i} className="flex flex-col items-center text-center relative z-10 px-3">
+            <div
+              key={i}
+              className="flex flex-col items-center text-center relative z-10 px-3"
+              style={{
+                opacity: play ? 1 : 0,
+                transform: play ? "translateY(0)" : "translateY(16px)",
+                transition: `opacity 0.5s ease ${i * 0.12}s, transform 0.5s ease ${i * 0.12}s`,
+              }}
+            >
               <div
                 className="w-[68px] h-[68px] rounded-2xl flex items-center justify-center mb-4 shadow-sm border"
                 style={{ background: s.bg, borderColor: s.border, color: s.color }}
@@ -237,7 +232,14 @@ export default function HowItWorks() {
         </div>
 
         {/* phone + bullet points */}
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div
+          className="flex flex-col md:flex-row items-center gap-12 md:gap-16"
+          style={{
+            opacity: play ? 1 : 0,
+            transform: play ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.6s ease 0.55s, transform 0.6s ease 0.55s",
+          }}
+        >
 
           <div className="flex-shrink-0">
             <PhoneMockup play={play} />

@@ -118,12 +118,23 @@ export default function LegalLayout({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
             </Link>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
-            >
-              Book Now!
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/"
+                className="flex items-center gap-1.5 font-sans text-[13px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M11 7H3M6 3l-4 4 4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Home
+              </Link>
+              <Link
+                href="/#contact"
+                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
+              >
+                Book Now!
+              </Link>
+            </div>
           </div>
         </nav>
 

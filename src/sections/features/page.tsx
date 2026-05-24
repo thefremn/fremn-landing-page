@@ -217,7 +217,14 @@ export default function Features() {
       aria-label="Features"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
+        <div
+          className="text-center mb-14"
+          style={{
+            opacity: triggered ? 1 : 0,
+            transform: triggered ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
           <p className="text-[11px] font-sans font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">Features</p>
           <h2 className="font-sans font-bold text-3xl md:text-4xl text-[#111827] leading-[1.15] tracking-[-0.02em] mb-4">
             Your AI Patient Coordinator
@@ -228,10 +235,23 @@ export default function Features() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <PaymentCard />
-          <WhatsAppCard triggered={triggered} />
-          <MissedCallCard triggered={triggered} />
-          <RecallCard />
+          {[
+            <PaymentCard />,
+            <WhatsAppCard triggered={triggered} />,
+            <MissedCallCard triggered={triggered} />,
+            <RecallCard />,
+          ].map((card, i) => (
+            <div
+              key={i}
+              style={{
+                opacity: triggered ? 1 : 0,
+                transform: triggered ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
+              }}
+            >
+              {card}
+            </div>
+          ))}
         </div>
       </div>
     </section>

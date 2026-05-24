@@ -1,311 +1,306 @@
 "use client";
 
-export default function HowItWorks() {
-  const steps = [
-    {
-      number: "01",
-      title: "Patient Reaches Out",
-      description: "A patient calls, sends a WhatsApp message, or uses the web widget on your clinic's site — any time of day.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 3a9 9 0 0 1 7.79 13.5l.71 4.25-4.25-.71A9 9 0 1 1 14 3z" stroke="#5BC0EB" strokeWidth="1.6" strokeLinejoin="round"/>
-          <path d="M10 11h8M10 15h5" stroke="#5BC0EB" strokeWidth="1.4" strokeLinecap="round"/>
-        </svg>
-      ),
-      detail: "Voice · WhatsApp · Web Widget",
-      color: "#5BC0EB",
-    },
-    {
-      number: "02",
-      title: "FREMN AI Responds",
-      description: "The AI understands the patient's intent — booking, query, reschedule or follow-up — and responds naturally in under 10 seconds.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="9" stroke="#1E6BFF" strokeWidth="1.6"/>
-          <path d="M10 14l3 3 5-6" stroke="#1E6BFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="21" cy="7" r="3" fill="#1E6BFF" opacity="0.5"/>
-        </svg>
-      ),
-      detail: "NLP · Intent Detection · Instant Reply",
-      color: "#1E6BFF",
-    },
-    {
-      number: "03",
-      title: "Appointment Confirmed",
-      description: "FREMN checks availability, books the slot, and sends a confirmation to the patient — all without staff involvement.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect x="4" y="6" width="20" height="18" rx="3" stroke="#0F52BA" strokeWidth="1.6"/>
-          <path d="M4 11h20" stroke="#0F52BA" strokeWidth="1.4"/>
-          <path d="M9 4v4M19 4v4" stroke="#0F52BA" strokeWidth="1.4" strokeLinecap="round"/>
-          <path d="M9 17l2.5 2.5L19 14" stroke="#5BC0EB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      detail: "Calendar Sync · Auto-Confirmation",
-      color: "#0F52BA",
-    },
-    {
-      number: "04",
-      title: "Staff Gets Notified",
-      description: "Your team receives a clean summary of every booked appointment and patient interaction — zero manual data entry.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 4a7 7 0 0 1 7 7v4l2 3H5l2-3v-4a7 7 0 0 1 7-7z" stroke="#5BC0EB" strokeWidth="1.6" strokeLinejoin="round"/>
-          <path d="M11.5 21a2.5 2.5 0 0 0 5 0" stroke="#5BC0EB" strokeWidth="1.4"/>
-        </svg>
-      ),
-      detail: "Dashboard · WhatsApp Alert · Email",
-      color: "#5BC0EB",
-    },
-    {
-      number: "05",
-      title: "Patient Gets Reminders",
-      description: "FREMN sends automated reminders and follow-ups to patients, reducing no-shows and keeping your schedule full.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          {/* Phone body */}
-          <rect x="8" y="2" width="12" height="20" rx="3" stroke="#22C55E" strokeWidth="1.6"/>
-          {/* Screen lines suggesting message */}
-          <path d="M11 9h6M11 12.5h4" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round"/>
-          {/* Pulse / signal arcs emanating top-right */}
-          <path d="M21 6.5a4 4 0 0 1 0 5.5" stroke="#22C55E" strokeWidth="1.4" strokeLinecap="round" opacity="0.4"/>
-          <path d="M23 4.5a7 7 0 0 1 0 9.5" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round" opacity="0.2"/>
-          {/* Home button dot */}
-          <circle cx="14" cy="19" r="1" fill="#22C55E" opacity="0.6"/>
-        </svg>
-      ),
-      detail: "Calendar · SMS · Reminders",
-      color: "#008000",
-    },
-  ];
+import { useEffect, useRef, useState } from "react";
+import { PhoneCall, MessageSquare, CalendarCheck, Clock } from "lucide-react";
+
+const steps = [
+  {
+    num: "01",
+    icon: <PhoneCall size={22} aria-hidden="true" />,
+    title: "Patient Calls",
+    desc: "Your line is busy or it's after hours",
+    color: "#6b7280",
+    bg: "#f9fafb",
+    border: "#e5e7eb",
+  },
+  {
+    num: "02",
+    icon: <MessageSquare size={22} aria-hidden="true" />,
+    title: "FREMN Replies",
+    desc: "WhatsApp message sent in under 60 seconds",
+    color: "#16a34a",
+    bg: "#f0fdf4",
+    border: "#bbf7d0",
+  },
+  {
+    num: "03",
+    icon: <CalendarCheck size={22} aria-hidden="true" />,
+    title: "Slot Confirmed",
+    desc: "Booked in 3 messages, any time of day",
+    color: "#2563eb",
+    bg: "#eff6ff",
+    border: "#bfdbfe",
+  },
+  {
+    num: "04",
+    icon: <Clock size={22} aria-hidden="true" />,
+    title: "Auto Reminder",
+    desc: "Sent 24 hrs before — no-show prevented",
+    color: "#7c3aed",
+    bg: "#f5f3ff",
+    border: "#ddd6fe",
+  },
+];
+
+const messages = [
+  { from: "ai", text: "Hi! You just called City Dental. We couldn't pick up — which day works for your appointment?", delay: 0 },
+  { from: "pt", text: "Monday please", delay: 700 },
+  { from: "ai", text: "Got it! Monday I have 10:00 AM or 3:30 PM free. Which works?", delay: 1500 },
+  { from: "pt", text: "3:30 PM works perfectly", delay: 2400 },
+  { from: "ai", text: "Confirmed. Monday 3:30 PM with Dr. Mehta. I'll send you a reminder 24 hours before.", delay: 3300 },
+];
+
+function PhoneMockup({ play }: { play: boolean }) {
+  const [visible, setVisible] = useState<boolean[]>(messages.map(() => false));
+
+  useEffect(() => {
+    if (!play) return;
+    setVisible(messages.map(() => false));
+    const timers = messages.map((m, i) =>
+      setTimeout(
+        () => setVisible((v) => v.map((x, j) => (j <= i ? true : x))),
+        m.delay + 400
+      )
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [play]);
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+    <div
+      className="relative mx-auto w-[290px] rounded-[36px] border-[7px] border-[#1a1a1a] bg-[#1a1a1a] shadow-[0_32px_80px_rgba(0,0,0,0.22)]"
+      aria-label="WhatsApp conversation demo"
+    >
+      {/* notch */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#1a1a1a] rounded-b-2xl z-10" aria-hidden="true" />
 
-        .hiw-section {
-          padding: 100px 32px;
-          font-family: 'DM Sans', sans-serif;
-          position: relative;
-          overflow: hidden;
-        }
+      <div className="rounded-[30px] overflow-hidden bg-white">
+        {/* WhatsApp header */}
+        <div className="bg-[#075e54] px-4 pt-8 pb-3 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-[#25d366] flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="white" aria-hidden="true">
+              <path d="M9 1C4.58 1 1 4.58 1 9c0 1.42.37 2.75 1.02 3.91L1 17l4.18-1.09A8 8 0 1 0 9 1z"/>
+            </svg>
+          </div>
+          <div>
+            <div className="text-white font-semibold text-[13px] leading-none">City Dental Care</div>
+            <div className="text-[#a7f3d0] text-[10px] mt-0.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] inline-block" aria-hidden="true" />
+              online
+            </div>
+          </div>
+        </div>
 
-        .hiw-glow {
-          position: absolute;
-          width: 500px; height: 500px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.05) 0%, transparent 70%);
-          right: -100px; top: 50%;
-          transform: translateY(-50%);
-          pointer-events: none;
-        }
-
-        .hiw-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
-
-        .hiw-eyebrow {
-          text-align: center;
-          font-size: 11.5px;
-          font-weight: 500;
-          color: #5BC0EB;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .hiw-heading {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(28px, 4vw, 44px);
-          font-weight: 800;
-          color: #F0F4FF;
-          text-align: center;
-          letter-spacing: -0.02em;
-          line-height: 1.15;
-          margin-bottom: 16px;
-        }
-
-        .hiw-sub {
-          text-align: center;
-          font-size: 16px;
-          color: #6B7A99;
-          max-width: 500px;
-          margin: 0 auto 72px;
-          line-height: 1.65;
-        }
-
-        /* Steps grid */
-        .steps-grid {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 2px;
-          position: relative;
-        }
-
-        /* Connecting line */
-        .steps-grid::before {
-          content: '';
-          position: absolute;
-          top: 44px;
-          left: calc(12.5% + 20px);
-          right: calc(12.5% + 20px);
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(91,192,235,0.3) 20%, rgba(30,107,255,0.4) 50%, rgba(91,192,235,0.3) 80%, transparent);
-          z-index: 0;
-        }
-
-        .step-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 32px 20px;
-          border-radius: 18px;
-          background: rgba(26,31,43,0.4);
-          border: 1px solid rgba(255,255,255,0.04);
-          transition: border-color 0.3s, background 0.3s, transform 0.3s;
-          cursor: default;
-          position: relative;
-          z-index: 1;
-        }
-
-        .step-card:hover {
-          background: rgba(26,31,43,0.7);
-          border-color: rgba(91,192,235,0.15);
-          transform: translateY(-4px);
-        }
-
-        .step-number {
-          font-family: 'Syne', sans-serif;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          color: #6B7A99;
-          margin-bottom: 16px;
-          text-transform: uppercase;
-        }
-
-        .step-icon-wrap {
-          width: 64px;
-          height: 64px;
-          border-radius: 18px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 20px;
-          background: rgba(26,31,43,0.9);
-          border: 1px solid rgba(255,255,255,0.06);
-          position: relative;
-          transition: box-shadow 0.3s;
-        }
-
-        .step-card:hover .step-icon-wrap {
-          box-shadow: 0 0 24px rgba(91,192,235,0.15);
-        }
-
-        .step-title {
-          font-family: 'Syne', sans-serif;
-          font-size: 16px;
-          font-weight: 700;
-          color: #F0F4FF;
-          margin-bottom: 10px;
-          line-height: 1.3;
-        }
-
-        .step-desc {
-          font-size: 13.5px;
-          color: #6B7A99;
-          line-height: 1.6;
-          margin-bottom: 16px;
-        }
-
-        .step-detail {
-          font-size: 11px;
-          color: rgba(91,192,235,0.6);
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          padding: 4px 10px;
-          border-radius: 6px;
-          background: rgba(91,192,235,0.06);
-          border: 1px solid rgba(91,192,235,0.1);
-        }
-
-        /* CTA below steps */
-        .hiw-cta {
-          display: flex;
-          justify-content: center;
-          margin-top: 56px;
-        }
-
-        .hiw-cta a {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: transparent;
-          color: #5BC0EB;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 15px;
-          font-weight: 500;
-          padding: 12px 24px;
-          border-radius: 10px;
-          text-decoration: none;
-          border: 1px solid rgba(91,192,235,0.2);
-          transition: all 0.25s ease;
-        }
-
-        .hiw-cta a:hover {
-          background: rgba(91,192,235,0.06);
-          border-color: rgba(91,192,235,0.4);
-          transform: translateY(-1px);
-        }
-
-        @media (max-width: 900px) {
-          .steps-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-          }
-          .steps-grid::before { display: none; }
-        }
-
-        @media (max-width: 520px) {
-          .hiw-section { padding: 72px 20px; }
-          .steps-grid { grid-template-columns: 1fr; gap: 10px; }
-        }
-      `}</style>
-
-      <section className="hiw-section" id="how-it-works">
-        <div className="hiw-glow" />
-        <div className="hiw-inner">
-          <p className="hiw-eyebrow">How It Works</p>
-          <h2 className="hiw-heading">From missed call to booked<br />appointment in 60 seconds</h2>
-          <p className="hiw-sub">A seamless four-step flow that runs entirely on autopilot — no training, no scripts, no staff overhead.</p>
-
-          <div className="steps-grid">
-            {steps.map((step, i) => (
-              <div className="step-card" key={i}>
-                <div className="step-number">{step.number}</div>
-                <div className="step-icon-wrap">{step.icon}</div>
-                <h3 className="step-title">{step.title}</h3>
-                <p className="step-desc">{step.description}</p>
-                <span className="step-detail">{step.detail}</span>
-              </div>
-            ))}
+        {/* chat */}
+        <div
+          className="flex flex-col gap-2 p-3 min-h-[300px]"
+          style={{ background: "#e5ddd5" }}
+        >
+          <div className="self-center bg-white/70 rounded-full px-3 py-0.5 text-[9px] text-[#6b7280] font-medium">
+            Today
           </div>
 
-          <div className="hiw-cta">
-            <a href="#contact">
-              See a live demo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+          {messages.map((m, i) => (
+            <div
+              key={i}
+              className={`flex ${m.from === "pt" ? "justify-end" : "justify-start"}`}
+              style={{
+                opacity: visible[i] ? 1 : 0,
+                transform: visible[i] ? "translateY(0)" : "translateY(6px)",
+                transition: "opacity 0.3s ease, transform 0.3s ease",
+              }}
+            >
+              <div
+                className={`max-w-[80%] rounded-2xl px-3 py-2 text-[11px] leading-[1.5] shadow-sm ${
+                  m.from === "ai"
+                    ? "bg-white text-[#111827] rounded-tl-sm"
+                    : "bg-[#dcf8c6] text-[#111827] rounded-tr-sm"
+                }`}
+              >
+                {m.text}
+                <span className="block text-right text-[8px] text-[#9ca3af] mt-0.5">
+                  {m.from === "ai" ? "FREMN" : "You"} · just now
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* input bar */}
+        <div className="flex items-center gap-2 px-3 py-2 bg-[#f0f0f0] border-t border-[#e5e7eb]">
+          <div className="flex-1 bg-white rounded-full px-3 py-1.5 text-[10px] text-[#9ca3af]">
+            Message
+          </div>
+          <div className="w-7 h-7 rounded-full bg-[#25d366] flex items-center justify-center flex-shrink-0">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="white" aria-hidden="true">
+              <path d="M2 7l10-5-5 10V8L2 7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setPlay(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="how-it-works"
+      className="bg-white px-6 md:px-12 lg:px-24 py-20 md:py-28 border-t border-[#e5e7eb]"
+      aria-label="How it works"
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* header */}
+        <div
+          className="text-center mb-16"
+          style={{
+            opacity: play ? 1 : 0,
+            transform: play ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
+          <p className="text-[11px] font-sans font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
+            How It Works
+          </p>
+          <h2 className="font-sans font-bold text-3xl md:text-4xl text-[#111827] leading-[1.15] tracking-[-0.02em] mb-4">
+            From missed call to booked slot
+          </h2>
+          <p className="font-sans text-sm md:text-base text-[#6b7280] max-w-sm mx-auto leading-relaxed">
+            Four steps. Fully automatic. Zero staff effort.
+          </p>
+        </div>
+
+        {/* steps */}
+        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 mb-20">
+          {/* dashed connector — desktop only */}
+          <div
+            className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-px z-0"
+            style={{ borderTop: "2px dashed #e5e7eb" }}
+            aria-hidden="true"
+          />
+
+          {steps.map((s, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center text-center relative z-10 px-3"
+              style={{
+                opacity: play ? 1 : 0,
+                transform: play ? "translateY(0)" : "translateY(16px)",
+                transition: `opacity 0.5s ease ${i * 0.12}s, transform 0.5s ease ${i * 0.12}s`,
+              }}
+            >
+              <div
+                className="w-[68px] h-[68px] rounded-2xl flex items-center justify-center mb-4 shadow-sm border"
+                style={{ background: s.bg, borderColor: s.border, color: s.color }}
+              >
+                {s.icon}
+              </div>
+              <span
+                className="font-sans font-bold text-[10px] tracking-widest mb-1"
+                style={{ color: s.color }}
+              >
+                {s.num}
+              </span>
+              <div className="font-sans font-bold text-[14px] text-[#111827] mb-1 leading-snug">
+                {s.title}
+              </div>
+              <div className="font-sans text-[12px] text-[#9ca3af] leading-[1.5] max-w-[110px]">
+                {s.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* phone + bullet points */}
+        <div
+          className="flex flex-col md:flex-row items-center gap-12 md:gap-16"
+          style={{
+            opacity: play ? 1 : 0,
+            transform: play ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.6s ease 0.55s, transform 0.6s ease 0.55s",
+          }}
+        >
+
+          <div className="flex-shrink-0">
+            <PhoneMockup play={play} />
+          </div>
+
+          <div className="flex flex-col gap-7 max-w-sm">
+            {[
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M9 1v4M9 13v4M1 9h4M13 9h4M3.22 3.22l2.83 2.83M11.95 11.95l2.83 2.83M14.78 3.22l-2.83 2.83M6.05 11.95l-2.83 2.83" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                ),
+                label: "60-second response",
+                desc: "The moment a call is missed, FREMN is already messaging the patient.",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <circle cx="9" cy="9" r="7.5" stroke="#2563eb" strokeWidth="1.5"/>
+                    <path d="M9 5v4l2.5 2" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+                label: "Works around the clock",
+                desc: "2 AM, Sunday, public holiday — every missed call gets the same instant reply.",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M3 9l4.5 4.5 7.5-9" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+                label: "No staff involvement",
+                desc: "The appointment books itself. Your team just sees a new confirmed slot.",
+              },
+            ].map((item) => (
+              <div key={item.label} className="flex gap-4">
+                <div className="w-10 h-10 rounded-xl bg-[#eff6ff] border border-[#dbeafe] flex items-center justify-center flex-shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <div className="font-sans font-semibold text-[14px] text-[#111827] mb-1">
+                    {item.label}
+                  </div>
+                  <div className="font-sans text-[13px] text-[#6b7280] leading-[1.65]">
+                    {item.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <a
+              href="#contact"
+              className="self-start inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-sans font-semibold text-[14px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] shadow-[0_4px_20px_rgba(37,99,235,0.3)] hover:shadow-[0_8px_32px_rgba(37,99,235,0.4)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
+            >
+              See it live →
             </a>
           </div>
         </div>
-      </section>
-    </>
+
+      </div>
+    </section>
   );
 }

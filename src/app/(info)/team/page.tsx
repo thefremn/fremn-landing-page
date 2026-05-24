@@ -1,4 +1,3 @@
-// app/team/page.tsx
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -8,376 +7,135 @@ export const metadata: Metadata = {
 };
 
 const founders = [
-  {
-    name: "Chinton Dutta",
-    role: "Co-founder",
-    initials: "CD",
-  },
-  {
-    name: "Amar Kumar Thakur",
-    role: "Co-founder",
-    initials: "AK",
-  },
-  {
-    name: "Sheikh Sami Akhtar",
-    role: "Co-founder",
-    initials: "SS",
-  },
-  {
-    name: "Krishti Poddar",
-    role: "Co-founder",
-    initials: "KP",
-  },
-];
-
-// Rotate through subtle accent hues for the initials circles
-const accentStyles = [
-  { bg: "rgba(30,107,255,0.12)",  border: "rgba(30,107,255,0.25)",  color: "#5BC0EB" },
-  { bg: "rgba(91,192,235,0.10)",  border: "rgba(91,192,235,0.22)",  color: "#7DD3F0" },
-  { bg: "rgba(30,107,255,0.08)",  border: "rgba(30,107,255,0.18)",  color: "#4DA6FF" },
-  { bg: "rgba(91,192,235,0.12)",  border: "rgba(91,192,235,0.28)",  color: "#5BC0EB" },
+  { name: "Chinton Dutta",       role: "Co-founder", initials: "CD" },
+  { name: "Amar Kumar Thakur",   role: "Co-founder", initials: "AK" },
+  { name: "Sheikh Sami Akhtar",  role: "Co-founder", initials: "SS" },
+  { name: "Krishti Poddar",      role: "Co-founder", initials: "KP" },
 ];
 
 export default function TeamPage() {
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        .team-root {
-          min-height: 100vh;
-          background: #0B0E17;
-          font-family: 'DM Sans', sans-serif;
-          color: #F0F4FF;
-          position: relative;
-          overflow-x: hidden;
-        }
-
-        /* ── Ambient glows ── */
-        .team-glow-top {
-          position: fixed; top: -200px; left: 50%;
-          transform: translateX(-50%);
-          width: 900px; height: 500px; border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(30,107,255,0.07) 0%, transparent 65%);
-          pointer-events: none; z-index: 0;
-        }
-        .team-glow-right {
-          position: fixed; top: 40%; right: -200px;
-          width: 500px; height: 500px; border-radius: 50%;
-          background: radial-gradient(circle, rgba(91,192,235,0.04) 0%, transparent 70%);
-          pointer-events: none; z-index: 0;
-        }
-
-        /* ── Nav ── */
-        .team-nav {
-          position: sticky; top: 0; z-index: 50;
-          padding: 0 40px; height: 64px;
-          display: flex; align-items: center; justify-content: space-between;
-          background: rgba(11,14,23,0.8);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .team-nav-logo {
-          font-family: 'Syne', sans-serif;
-          font-size: 20px; font-weight: 800;
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text; text-decoration: none;
-        }
-        .team-nav-link {
-          font-size: 13px; color: #6B7A99;
-          text-decoration: none; transition: color 0.2s;
-        }
-        .team-nav-link:hover { color: #5BC0EB; }
-
-        /* ── Header ── */
-        .team-header {
-          max-width: 1100px; margin: 0 auto;
-          padding: 80px 40px 0;
-          position: relative; z-index: 1;
-        }
-        .team-eyebrow {
-          font-size: 11px; font-weight: 500;
-          color: #5BC0EB; letter-spacing: 0.12em;
-          text-transform: uppercase; margin-bottom: 14px;
-        }
-        .team-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(36px, 5vw, 62px);
-          font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em; margin-bottom: 18px;
-          color: #F0F4FF;
-        }
-        .team-title span {
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .team-sub {
-          font-size: 16px; color: #6B7A99;
-          max-width: 480px; line-height: 1.7;
-          margin-bottom: 60px;
-        }
-        .team-divider {
-          width: 100%; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-          margin-bottom: 64px;
-        }
-
-        /* ── Content ── */
-        .team-content {
-          max-width: 1100px; margin: 0 auto;
-          padding: 0 40px 120px;
-          position: relative; z-index: 1;
-        }
-
-        /* ── Section label ── */
-        .section-label {
-          font-size: 10.5px; font-weight: 500;
-          color: #5BC0EB; letter-spacing: 0.1em;
-          text-transform: uppercase; margin-bottom: 28px;
-          display: flex; align-items: center; gap: 8px;
-        }
-        .section-label::after {
-          content: ''; flex: 1; height: 1px;
-          background: rgba(91,192,235,0.15);
-        }
-
-        /* ── Founders grid ── */
-        .founders-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
-          margin-bottom: 80px;
-        }
-
-        .founder-card {
-          background: rgba(26,31,43,0.5);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 18px;
-          padding: 32px 24px 28px;
-          display: flex; flex-direction: column;
-          align-items: flex-start; gap: 16px;
-          position: relative; overflow: hidden;
-          transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-        .founder-card::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, #1E6BFF, #5BC0EB);
-          opacity: 0; transition: opacity 0.3s;
-        }
-        /* Large background letter */
-        .founder-card::after {
-          content: attr(data-initial);
-          position: absolute; bottom: -12px; right: -4px;
-          font-family: 'Syne', sans-serif;
-          font-size: 96px; font-weight: 800;
-          color: rgba(255,255,255,0.025);
-          line-height: 1; pointer-events: none;
-          letter-spacing: -0.04em;
-          transition: color 0.3s;
-        }
-        .founder-card:hover {
-          border-color: rgba(30,107,255,0.22);
-          transform: translateY(-5px);
-          box-shadow: 0 20px 48px rgba(0,0,0,0.45);
-        }
-        .founder-card:hover::before { opacity: 1; }
-        .founder-card:hover::after  { color: rgba(30,107,255,0.06); }
-
-        /* Initials circle */
-        .founder-avatar {
-          width: 48px; height: 48px; border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          font-family: 'Syne', sans-serif;
-          font-size: 15px; font-weight: 700;
-          flex-shrink: 0;
-        }
-
-        .founder-info { display: flex; flex-direction: column; gap: 4px; }
-        .founder-name {
-          font-family: 'Syne', sans-serif;
-          font-size: 16px; font-weight: 700;
-          color: #F0F4FF; line-height: 1.2;
-          letter-spacing: -0.01em;
-        }
-        .founder-role {
-          font-size: 12px; color: #6B7A99;
-          letter-spacing: 0.03em;
-        }
-
-        /* ── Mission strip ── */
-        .mission-strip {
-          background: rgba(26,31,43,0.4);
-          border: 1px solid rgba(255,255,255,0.055);
-          border-radius: 20px;
-          padding: 44px 48px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
-          align-items: center;
-          position: relative; overflow: hidden;
-        }
-        .mission-strip::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(30,107,255,0.3), rgba(91,192,235,0.3), transparent);
-        }
-        .mission-left {}
-        .mission-eyebrow {
-          font-size: 10.5px; font-weight: 500;
-          color: #5BC0EB; letter-spacing: 0.1em;
-          text-transform: uppercase; margin-bottom: 14px;
-        }
-        .mission-heading {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(18px, 2vw, 24px);
-          font-weight: 700; line-height: 1.25;
-          letter-spacing: -0.02em; color: #F0F4FF;
-        }
-        .mission-right {
-          display: flex; flex-direction: column; gap: 14px;
-        }
-        .mission-stat {
-          display: flex; flex-direction: column; gap: 2px;
-          padding-bottom: 14px;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .mission-stat:last-child { border-bottom: none; padding-bottom: 0; }
-        .mission-stat-num {
-          font-family: 'Syne', sans-serif;
-          font-size: 26px; font-weight: 800;
-          letter-spacing: -0.03em;
-          background: linear-gradient(135deg, #1E6BFF, #5BC0EB);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .mission-stat-label {
-          font-size: 13px; color: #6B7A99;
-        }
-
-        /* ── Footer ── */
-        .team-footer {
-          border-top: 1px solid rgba(255,255,255,0.05);
-          padding: 32px 40px;
-          display: flex; align-items: center; justify-content: space-between;
-          max-width: 1100px; margin: 0 auto;
-          font-size: 13px; color: #6B7A99;
-          position: relative; z-index: 1;
-        }
-        .team-footer a { color: #6B7A99; text-decoration: none; transition: color 0.2s; }
-        .team-footer a:hover { color: #5BC0EB; }
-
-        /* ── Animations ── */
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .team-header  { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-        .team-content { animation: fadeUp 0.5s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
-
-        /* ── Responsive ── */
-        @media (max-width: 900px) {
-          .founders-grid { grid-template-columns: repeat(2, 1fr); }
-          .mission-strip { grid-template-columns: 1fr; gap: 32px; padding: 32px 28px; }
-        }
-        @media (max-width: 600px) {
-          .founders-grid { grid-template-columns: 1fr; }
-          .team-header, .team-content { padding-left: 24px; padding-right: 24px; }
-          .team-nav { padding: 0 24px; }
-          .team-footer { flex-direction: column; gap: 12px; }
-        }
-      `}</style>
-
-      <div className="team-root">
-        <div className="team-glow-top" />
-        <div className="team-glow-right" />
-
-        <nav className="team-nav">
-          <Link href="/" className="team-nav-logo">FREMN</Link>
-          <Link href="/#contact" className="team-nav-link">Request Demo →</Link>
-        </nav>
-
-        <header className="team-header">
-          <p className="team-eyebrow">The people</p>
-          <h1 className="team-title">
-            Built by founders<br />who <span>give a damn</span>
-          </h1>
-          <p className="team-sub">
-            Four people. One mission. Making clinic operations invisible so doctors can focus on patients.
-          </p>
-          <div className="team-divider" />
-        </header>
-
-        <main className="team-content">
-
-          <p className="section-label">Founders</p>
-
-          <div className="founders-grid">
-            {founders.map((founder, i) => {
-              const accent = accentStyles[i % accentStyles.length];
-              return (
-                <div
-                  key={founder.name}
-                  className="founder-card"
-                  data-initial={founder.initials[0]}
-                >
-                  <div
-                    className="founder-avatar"
-                    style={{
-                      background: accent.bg,
-                      border: `1px solid ${accent.border}`,
-                      color: accent.color,
-                    }}
-                  >
-                    {founder.initials}
-                  </div>
-                  <div className="founder-info">
-                    <div className="founder-name">{founder.name}</div>
-                    <div className="founder-role">{founder.role}</div>
-                  </div>
-                </div>
-              );
-            })}
+    <div
+      className="min-h-screen font-sans"
+      style={{
+        background:
+          "radial-gradient(ellipse 100% 60% at 50% 100%, rgba(96,165,250,0.18) 0%, rgba(147,197,253,0.08) 45%, transparent 70%), " +
+          "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
+      }}
+    >
+      {/* ── Navbar ── */}
+      <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between h-[64px]">
+          <Link href="/" aria-label="FREMN — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="flex items-center gap-1.5 font-sans text-[13px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M11 7H3M6 3l-4 4 4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Home
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-sans font-semibold text-[13px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] transition-colors duration-150"
+            >
+              Book Now!
+            </Link>
           </div>
+        </div>
+      </nav>
 
-          {/* Mission strip */}
-          <div className="mission-strip">
-            <div className="mission-left">
-              <p className="mission-eyebrow">Our focus</p>
-              <h2 className="mission-heading">
-                Automating the parts of clinic life that drain good people
-              </h2>
-            </div>
-            <div className="mission-right">
-              <div className="mission-stat">
-                <span className="mission-stat-num">48 hrs</span>
-                <span className="mission-stat-label">From sign-up to live pilot</span>
+      {/* ── Header ── */}
+      <header className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pt-16 pb-12">
+        <p className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-[#2563eb] mb-4">
+          The people
+        </p>
+        <h1 className="font-sans font-extrabold text-4xl md:text-5xl text-[#111827] leading-[1.1] tracking-[-0.025em] mb-4">
+          Built by founders who <span className="text-[#2563eb]">give a damn</span>
+        </h1>
+        <p className="font-sans text-[16px] text-[#6b7280] max-w-lg leading-[1.7] mb-10">
+          Four people. One mission. Making clinic operations invisible so doctors can focus on patients.
+        </p>
+        <div className="h-px bg-[#e5e7eb]" />
+      </header>
+
+      {/* ── Content ── */}
+      <main className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-24">
+
+        {/* Section label */}
+        <p className="font-sans text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[#2563eb] mb-6 flex items-center gap-2">
+          Founders
+          <span className="flex-1 h-px bg-[#dbeafe]" />
+        </p>
+
+        {/* Founders grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {founders.map((founder) => (
+            <div
+              key={founder.name}
+              className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] overflow-hidden"
+            >
+              <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="w-12 h-12 rounded-full bg-[#eff6ff] border border-[#dbeafe] flex items-center justify-center flex-shrink-0">
+                <span className="font-sans font-bold text-[14px] text-[#2563eb]">{founder.initials}</span>
               </div>
-              <div className="mission-stat">
-                <span className="mission-stat-num">40%</span>
-                <span className="mission-stat-label">Avg. drop in no-shows</span>
-              </div>
-              <div className="mission-stat">
-                <span className="mission-stat-num">Zero</span>
-                <span className="mission-stat-label">Changes to your existing workflow</span>
+              <div>
+                <div className="font-sans font-bold text-[15px] text-[#111827] leading-snug mb-1">{founder.name}</div>
+                <div className="font-sans text-[12px] text-[#9ca3af]">{founder.role}</div>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-        </main>
-
-        <footer className="team-footer">
-          <span>© {new Date().getFullYear()} FREMN. All rights reserved.</span>
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link href="/careers">Careers</Link>
-            <a href="mailto:contact@fremn.com">contact@fremn.com</a>
+        {/* Mission strip */}
+        <div className="rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.07)] p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <p className="font-sans text-[10.5px] font-semibold tracking-[0.1em] uppercase text-[#2563eb] mb-3">
+              Our focus
+            </p>
+            <h2 className="font-sans font-bold text-[20px] md:text-[24px] text-[#111827] leading-[1.25] tracking-[-0.02em]">
+              Automating the parts of clinic life that drain good people
+            </h2>
           </div>
-        </footer>
+          <div className="flex flex-col gap-4">
+            {[
+              { num: "48 hrs",  label: "From sign-up to live pilot" },
+              { num: "40%",     label: "Avg. drop in no-shows" },
+              { num: "Zero",    label: "Changes to your existing workflow" },
+            ].map((stat, i, arr) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col gap-0.5 pb-4 ${i < arr.length - 1 ? "border-b border-[#f3f4f6]" : ""}`}
+              >
+                <span className="font-sans font-extrabold text-[26px] text-[#2563eb] tracking-[-0.03em]">{stat.num}</span>
+                <span className="font-sans text-[13px] text-[#6b7280]">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
+
+      {/* ── Footer bar ── */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pb-10">
+        <div className="flex items-center justify-between flex-wrap gap-3 pt-6 border-t border-[#e5e7eb]">
+          <span className="font-sans text-[12.5px] text-[#9ca3af]">
+            © {new Date().getFullYear()} FREMN Technologies LLP. All rights reserved.
+          </span>
+          <div className="flex gap-5">
+            <Link href="/careers" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              Careers
+            </Link>
+            <a href="mailto:contact@fremn.com" className="font-sans text-[12.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150">
+              contact@fremn.com
+            </a>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

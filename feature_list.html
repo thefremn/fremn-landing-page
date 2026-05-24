@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F7F8FA;color:#141414;max-width:720px;margin:0 auto;padding:0}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0A1628 0%,#141414 50%,#0D2152 100%);padding:52px 40px 48px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(77,159,255,0.18) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(27,79,216,0.15) 0%,transparent 70%);pointer-events:none}
+
+.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.logo-mark{width:42px;height:42px;background:linear-gradient(135deg,#1B4FD8,#4D9FFF);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:22px;color:#fff;font-weight:400;letter-spacing:-1px}
+.logo-text{font-size:18px;font-weight:600;color:#fff;letter-spacing:.08em}
+.logo-sub{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+
+.hero-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#4D9FFF;margin-bottom:14px}
+.hero h1{font-family:'Instrument Serif',serif;font-size:44px;line-height:1.08;color:#fff;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:#4D9FFF}
+.hero-tag{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:480px;margin-bottom:32px}
+
+.hero-stats{display:flex;gap:32px}
+.stat-val{font-family:'Instrument Serif',serif;font-size:28px;color:#fff}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;line-height:1.4}
+.stat-divider{width:1px;background:rgba(255,255,255,0.1)}
+
+/* BODY */
+.body{padding:40px}
+
+/* STEP */
+.step{margin-bottom:36px}
+.step-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.step-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1B4FD8,#4D9FFF);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 12px rgba(27,79,216,0.35)}
+.step-title{font-family:'Instrument Serif',serif;font-size:21px;color:#141414}
+.step-tagline{font-size:13px;color:#666;line-height:1.6;margin-bottom:14px;padding-left:42px}
+.step-divider{height:1px;background:linear-gradient(to right,#1B4FD8,transparent);margin-bottom:14px;opacity:0.25}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-left:42px}
+.feat{background:#fff;border:1px solid #E8ECF2;border-radius:10px;padding:13px 15px;transition:box-shadow .2s}
+.feat:hover{box-shadow:0 4px 16px rgba(27,79,216,0.1)}
+.feat-icon{font-size:14px;margin-bottom:5px}
+.feat-name{font-size:13px;font-weight:500;color:#141414;margin-bottom:3px}
+.feat-desc{font-size:12px;color:#666;line-height:1.5}
+
+/* SECTION LABEL */
+.section-label{display:flex;align-items:center;gap:8px;margin-bottom:20px;margin-top:36px}
+.section-line{flex:1;height:1px;background:#E8ECF2}
+.section-text{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#999;white-space:nowrap}
+
+/* BILLING */
+.feat.billing{border-color:#DDEAFF;background:#F5F8FF}
+/* KNOW */
+.feat.know{border-color:#E0E8F5;background:#F8FAFF}
+
+/* FOOTER */
+.footer{background:linear-gradient(135deg,#0A1628,#141414);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-left{}
+.footer-brand{font-size:16px;font-weight:600;color:#fff;letter-spacing:.06em;margin-bottom:4px}
+.footer-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5}
+.footer-right{text-align:right;flex-shrink:0}
+.footer-cta{font-size:11px;color:#4D9FFF;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:4px}
+.footer-url{font-size:14px;color:#fff;font-weight:500}
+
+/* ACCENT LINE */
+.accent-bar{height:3px;background:linear-gradient(to right,#1B4FD8,#4D9FFF);width:100%}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr;padding-left:0}
+  .step-tagline{padding-left:0}
+  .hero{padding:36px 24px 36px}
+  .body{padding:28px 20px}
+  .hero h1{font-size:32px}
+  .hero-stats{gap:20px}
+  .footer{flex-direction:column;text-align:center;padding:28px 24px}
+  .footer-right{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo-row">
+    <div class="logo-mark">F</div>
+    <div>
+      <div class="logo-text">FREMN</div>
+      <div class="logo-sub">AI Front Desk for Dental Clinics</div>
+    </div>
+  </div>
+
+  <div class="hero-label">Designed for Indian Dental Clinics</div>
+  <h1>Never miss a<br>patient <em>again.</em></h1>
+  <p class="hero-tag">FREMN handles your bookings, reminders, follow-ups, and billing on WhatsApp — so every missed call becomes a filled chair.</p>
+
+  <div class="hero-stats">
+    <div>
+      <div class="stat-val">60s</div>
+      <div class="stat-label">From missed call<br>to booked slot</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <div class="stat-val">0</div>
+      <div class="stat-label">App downloads<br>needed by patients</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <div class="stat-val">24/7</div>
+      <div class="stat-label">Automatic<br>front desk</div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">Patient calls your clinic</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">Busy with a patient? FREMN makes sure no call goes to waste.</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="feat-icon">📞</div>
+        <div class="feat-name">Missed call recovery</div>
+        <div class="feat-desc">Patient calls, you're busy — they get available slots on WhatsApp in 60 seconds.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💬</div>
+        <div class="feat-name">SMS backup</div>
+        <div class="feat-desc">No WhatsApp? Patient gets an SMS — nobody falls through the gap.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📋</div>
+        <div class="feat-name">Callback list</div>
+        <div class="feat-desc">Patients who need a call back appear in your dashboard — your receptionist never forgets.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">Patient books on WhatsApp</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">The entire booking happens on WhatsApp — no app, no form, no phone tag.</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="feat-icon">✅</div>
+        <div class="feat-name">WhatsApp booking</div>
+        <div class="feat-desc">Patient picks a slot, selects their doctor, and confirms — in 3 messages.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-name">Reschedule & cancel</div>
+        <div class="feat-desc">Patients change or cancel on WhatsApp — your schedule updates instantly.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">👨‍⚕️</div>
+        <div class="feat-name">Multi-doctor scheduling</div>
+        <div class="feat-desc">Each doctor has their own slots — patients pick who they want to see.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔒</div>
+        <div class="feat-name">Double-booking prevention</div>
+        <div class="feat-desc">Slots are held while a patient confirms — no overlaps, ever.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">FREMN fills your chair</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">Reminders go out automatically — confirmed patients show up, empty slots get filled.</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="feat-icon">🔔</div>
+        <div class="feat-name">24-hour reminder</div>
+        <div class="feat-desc">Day-before reminder — patient replies YES to confirm or NO to reschedule.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⏰</div>
+        <div class="feat-name">Same-day reminder</div>
+        <div class="feat-desc">2-hour reminder on the day — only if the patient hasn't already confirmed.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">↩️</div>
+        <div class="feat-name">No-show recovery</div>
+        <div class="feat-desc">Patient misses their slot — FREMN automatically reaches out to rebook them.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📅</div>
+        <div class="feat-name">Recall reminders</div>
+        <div class="feat-desc">FREMN messages patients when it's time for their next cleaning, scaling, or check-up.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🦷</div>
+        <div class="feat-name">Incomplete treatment follow-up</div>
+        <div class="feat-desc">Patient skips RCT session 2 — FREMN sends a gentle reminder to come back and finish.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-title">Care after every visit</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">Patients feel looked after — and keep coming back.</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="feat-icon">💙</div>
+        <div class="feat-name">Post-visit check-in</div>
+        <div class="feat-desc">"How are you feeling?" sent 48 hours after every visit — concerns flagged to you immediately.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📝</div>
+        <div class="feat-name">Pre-visit medical history</div>
+        <div class="feat-desc">Patients fill their history on WhatsApp before arriving — ready when they walk in.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⭐</div>
+        <div class="feat-name">Google review request</div>
+        <div class="feat-desc">Happy patients get a one-tap Google review link — automatically after every positive visit.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔁</div>
+        <div class="feat-name">Dormant patient reactivation</div>
+        <div class="feat-desc">Patients you haven't seen in 6+ months — FREMN reaches out to bring them back.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div class="step-title">Billing & payments</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">Generate invoices and collect payments — no paper, no phone calls.</p>
+    <div class="grid">
+      <div class="feat billing">
+        <div class="feat-icon">🧾</div>
+        <div class="feat-name">Invoice generation</div>
+        <div class="feat-desc">Generate a patient invoice in seconds after every appointment.</div>
+      </div>
+      <div class="feat billing">
+        <div class="feat-icon">💳</div>
+        <div class="feat-name">WhatsApp payment collection</div>
+        <div class="feat-desc">Payment link on WhatsApp — patients pay by UPI, card, or net banking instantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div class="step-title">Know your clinic at a glance</div>
+    </div>
+    <div class="step-divider"></div>
+    <p class="step-tagline">Everything you need to run a smarter clinic — one dashboard, updated in real time.</p>
+    <div class="grid">
+      <div class="feat know">
+        <div class="feat-icon">📊</div>
+        <div class="feat-name">Appointments dashboard</div>
+        <div class="feat-desc">All today's appointments — confirmed, pending, no-show — in one live view.</div>
+      </div>
+      <div class="feat know">
+        <div class="feat-icon">👤</div>
+        <div class="feat-name">Patient profiles</div>
+        <div class="feat-desc">Every patient's history, treatments, and all messages in one place.</div>
+      </div>
+      <div class="feat know">
+        <div class="feat-icon">💰</div>
+        <div class="feat-name">Revenue dashboard</div>
+        <div class="feat-desc">Today's and this month's revenue — the moment you open FREMN.</div>
+      </div>
+      <div class="feat know">
+        <div class="feat-icon">📈</div>
+        <div class="feat-name">No-show revenue report</div>
+        <div class="feat-desc">See exactly how much revenue FREMN recovered for you each month.</div>
+      </div>
+      <div class="feat know">
+        <div class="feat-icon">🏆</div>
+        <div class="feat-name">Revenue by treatment</div>
+        <div class="feat-desc">Which treatments bring the most revenue — cleanings, RCT, crowns — at a glance.</div>
+      </div>
+      <div class="feat know">
+        <div class="feat-icon">🌟</div>
+        <div class="feat-name">Monthly reputation report</div>
+        <div class="feat-desc">New Google reviews, rating trend, and AI-drafted responses to negative reviews.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-brand">FREMN</div>
+    <div class="footer-desc">AI Front Desk for Dental Clinics<br>Kolkata, India · Built for Indian dentists</div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-cta">Get started</div>
+    <div class="footer-url">fremn.in</div>
+  </div>
+</div>
+<div class="accent-bar"></div>
+
+</body>
+</html>

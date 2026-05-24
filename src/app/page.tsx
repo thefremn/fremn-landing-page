@@ -1,35 +1,32 @@
+import AnnouncementBanner from "@/components/custom/AnnouncementBanner";
 import Navbar from "@/components/custom/navbar";
 import HeroSection from "@/sections/hero/page";
-import TrustBar from "@/sections/hero/trustBar";
-import ProblemSolution from "@/sections/product/page";
-import HowItWorks from "@/sections/howItWorks/page";
 import Features from "@/sections/features/page";
+import HowItWorks from "@/sections/howItWorks/page";
+import Testimonials from "@/sections/impact/testimonials";
+import Pipeline from "@/sections/howItWorks/pipeline";
+import ComparisonTable from "@/sections/comparison/page";
+import Calculator from "@/sections/pricing/page";
+import FAQ from "@/sections/faq/page";
 import ContactSection from "@/sections/contact/page";
 import Footer from "@/components/custom/footer";
-import ChannelShowcase from "@/sections/features/multiChannel";
-import Testimonials from "@/sections/impact/testimonials";
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: `
-          radial-gradient(ellipse at 20% 0%, rgba(30, 107, 255, 0.04) 0%, transparent 60%),
-          radial-gradient(ellipse at 80% 0%, rgba(91, 192, 235, 0.03) 0%, transparent 50%),
-          #0A0A0A
-        `,
-      }}
-    >
+    <div className="min-h-screen font-sans overflow-x-hidden">
+      <AnnouncementBanner />
       <Navbar />
-      <HeroSection />
-      <TrustBar />
-      <ProblemSolution />
-      <HowItWorks />
-      <Features />
-      <ChannelShowcase />
-      <Testimonials />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <Features />
+        <HowItWorks />
+        <Testimonials />
+        <Pipeline />
+        <ComparisonTable />
+        <Calculator />
+        <FAQ />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

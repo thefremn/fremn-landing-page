@@ -28,14 +28,14 @@ export default function ReadProgressBar() {
         right: 0,
         height: 2,
         zIndex: 49,
-        background: "rgba(255,255,255,0.04)",
+        background: "#e5e7eb",
       }}
     >
       <div
         style={{
           height: "100%",
           width: `${width}%`,
-          background: "linear-gradient(90deg, #1E6BFF, #5BC0EB)",
+          background: "linear-gradient(90deg, #2563eb, #60a5fa)",
           transition: "width 0.1s linear",
         }}
       />

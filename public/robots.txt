@@ -1,0 +1,59 @@
+# FREMN — robots.txt
+# Served at https://fremn.com/robots.txt
+
+# ── All standard crawlers ──────────────────────────────────────────────────────
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# ── Google ─────────────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+# Google's AI training bot
+User-agent: Google-Extended
+Allow: /
+
+# ── OpenAI / ChatGPT ───────────────────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# ── Anthropic / Claude ─────────────────────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ── Perplexity ─────────────────────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Meta AI ────────────────────────────────────────────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+# ── Common Crawl ──────────────────────────────────────────────────────────────
+User-agent: CCBot
+Allow: /
+
+# ── Apple ──────────────────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Microsoft / Bing ───────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+
+# ── Sitemap ────────────────────────────────────────────────────────────────────
+Sitemap: https://fremn.com/sitemap.xml

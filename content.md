@@ -1,850 +1,604 @@
-# FREMN — Content Document
-
-> All page copy, section text, feature descriptions, and legal content. Zero design or tech here — that lives in `design.md`.
+# FREMN — Page Content & Structure
 
 ---
 
-## Page: `/` — Landing Page
+## METADATA
 
----
-
-### NAV
-
-| Element | Text |
-|---------|------|
-| Logo sub-label | AI Front Desk for Dental Clinics |
-| Link 1 | Features |
-| Link 2 | How It Works |
-| Link 3 | Testimonials |
-| Link 4 | Pricing |
-| CTA button | Book a Free Demo |
-
----
-
-### HERO
-
-**Eyebrow label:** Designed for Indian Dental Clinics
-
-**H1:**
 ```
-Never miss a patient again.
-```
-*(italic `#4D9FFF` on "again.")*
-
-**Subheadline:**
-```
-FREMN handles your bookings, reminders, follow-ups, and billing on WhatsApp
-— so every missed call becomes a filled chair.
-```
-
-**CTA Primary:** Book a Free Demo →
-**CTA Secondary:** See How It Works ↓
-
-**Stats row:**
-
-| Value | Label |
-|-------|-------|
-| 60s | From missed call to booked slot |
-| 0 | App downloads needed by patients |
-| 24/7 | Automatic front desk |
-
----
-
-### SOCIAL PROOF BAR
-
-**Label:** Trusted by dental clinics across India
-
-*(Scrolling marquee of clinic names/logos — placeholder text until real logos provided)*
-
----
-
-### SECTION: What FREMN Does
-
-**H2:** Your AI Patient Coordinator
-
-**Sub:**
-```
-Handle bookings, reminders, follow-ups, and payments
-with 100% front desk coverage — fully on WhatsApp.
-```
-
-*(Product overview screenshot / demo video goes here)*
-
----
-
-### SECTION: The 6-Step Journey
-*Section label:* How It Works
-
-**H2:** From missed call to loyal patient — automatically
-
-**Sub:**
-```
-Six steps. Zero staff. Every patient looked after.
+Title:       FREMN — AI Receptionist for Outpatient Healthcare
+Description: The AI front desk for outpatient clinics. Automatically handle bookings,
+             reminders, missed call recovery, and payment collection on WhatsApp — 24/7.
+             Never miss a patient call again.
+Keywords:    AI dental receptionist, AI clinic front desk, WhatsApp appointment booking,
+             outpatient clinic automation, automated appointment reminders, missed call recovery,
+             AI phone answering service, dental virtual receptionist, after hours clinic answering,
+             healthcare AI receptionist India, WhatsApp booking system, clinic management software
+OG Image:    /assets/images/og-image.png (1200×630)
+Theme Color: #1B4FD8
+Twitter:     @fremnai
 ```
 
 ---
 
-#### Step 1 — Patient calls your clinic
+## SECTION 1 — TOP ANNOUNCEMENT BANNER
 
-**Tagline:** Busy with a patient? FREMN makes sure no call goes to waste.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| 📞 | Missed call recovery | Patient calls, you're busy — they get available slots on WhatsApp in 60 seconds. |
-| 💬 | SMS backup | No WhatsApp? Patient gets an SMS — nobody falls through the gap. |
-| 📋 | Callback list | Patients who need a call back appear in your dashboard — your receptionist never forgets. |
-
----
-
-#### Step 2 — Patient books on WhatsApp
-
-**Tagline:** The entire booking happens on WhatsApp — no app, no form, no phone tag.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| ✅ | WhatsApp booking | Patient picks a slot, selects their doctor, and confirms — in 3 messages. |
-| 🔄 | Reschedule & cancel | Patients change or cancel on WhatsApp — your schedule updates instantly. |
-| 👨‍⚕️ | Multi-doctor scheduling | Each doctor has their own slots — patients pick who they want to see. |
-| 🔒 | Double-booking prevention | Slots are held while a patient confirms — no overlaps, ever. |
+- **Type:** Full-width sticky banner, above the nav
+- **Background:** Blue (#1B4FD8) or light blue accent
+- **Icon:** FREMN logo mark (fremn-logomark.svg)
+- **Text:** `🦷  Now live for dental clinics across India  —  Book a free demo`
+- **Link:** `/book-a-demo`
+- **Alignment:** Centered
+- **Style:** Small text, pill badge, clickable full row
 
 ---
 
-#### Step 3 — FREMN fills your chair
+## SECTION 2 — NAVIGATION (DESKTOP)
 
-**Tagline:** Reminders go out automatically — confirmed patients show up, empty slots get filled.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| 🔔 | 24-hour reminder | Day-before reminder — patient replies YES to confirm or NO to reschedule. |
-| ⏰ | Same-day reminder | 2-hour reminder on the day — only if the patient hasn't already confirmed. |
-| ↩️ | No-show recovery | Patient misses their slot — FREMN automatically reaches out to rebook them. |
-| 📅 | Recall reminders | FREMN messages patients when it's time for their next cleaning, scaling, or check-up. |
-| 🦷 | Incomplete treatment follow-up | Patient skips RCT session 2 — FREMN sends a gentle reminder to come back and finish. |
-
----
-
-#### Step 4 — Care after every visit
-
-**Tagline:** Patients feel looked after — and keep coming back.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| 💙 | Post-visit check-in | "How are you feeling?" sent 48 hours after every visit — concerns flagged to you immediately. |
-| 📝 | Pre-visit medical history | Patients fill their history on WhatsApp before arriving — ready when they walk in. |
-| ⭐ | Google review request | Happy patients get a one-tap Google review link — automatically after every positive visit. |
-| 🔁 | Dormant patient reactivation | Patients you haven't seen in 6+ months — FREMN reaches out to bring them back. |
+- **Logo:** `fremn-logo.svg` — links to `/`
+- **Nav Links (center):**
+  1. Features → `#features`
+  2. Integrations → `#integrations`
+  3. Testimonials → `#testimonials`
+  4. Compare → `#comparison`
+  5. Pricing → `#pricing`
+  6. Blog → `/blog`
+- **CTA Button (right):** `Book a Demo` → `/book-a-demo`
+- **Style:** Sticky, white bg, border-bottom
 
 ---
 
-#### Step 5 — Billing & payments
+## SECTION 2B — NAVIGATION (MOBILE)
 
-**Tagline:** Generate invoices and collect payments — no paper, no phone calls.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| 🧾 | Invoice generation | Generate a patient invoice in seconds after every appointment. |
-| 💳 | WhatsApp payment collection | Payment link on WhatsApp — patients pay by UPI, card, or net banking instantly. |
+- Same logo
+- Same nav links in hamburger/dropdown
+- CTA: `Book a Free Demo`
 
 ---
 
-#### Step 6 — Know your clinic at a glance
+## SECTION 3 — HERO
 
-**Tagline:** Everything you need to run a smarter clinic — one dashboard, updated in real time.
-
-| Icon | Feature | Description |
-|------|---------|-------------|
-| 📊 | Appointments dashboard | All today's appointments — confirmed, pending, no-show — in one live view. |
-| 👤 | Patient profiles | Every patient's history, treatments, and all messages in one place. |
-| 💰 | Revenue dashboard | Today's and this month's revenue — the moment you open FREMN. |
-| 📈 | No-show revenue report | See exactly how much revenue FREMN recovered for you each month. |
-| 🏆 | Revenue by treatment | Which treatments bring the most revenue — cleanings, RCT, crowns — at a glance. |
-| 🌟 | Monthly reputation report | New Google reviews, rating trend, and AI-drafted responses to negative reviews. |
+- **Background:** Full-width dark gradient — deep navy to midnight blue
+  `assets/images/backgrounds/hero-bg.png`
+- **Above H1 Badge:**
+  - FREMN logo mark + text: `AI Front Desk for Dental Clinics`
+  - Style: White pill, shadow, small text
+- **H1 (two lines):**
+  ```
+  Never miss another
+  patient call.
+  ```
+  - "patient call." — highlighted in blue (`#1B4FD8` / `#4D9FFF`)
+- **Subheading:**
+  ```
+  An AI receptionist that handles your calls and books directly on WhatsApp —
+  no app downloads, no manual follow-up, 24/7.
+  ```
+- **CTA Button:** `Book a Demo` → `/book-a-demo`
+  - Style: Large blue pill button, centered
 
 ---
 
-### SECTION: Revenue Leak Calculator
+## SECTION 4 — PARTNERS / SOCIAL PROOF STRIP
 
-*Section label:* How Much Are You Losing?
+- **Label:** `TRUSTED BY DENTAL CLINICS ACROSS INDIA`
+  - Style: Uppercase, letter-spaced, small gray text, centered
+- **Layout:** Two rows of scrolling logo marquee (infinite loop left)
+- **Partner logos:** Clinic/practice logos, grayscale or brand-color
 
-**H2:** See what missed calls are costing you
+---
 
-**Sub:**
+## SECTION 5 — FEATURES
+
+- **Section ID:** `features`
+- **H2:** `Your AI Patient Coordinator`
+- **Subtitle:**
+  `Handle calls, WhatsApp bookings, reminders, payment collection, and post-visit follow-ups with 100% front desk coverage — fully automated.`
+- **YouTube Demo Embed:**
+  Thumbnail: `https://img.youtube.com/vi/[VIDEO_ID]/maxresdefault.jpg`
+  Video ID: `[VIDEO_ID]`
+
+---
+
+### FEATURES — Subsection Header
+
+- **H2:** `Features`
+- **Subtitle:** `FREMN is a better way to handle patient calls, bookings, and follow-ups for dental clinics`
+
+---
+
+### FEATURE CARD 1 — Automated Payment Collection
+
+- **H3:** `Automated Payment Collection`
+- **Description:** `AI sends invoices and payment links on WhatsApp. Patients pay by UPI, card, or net banking instantly.`
+- **UI Mockup — Dashboard UI:**
+  - **Header bar:** Logo | Dashboard | Patients | Payments | Calls
+  - **Overdue Block:**
+    - Badge: `Overdue 3` (amber)
+    - Total: `₹18,500`
+    - Patient 1: Avatar | `Priya S.` | `₹4,200 · 30 days`
+    - Patient 2: Avatar | `Rahul M.` | `₹6,800 · 14 days`
+  - **Paid Block:**
+    - Badge: `Paid 2` (green)
+    - Total: `₹9,100`
+    - Patient: Avatar | `Anita R.` | `₹3,500 · Paid today`
+  - **Payment Method Icons Grid (2 rows × 3):**
+    - Row 1: UPI, Visa, Mastercard
+    - Row 2: Net Banking, RuPay, PhonePe
+
+---
+
+### FEATURE CARD 2 — WhatsApp Appointment Booking
+
+- **H3:** `WhatsApp Appointment Booking`
+- **Description:** `Patients book, reschedule, and confirm appointments on WhatsApp — no app, no form, no phone tag.`
+- **UI Mockup — Stats Dashboard:**
+  - Stat 1: `Revenue Recovered` | Value: `₹0` | Badge: `+34%` (green)
+  - Stat 2: `Calls answered` | Value: `1,247`
+  - Stat 3: `Missed calls` | Value: `0`
+  - Revenue display: `₹52k`
+
+---
+
+### FEATURE CARD 3 — 24/7 Missed Call Recovery
+
+- **H3:** `24/7 Missed Call Recovery`
+- **Description:** `Every missed call gets a WhatsApp message with available slots in 60 seconds. No call goes to waste.`
+- **UI Mockup — Lead Queue:**
+  - **Header:** `Patient Queue` | Badge: `12 pending`
+  - **Patient Row 1:**
+    - Avatar
+    - Name: `Arjun Sharma`
+    - Status: `New patient • Teeth cleaning`
+  - **Patient Row 2:**
+    - Avatar
+    - Name: `Meera Nair`
+    - Status: `Follow-up • Root canal`
+  - **Patient Row 3:**
+    - Avatar
+    - Name: `Suresh K.`
+    - Status: `Missed call • Callback`
+  - **Live WhatsApp Indicator:**
+    - Pulsing green dot
+    - Text: `Messaging now  Arjun Sharma  0:12`
+  - **Counter:** `47` | `Calls handled today`
+
+---
+
+### FEATURE CARD 4 — Recall & Re-activation Campaigns
+
+- **H3:** `Recall & Re-activation Campaigns`
+- **Description:** `FREMN automatically reaches out to lapsed patients and reminds them when it's time for their next visit.`
+- **CTA Button:** `Book a Demo` → `/book-a-demo`
+
+---
+
+## SECTION 6 — TESTIMONIALS
+
+- **Section ID:** `testimonials`
+- **H2:** `What Dentists Are Saying`
+- **Subtitle:** `Real results from clinics using FREMN.`
+
+---
+
+### TESTIMONIAL 1 — Text Card
+
+- **Logo:** `clinic-1-logo.png`
+- **Rating:** `5.0` ★★★★★
+- **Quote:**
+  > "A lot of patients ask how we always respond so fast. The honest answer is FREMN. It works for us around the clock — 24 hours a day, seven days a week. Our front desk has never been this efficient."
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name], Kolkata`
+
+---
+
+### TESTIMONIAL 2 — Video Card
+
+- **Thumbnail:** `testimonial-2-thumbnail.webp`
+- **Video URL:** `[VIDEO_URL]`
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name]`
+- **Social:** `@[handle] · [X]K followers`
+
+---
+
+### TESTIMONIAL 3 — Text Card
+
+- **Logo:** `clinic-3-logo.svg`
+- **Rating:** `5.0` ★★★★★
+- **Quote:**
+  > "Setup was smooth and the team was incredibly responsive. We saw a drop in no-shows within the first two weeks."
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name]`
+
+---
+
+### TESTIMONIAL 4 — Video Card
+
+- **Thumbnail:** `testimonial-4-thumbnail.webp`
+- **Video URL:** `[VIDEO_URL]`
+- **Name:** `Dr. [Name]`
+- **Title:** `Owner @ [Clinic Name]`
+- **Social:** `@[handle] · [X]K followers`
+
+---
+
+### TESTIMONIAL 5 — Text Card
+
+- **Logo:** `clinic-5-logo.png`
+- **Rating:** `5.0` ★★★★★
+- **Quote:**
+  > "We just opened a second branch and FREMN handled the entire patient communication flow from day one. I'd recommend it to any clinic that wants to grow without hiring more staff."
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name]`
+
+---
+
+### TESTIMONIAL 6 — Text Card
+
+- **Logo:** `clinic-6-logo.png`
+- **Rating:** `5.0` ★★★★★
+- **Quote:**
+  > "FREMN has been a game changer. We recovered revenue we didn't even know we were losing, and patients love getting reminders on WhatsApp."
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name]`
+
+---
+
+### TESTIMONIAL 7 — Video Card
+
+- **Thumbnail:** `testimonial-7-thumbnail.webp`
+- **Video URL:** `[VIDEO_URL]`
+- **Name:** `Dr. [Name]`
+- **Practice:** `[Clinic Name]`
+- **Social:** `@[handle] · [X]K followers`
+
+---
+
+### TESTIMONIAL 8 — Text Card
+
+- **Logo:** `clinic-8-logo.svg`
+- **Rating:** `5.0` ★★★★★
+- **Quote:**
+  > "Consistent, reliable, and the support team actually picks up. FREMN has made running our front desk stress-free."
+- **Name:** `[Name]`
+- **Practice:** `[Clinic Name]`
+
+---
+
+## SECTION 7 — INTEGRATIONS
+
+- **Section ID:** `integrations`
+- **H2:** `Integrations`
+- **Subtitle:** `FREMN works with WhatsApp Business API, major clinic software, and Indian payment gateways out of the box.`
+- **Integration Tags (pill list):**
+  1. WhatsApp Business API
+  2. Practo
+  3. Clinicea
+  4. Dentulu
+  5. Zoho CRM
+  6. Razorpay
+  7. PayU
+  8. Cashfree
+  9. Google Calendar
+  10. Custom HMS / PMS
+  11. And more
+
+---
+
+## SECTION 8 — WHAT YOU GET (3-Feature Pipeline)
+
+- **H2:** `What You Get`
+- **Subtitle:** `A complete system to recover missed calls, book patients automatically, and keep chairs filled.`
+
+---
+
+### PIPELINE VISUAL (vertical flow):
+
 ```
-Most clinics don't realise how much revenue walks out the door every day.
-Fill in three numbers — we'll show you.
-```
-
-**Calculator inputs:**
-
-| Input | Label | Helper text | Default |
-|-------|-------|-------------|---------|
-| Slider / number | Missed calls & messages per day | On average, how many calls or WhatsApp messages go unanswered? | 8 |
-| Slider / number | Average ticket size (₹) | What does a typical appointment bring in? | ₹1,200 |
-| Slider / number | Conversion rate (%) | What % of new enquiries usually book? | 60% |
-
-**Output (live, animated):**
-
-| Label | Formula | Display |
-|-------|---------|---------|
-| Daily missed revenue | `missed × ticket × conversion` | ₹X per day |
-| Monthly missed revenue | `daily × 26` | ₹X per month |
-| Annual missed revenue | `monthly × 12` | ₹X per year |
-
-**Output call-out box:**
-```
-You're leaving ₹[X] on the table every year.
-FREMN pays for itself with just [Y] recovered appointments per month.
-```
-*(Y = monthly FREMN cost ÷ average ticket size, rounded up)*
-
-**CTA below calculator:** Book a Demo — Recover That Revenue →
-
-**Note text (below CTA):**
-```
-Based on industry averages for Indian dental clinics.
-Your actual recovery depends on call volume and patient mix.
-```
-
----
-
-### SECTION: Channels
-
-*Section label:* Works Where Patients Are
-
-**H2:** One system. Every channel they already use.
-
-**Sub:**
-```
-Patients don't change their habits for you. FREMN meets them where they are.
-```
-
-| Channel | Icon | Headline | Description |
-|---------|------|----------|-------------|
-| WhatsApp | 💬 | Where your patients already live | Full booking, reminders, payments, and history — on WhatsApp, with no app to download. |
-| Web Widget | 🌐 | Converts your website visitors | A floating chat on your clinic website — turns browsers into booked patients. |
-| Clinic App | 📱 | Your clinic in their pocket | Patients book, reschedule, and view their history in a clean app — under your clinic's brand. |
-
----
-
-### SECTION: Testimonials
-
-*Section label:* What Doctors Are Saying
-
-**H2:** Real feedback from real clinicians
-
-**Sub:**
-```
-Early validation from doctors across India who reviewed FREMN's workflow.
-```
-
-**Testimonial 1:**
-> "Dental clinics receive frequent patient queries regarding appointments, timings, and procedures. Automating these interactions through FREMN could help clinics respond faster and manage scheduling more efficiently."
-
-**Name:** Dr. Aaheli Banerjee
-**Credential:** BDS · Dental Surgeon
-**Clinic:** Guru Nanak Institute of Dental Sciences & Research, Kolkata
-**Rating:** ⭐⭐⭐⭐⭐
-
----
-
-**Testimonial 2:**
-> "In emergency departments, clinical care takes priority and routine patient calls are often missed. A system like FREMN could help ensure patients still receive timely responses and appointment guidance without increasing staff workload."
-
-**Name:** Dr. Suchismita Paul
-**Credential:** MBBS · Junior Doctor
-**Clinic:** Calcutta Medical College & Hospital, Kolkata
-**Rating:** ⭐⭐⭐⭐⭐
-
----
-
-**Testimonial 3:**
-> "Specialty departments manage significant coordination with patients before procedures. An AI front desk platform like FREMN could reduce repetitive communication tasks and improve how patients interact with clinics prior to scheduled care."
-
-**Name:** Dr. Anshuman Sarkar
-**Credential:** MBBS, MD (Anaesthesiology) · Senior Anaesthesiologist
-**Clinic:** Tata Medical Center, Kolkata
-**Rating:** ⭐⭐⭐⭐⭐
-
----
-
-**Testimonial 4:**
-> "Outpatient departments still depend heavily on manual communication systems. An AI receptionist platform like FREMN could improve coordination efficiency and reduce missed patient interactions at the clinic level."
-
-**Name:** Dr. A. K. Das
-**Credential:** MBBS, MD (Internal Medicine), DM (Cardiology) · Senior Cardiologist
-**Clinic:** Sahid Khudiram Government General Hospital, West Bengal
-**Rating:** ⭐⭐⭐⭐⭐
-
----
-
-### SECTION: Comparison Table
-
-*Section label:* How We Compare
-
-**H2:** Why dentists choose FREMN
-
-**Sub:**
-```
-Not another generic tool. Built specifically for Indian dental clinics.
-```
-
-| Feature | FREMN | Generic AI Tools | Human Receptionist | Manual WhatsApp |
-|---------|:-----:|:----------------:|:-----------------:|:---------------:|
-| 24/7 availability | ✅ | ✅ | ❌ | ❌ |
-| WhatsApp-native (no app for patients) | ✅ | ❌ | ❌ | Manual |
-| Hindi / Bengali / English | ✅ | Partial | Depends | Manual |
-| Missed call → booked in 60s | ✅ | ❌ | ❌ | ❌ |
-| 24hr + 2hr auto reminders | ✅ | Partial | ❌ | Manual |
-| No-show recovery | ✅ | ❌ | ❌ | ❌ |
-| UPI / WhatsApp payments | ✅ | ❌ | ❌ | ❌ |
-| Google review automation | ✅ | ❌ | ❌ | ❌ |
-| Revenue & no-show dashboard | ✅ | Partial | ❌ | ❌ |
-| DPDP compliant, India-built | ✅ | ❌ | N/A | N/A |
-| ₹ INR pricing | ✅ | ❌ | N/A | N/A |
-
----
-
-### SECTION: Trust & Compliance
-
-*Section label:* Built for India. Built to Last.
-
-**H2:** Your patients' data is safe with us
-
-**Sub:**
-```
-FREMN is built in India, for India — with data protection baked in from day one.
-```
-
-**Trust cards (3 across):**
-
-**Card 1 — DPDP Compliant**
-> Built in alignment with India's Digital Personal Data Protection Act, 2023. Patient data is never sold, profiled, or shared with third parties.
-
-**Card 2 — Data stays in India**
-> All patient communication data is processed and stored within compliant cloud infrastructure. No data crosses borders without explicit authorisation.
-
-**Card 3 — No data sold. Ever.**
-> FREMN is a technology service provider, not an advertising platform. Your patients' information is used only to run your clinic's front desk — nothing else.
-
-*(Optional: DPDP badge / shield icon visual element)*
-
----
-
-### SECTION: Pricing
-
-*Section label:* Simple Pricing
-
-**H2:** One plan. No surprises.
-
-**Sub:**
-```
-Built for single-location dental clinics in India.
-Start with a free pilot — no commitment needed.
-```
-
-*(Pricing tier cards — content TBD when pricing is confirmed)*
-
-**Placeholder card:**
-
-| | Starter | Growth | Practice |
-|-|---------|--------|---------|
-| Price | ₹X/month | ₹X/month | ₹X/month |
-| Locations | 1 | 1–3 | 4+ |
-| WhatsApp bookings | ✅ | ✅ | ✅ |
-| Voice AI | ❌ | ✅ | ✅ |
-| Payments | ❌ | ✅ | ✅ |
-| Dashboard | ✅ | ✅ | ✅ |
-| Multi-doctor | ❌ | ✅ | ✅ |
-
-**Below pricing:**
-```
-All plans include: 14-day free pilot · No setup fee · Cancel anytime
-```
-
-**CTA:** Start Your Free Pilot →
-
----
-
-### SECTION: FAQ
-
-*Section label:* Common Questions
-
-**H2:** Everything you need to know
-
----
-
-**Q: Does my patient need to download an app?**
-A: No. Everything happens on WhatsApp — the app they already have on their phone. No new app, no account, no friction.
-
----
-
-**Q: Which languages does FREMN support?**
-A: FREMN currently supports Hindi, Bengali, and English. Patients can message in their preferred language and FREMN responds accordingly.
-
----
-
-**Q: What happens when a patient misses my call?**
-A: Within 60 seconds, FREMN sends the patient a WhatsApp message with available booking slots. If they don't have WhatsApp, they receive an SMS instead.
-
----
-
-**Q: Can patients still call and speak to someone?**
-A: Yes. FREMN handles the routine — bookings, reminders, FAQs. Complex or urgent cases are flagged to your staff immediately with full context.
-
----
-
-**Q: How do appointment reminders work?**
-A: FREMN sends a reminder 24 hours before the appointment and a second one 2 hours before — but only if the patient hasn't already confirmed. Patients reply YES to confirm or NO to reschedule.
-
----
-
-**Q: Does FREMN integrate with my existing appointment system?**
-A: Yes. FREMN syncs with your calendar and appointment setup during onboarding. Your existing workflow doesn't change — FREMN adds to it.
-
----
-
-**Q: How does WhatsApp payment collection work?**
-A: After an appointment, FREMN sends a payment link directly on WhatsApp. Patients pay via UPI, debit/credit card, or net banking — all within the chat.
-
----
-
-**Q: Is patient data secure?**
-A: Yes. FREMN is built in alignment with India's Digital Personal Data Protection Act (DPDP Act), 2023. Patient data is encrypted, never sold, and processed only to run your front desk.
-
----
-
-**Q: How long does setup take?**
-A: Most clinics are live within 48 hours of signing up. Our team handles the entire setup — you just confirm your availability slots and doctor list.
-
----
-
-**Q: What does FREMN cost?**
-A: Pricing is in ₹ INR and based on your clinic size and the features you need. Book a demo and we'll walk you through a plan that fits your practice.
-
----
-
-### SECTION: Final CTA / Booking Form
-
-**H2:** Book a 15-Minute Demo
-
-**Left column — trust points:**
-- ✅ No commitment — just a conversation
-- ✅ Live walkthrough of FREMN for your clinic type
-- ✅ Personalised pilot set up within 48 hours
-
-**Form — Step 1:**
-- Do you own or work at a dental clinic? (Yes / No)
-- How many locations? (1 / 2–5 / 5+)
-- Which city?
-
-**Form — Step 2:**
-- First Name *
-- Last Name *
-- Phone *
-- Clinic Name *
-- Work Email *
-
-**Form — Step 3:**
-- Preferred time for the call (dropdown or time picker)
-- Confirm + submit
-
-**Submit button:** Book My Demo →
-
-**Below form:**
-```
-No spam. Your data stays private.
-We'll only reach out about your demo.
+[Patient Calls Clinic]       → Missed call recovered in 60s    [Badge: Active]
+         ↓
+[WhatsApp Booking]           → Slot confirmed in 3 messages     [Badge: Live]
+         ↓
+[AI Follow-up & Reminders]  → 60% reduction in no-shows        [Badge: 24/7]
 ```
 
-**Disqualification (if "No" on Q1):**
+- **Top-right badge:** `Appointment Recovery Pipeline  60% no-show reduction` (green pill)
+
+---
+
+### FEATURE BLOCK 1 — Missed Call Recovery
+
+- **H3:** `Missed Call Recovery`
+- **Description:** `Patient calls while you're busy — FREMN sends available slots on WhatsApp in under 60 seconds.`
+
+---
+
+### FEATURE BLOCK 2 — AI WhatsApp Receptionist
+
+- **H3:** `AI WhatsApp Receptionist`
+- **Description:** `Books patients in 3 messages, operates 24/7, follows up until the slot is confirmed.`
+- **UI Mockup — Live WhatsApp Transcript:**
+  - **Header:** `Live Transcript` | Badge: `● Live  02:14`
+  - **Message 1 (AI):** `Hi! You just called our clinic. Which day works best for your appointment?`
+  - **Message 2 (Patient):** `Monday works for me.`
+  - **Message 3 (AI):** `Great! I have 10:00 AM or 3:30 PM available. Which do you prefer?`
+  - **Message 4 (Patient):** `3:30 PM please.`
+  - **Message 5 (AI):** `Confirmed! Monday 3:30 PM booked. Reminder sent ✓`
+
+---
+
+### FEATURE BLOCK 3 — Direct Calendar Booking
+
+- **H3:** `Direct Calendar Booking`
+- **Description:** `Books directly into your clinic schedule with real-time slot management. No double bookings, ever.`
+- **UI Mockup — Calendar + Sync:**
+  - **Header:** `March 2025` | Status: `Synced`
+  - **Calendar grid:** Full monthly calendar (SMTWTFS), days 1–31
+  - **Synced to logos:**
+    Practo, Clinicea, Dentulu, Google Calendar, Zoho CRM, Razorpay, PayU, Cashfree, WhatsApp Business API, Custom HMS
+  - **New Booking Confirmation Card:**
+    - Label: `New Booking`
+    - Patient: `Priya Sharma`
+    - Date: `Mar 15`
+    - Time: `3:30 PM`
+    - Service: `Check-up`
+- **CTA Button:** `Book a Demo` → `/book-a-demo`
+
+---
+
+## SECTION 9 — COMPARISON TABLE
+
+- **Section ID:** `comparison`
+- **H2:** `How We Compare`
+- **Subtitle:** `See why dental clinics in India choose FREMN over generic alternatives.`
+
+| Feature                              | FREMN              | Generic AI Chatbots      | Traditional Receptionist | Other SaaS Products     |
+|--------------------------------------|--------------------|--------------------------|--------------------------|-------------------------|
+| Dedicated 1-to-1 support             | ✅                 | Self-serve               | N/A                      | Ticket only             |
+| Built for Indian dental clinics      | ✅                 | Generic                  | Manual only              | Generic                 |
+| WhatsApp-native booking              | ✅                 | ❌                       | ❌                       | Limited                 |
+| Missed call recovery                 | ✅                 | ❌                       | ❌                       | ❌                      |
+| UPI / Indian payment collection      | ✅                 | ❌                       | Manual                   | Limited                 |
+| Flexible contracts                   | Monthly            | Annual                   | Full-time hire           | 12-mo lock              |
+| Refundable setup fee                 | ✅                 | Non-refundable           | N/A                      | Non-refundable          |
+
+- **CTA below table:** `See It In Action` — blue button → `/book-a-demo`
+
+---
+
+## SECTION 10 — PRICING CALCULATOR
+
+- **Section ID:** `pricing`
+- **H2:** `Build your plan`
+- **Subtitle:** `Tell us about your clinic. We'll show you exactly what it costs.`
+
+---
+
+### PRICING CALCULATOR — UI Controls
+
+#### Clinic Locations Stepper
+- **Label:** `Clinic locations`
+- **Helper text:** `Additional locations use reduced per-service rates.`
+- **Controls:** `−` | `1` | `+`
+
+#### Features Toggle Buttons (multi-select pills)
+- **Label:** `Features` | `Choose what your AI receptionist handles`
+- **Helper text:** `Please select Inbound, Outbound, or both.`
+- **Options:**
+  1. `Inbound calls & WhatsApp`
+  2. `Outbound campaigns`
+  3. `Appt. Reminders` — Badge: `Spots Full`
+  4. `Recalls & Re-activation` — Badge: `Spots Full`
+- **Selected style:** Dark background + white text + white FREMN logo icon
+
+#### Monthly Conversation Volume Slider
+- **Label:** `Monthly conversation volume`
+- **Default value:** `1,500 conversations`
+- **Helper text:** `1,500 free conversations included. ₹2/conversation overage.`
+- **Slider range:** 0 → 1.5K → 3K → 5K → 7.5K → 10K
+- **Ticks:** 0, 1.5K, 3K, 5K, 7.5K, 10K
+
+#### Currency Switcher
+- **Options:** `₹` | `$` | `€` | `£` | `A$`
+- **Style:** Pill tab buttons
+
+---
+
+### PRICING CALCULATOR — Output / Price Display
+
+- **Price:** `₹3,999`
+- **Period:** `Per month, 1,500 conversations included`
+- **Cost Breakdown (accordion or always visible):**
+  - `Services (1 location)` — `₹3,999`
+  - `Add-on features` — `₹0`
+  - `Overage` — `₹0`
+- **Included section:** `Included` (with checkmark list)
+- **CTA Button:** `Get started` → `/book-a-demo`
+
+---
+
+## SECTION 11 — FAQ
+
+- **H2:** (implied, within FAQ section)
+- **Style:** Accordion / disclosure list
+- **ID:** `faq`
+
+### FAQ Items:
+
+**Q1:** Can FREMN handle calls when my receptionist is busy?
+> Absolutely. When a patient calls and your line is busy or unanswered, FREMN automatically sends them a WhatsApp message within 60 seconds with your available appointment slots. The patient can confirm their booking directly on WhatsApp — without calling back, without an app, and without your staff doing anything manually.
+
+**Q2:** Can FREMN collect payments and send invoices?
+> Yes. After every appointment, FREMN generates an invoice and sends a payment link on WhatsApp. Patients can pay instantly by UPI, debit/credit card, or net banking — no paper, no phone calls, no chasing. Outstanding balances are tracked and friendly reminders are sent automatically.
+
+**Q3:** Do you charge per conversation, or are there additional charges?
+> Your plan includes a set number of conversations each month covering your typical volume. Overage is only charged if you exceed that limit at a flat per-conversation rate. There are no hidden fees — everything is transparent in your monthly plan so you know exactly what you're paying for upfront.
+
+**Q4:** Can FREMN work with my existing clinic phone number?
+> **Yes!** FREMN connects to your existing phone line. Your patients will continue to see the same number they already know. No number porting, no disruption to your current setup.
+
+**Q5:** How does FREMN reduce no-shows?
+> FREMN sends automated reminders 24 hours before the appointment and again 2 hours before if the patient hasn't confirmed. Patients reply YES to confirm or NO to reschedule — directly on WhatsApp. If a patient misses their slot anyway, FREMN automatically follows up to rebook them. Clinics typically see a significant drop in no-shows within the first month.
+
+**Q6:** Does it integrate with my clinic management software?
+> Yes. FREMN integrates with major clinic and practice management platforms including Practo, Clinicea, Dentulu, Google Calendar, and custom HMS systems via API. It syncs appointment data in real time and prevents double-bookings automatically.
+
+**Q7:** Is FREMN available 24/7?
+> Yes, absolutely. FREMN operates around the clock with no breaks, no sick leave, and no out-of-office periods. It handles inbound calls and WhatsApp messages from patients at any hour — ensuring your clinic never misses an opportunity, even at 2 AM.
+
+**Q8:** How cost-effective is it compared to hiring a receptionist?
+> Very cost-effective. FREMN pays for itself with just one recovered appointment per month. It is significantly cheaper than hiring a full-time or even part-time receptionist, with no training, no HR overhead, and no turnover risk. It also handles volume that would require multiple staff members during peak hours.
+
+---
+
+## SECTION 12 — BOOKING MODAL / FORM
+
+- **Trigger:** All "Book a Demo" / "Book a Free Demo" buttons sitewide
+
+### Modal — Left Panel (dark bg)
+
+- **FREMN logo** (white version)
+- **H3:** `Product selection`
+- **H2:** `Choose your FREMN product`
+- **Subtitle:** `Select what you'd like to explore.`
+- **Product Cards (radio/select):**
+  1. `AI WhatsApp Receptionist` — `Automate calls, WhatsApp bookings, and follow-ups.`
+  2. `Appointment Reminders` — `Reduce no-shows with automated WhatsApp reminders.`
+  3. `Payment Collection` — `Send invoices and collect payments on WhatsApp instantly.`
+  4. `Recall & Re-activation` — `Bring back lapsed patients automatically.`
+
+- **Section title:** `Book a 15 Minute Discovery Call`
+- **Subtitle:** `Let's get some basic info, and then we'll get you on the calendar!`
+- **Bullet benefits:**
+  - Never miss another patient call
+  - 24/7 AI front desk on WhatsApp
+  - No app downloads needed by patients
+
+### Modal — Right Panel (form)
+
+- **H2:** `Book Your Discovery Call`
+- **Subtitle:** `Let's get some basic info!`
+- **Step Indicator:** `1 / 3`
+
+#### Step 1 — Qualification
+- **Q1:** `Do you work at or own a clinic?`
+  - Options: `Yes, I work at or own a clinic` | `No, I'm not affiliated with a clinic`
+- **Q2:** `How many locations?`
+  - Options: `1` | `2-5` | `6-15` | `15+`
+- **Q3:** `Clinic / Practice Management System?`
+  - Scrollable list:
+    Practo, Clinicea, Dentulu, Zoho CRM, Google Calendar, Custom HMS, Healthplix, eVitalRx, Meddbase, Lybrate, Other
+
+#### Step 2 — Contact Info
+- Fields: `First Name*` | `Last Name*` | `Email*` | `Phone*` | `Clinic Name*`
+- Checkbox: `I agree to the Privacy Policy and commit to attending this call.`
+
+#### Step 3 — Calendar Embed (external booking calendar)
+
+#### Disqualification State (non-clinic):
+- **H3:** `Thanks for your interest`
+- **Body:** `We currently only work with outpatient healthcare clinics and practices. However, you can still book a call with our team if you'd like to discuss further.`
+- **Buttons:** `Continue to Book Anyway` | `Go Home`
+
+#### Success / Error States:
+- Success: `Success! Redirecting to calendar...`
+- Error: `Something went wrong. Proceeding anyway...`
+
+#### Navigation Buttons:
+- `← Back`
+- `Continue →`
+- `Book My Demo →` (final step)
+
+---
+
+## SECTION 13 — FOOTER
+
+- **Logo:** `fremn-logo.svg` → links to `/`
+- **Tagline:** `AI Front Desk for Outpatient Healthcare`
+- **Built in section:**
+  - FREMN Technologies LLP
+  - Kolkata, India · Built for Indian dentists
+
+### Footer Columns:
+
+#### Product
+- Features → `#features`
+- Integrations → `#integrations`
+- How We Compare → `#comparison`
+- Testimonials → `#testimonials`
+- FAQ → `#faq`
+- Blog → `/blog`
+
+#### Company
+- Book a Demo Call → (opens modal)
+- Contact Us → `mailto:contact@fremn.com`
+- Phone → `+91 9073644046`
+- Website → `www.fremn.com`
+
+### Footer Bottom Bar
+- **Copyright:** `© 2025 FREMN Technologies LLP. All rights reserved.`
+- **Links:** `Privacy Policy` → `/privacy-policy` | `Terms & Conditions` → `/terms-conditions` | `Cookie Settings`
+
+---
+
+## SECTION 14 — COOKIE CONSENT BANNER
+
+- **Position:** Fixed bottom
+- **H3:** `We use cookies`
+- **Body:** `We use cookies to improve your experience, analyse traffic, and serve relevant ads. See our Privacy Policy for details.`
+- **Buttons:**
+  - `Accept all`
+  - `Reject non-essential`
+  - `Manage preferences`
+
+### Cookie Categories (expanded panel):
+
+| Category    | Description                                                          | Toggle     |
+|-------------|----------------------------------------------------------------------|------------|
+| Necessary   | Required for the site to function. Cannot be disabled.              | Always ON  |
+| Analytics   | Helps us understand how visitors use the site (Microsoft Clarity).  | Toggle     |
+| Marketing   | Used to show relevant ads and measure campaign performance (Meta Pixel). | Toggle |
+
+- **Save Button:** `Save preferences`
+
+---
+
+## ASSET PATHS REFERENCE
+
 ```
-Thanks for your interest in FREMN.
-We currently work exclusively with dental clinics and outpatient practices.
-If you'd like to discuss a partnership or referral, reach us at contact@fremn.com
+/assets/images/fremn-logo.svg
+/assets/images/fremn-logo-white.svg
+/assets/images/fremn-logomark.svg
+/assets/images/og-image.png
+/assets/images/backgrounds/hero-bg.png
+/assets/images/payment-icons/upi-logo.svg
+/assets/images/payment-icons/visa-logo.svg
+/assets/images/payment-icons/mastercard-logo.svg
+/assets/images/payment-icons/netbanking-logo.svg
+/assets/images/payment-icons/rupay-logo.svg
+/assets/images/payment-icons/phonepe-logo.svg
+/assets/images/avatars/patient-1.avif   (Priya S. avatar)
+/assets/images/avatars/patient-2.avif   (Rahul M. avatar)
+/assets/images/avatars/patient-3.avif   (Anita R. avatar)
+/assets/images/avatars/patient-4.avif   (Arjun Sharma avatar)
+/assets/images/avatars/patient-5.avif   (Meera Nair avatar)
+/assets/images/avatars/patient-6.avif   (Suresh K. avatar)
+/assets/images/testimonials/clinic-1-logo.png
+/assets/images/testimonials/clinic-3-logo.svg
+/assets/images/testimonials/clinic-5-logo.png
+/assets/images/testimonials/clinic-6-logo.png
+/assets/images/testimonials/clinic-8-logo.svg
+/assets/images/testimonials/testimonial-2-thumbnail.webp
+/assets/images/testimonials/testimonial-4-thumbnail.webp
+/assets/images/testimonials/testimonial-7-thumbnail.webp
+/assets/images/integrations/practo-logo.svg
+/assets/images/integrations/clinicea-logo.svg
+/assets/images/integrations/dentulu-logo.png
+/assets/images/integrations/zoho-logo.svg
+/assets/images/integrations/google-calendar-logo.svg
+/assets/images/integrations/razorpay-logo.svg
+/assets/images/integrations/payu-logo.svg
+/assets/images/integrations/cashfree-logo.svg
+/assets/images/integrations/whatsapp-logo.svg
+/assets/images/integrations/custom-hms-logo.svg
 ```
-
----
-
-### FOOTER
-
-**Tagline:** AI Front Desk for Indian Dental Clinics
-
-**Address line:** Kolkata, India · Built for Indian dentists
-
-**URL:** fremn.in
-
-**Column — Product:**
-- Features
-- How It Works
-- Channels
-- Pricing
-- FAQ
-
-**Column — Company:**
-- Book a Demo
-- Contact Us (contact@fremn.com)
-- Blog
-- Careers
-
-**Column — Legal:**
-- Privacy Policy
-- Terms of Service
-- DPDP Compliance
-
-**Social:**
-- LinkedIn: linkedin.com/company/fremn
-- X / Twitter: @thefremn
-
-**Copyright:**
-```
-© 2026 Fremn Technologies LLP. All rights reserved.
-Proud member of Pledge 1%
-```
-
----
-
----
-
-## Page: `/privacy-policy`
-
-**Page title:** Privacy Policy — FREMN
-**Breadcrumb:** Legal · Privacy Policy
-
----
-
-**Effective Date:** 17th April 2026
-**Entity:** FREMN TECHNOLOGIES LLP
-
-**Intro:**
-```
-FREMN, operated by FREMN TECHNOLOGIES LLP, respects your privacy and is committed
-to protecting personal information shared through our website and services.
-This policy explains what we collect, why, and how we protect it.
-```
-
----
-
-**01 — Information We Collect**
-
-When you interact with FREMN through our website or services, we may collect:
-- Name and contact details (email address, phone number)
-- Organisation or clinic name and specialty
-- Device and browser information for platform optimisation
-- Interaction logs from supported communication channels
-
-This information is used exclusively to operate, support, and improve the FREMN platform.
-
----
-
-**02 — Communication Data**
-
-When clinics use FREMN, the platform may process communication content exchanged through:
-- Voice call interactions handled by the AI receptionist
-- WhatsApp messages sent to or from the clinic's FREMN channel
-- Website widget conversations initiated by patients
-
-This processing is limited exclusively to supporting automation of clinic communication workflows. FREMN does not use this data for advertising or profiling.
-
----
-
-**03 — Purpose of Data Use**
-
-Collected information may be used for:
-- Operating and delivering platform services reliably
-- Responding to pilot demo requests and onboarding inquiries
-- Improving platform performance and AI accuracy over time
-- Maintaining platform security and preventing misuse
-- Providing ongoing technical support to clinics using FREMN
-
----
-
-**04 — Role in Healthcare Data Handling**
-
-Clinics using FREMN remain responsible for all patient communication decisions and the accuracy of information provided through the platform.
-
-FREMN TECHNOLOGIES LLP acts as a technology service provider supporting workflow automation only. We do not provide healthcare services and are not a data fiduciary in the clinical context — the clinic is.
-
----
-
-**05 — Data Storage and Protection**
-
-We apply appropriate technical and organisational safeguards to protect personal data:
-- Secure authentication protocols for all system access
-- Restricted internal access based on role and necessity
-- Cloud infrastructure protection practices aligned with industry standards
-
----
-
-**06 — Third-Party Services**
-
-FREMN may rely on trusted third-party providers for:
-- Cloud hosting and infrastructure
-- Authentication and identity management
-- Communication APIs (voice, WhatsApp, web)
-- Analytics and performance monitoring tools
-
-These providers maintain their own independent privacy policies and security practices.
-
----
-
-**07 — Cookies**
-
-Cookies may be used on the FREMN website to:
-- Improve overall website performance and load times
-- Analyse usage patterns and visitor behaviour
-- Maintain session continuity across interactions
-
-Users can disable cookies at any time through their browser settings without affecting core functionality.
-
----
-
-**08 — Data Retention**
-
-Personal data is retained only for as long as necessary to operate our services. When data is no longer needed, it is securely deleted or anonymised.
-
----
-
-**09 — Your Rights**
-
-You may exercise the following rights at any time:
-- Request access to the data we hold about you
-- Request correction of any inaccurate information
-- Request removal of submitted contact information
-
-Contact: contacts@fremn.com
-
----
-
-**10 — Policy Updates**
-
-This Privacy Policy may be updated periodically to reflect changes in our practices, technology, or applicable laws. Continued use of the platform constitutes acceptance of any updates.
-
----
-
-**Cross-links (sidebar / bottom):**
-- Terms of Service → `/terms-of-service`
-- DPDP Compliance → `/dpdp-compliance`
-
----
-
----
-
-## Page: `/terms-of-service`
-
-**Page title:** Terms of Service — FREMN
-**Breadcrumb:** Legal · Terms of Service
-
----
-
-**Effective Date:** 17th April 2026
-**Entity:** FREMN TECHNOLOGIES LLP
-
-**Intro:**
-```
-These Terms of Service govern your use of FREMN, an AI receptionist platform for outpatient
-healthcare clinics operated by FREMN TECHNOLOGIES LLP. By accessing or using our website
-and services, you agree to these Terms.
-```
-
----
-
-**01 — About FREMN**
-
-FREMN is an AI receptionist platform designed to help outpatient healthcare clinics manage patient communication across voice calls, WhatsApp, and web-based interfaces.
-
-The platform supports automation of front desk workflows such as appointment inquiries, confirmations, reminders, and missed-call responses.
-
-**Important:** FREMN does not provide medical advice or clinical decision support of any kind.
-
----
-
-**02 — Acceptance of Terms**
-
-By using FREMN, you agree to:
-- Provide accurate information when using the platform
-- Comply with applicable laws and regulations
-- Use the platform responsibly and in good faith
-- Not misuse platform infrastructure in any manner
-
-If you do not agree to these terms, please discontinue use of the platform immediately.
-
----
-
-**03 — Permitted Use**
-
-Users expressly agree not to:
-- Attempt unauthorised access to any part of the platform or its infrastructure
-- Reverse engineer any system components, algorithms, or AI workflows
-- Upload harmful, malicious, or illegal content through any channel
-- Misuse automated communication features for spam or unsolicited outreach
-
-FREMN TECHNOLOGIES LLP reserves the right to restrict or terminate access if misuse is detected or suspected.
-
----
-
-**04 — Healthcare Responsibility Disclaimer**
-
-FREMN provides communication automation support only. The platform is not a clinical system and does not participate in medical decision-making.
-
-Healthcare providers using FREMN remain solely responsible for:
-- All diagnosis and treatment decisions
-- Patient communication accuracy and clinical appropriateness
-- Regulatory compliance obligations under applicable healthcare laws
-
-FREMN does not replace licensed medical professionals or clinical systems. It is a front desk automation tool only.
-
----
-
-**05 — Platform Availability**
-
-We aim to maintain reliable service availability but cannot guarantee uninterrupted operation at all times. Temporary downtime may occur due to:
-- Scheduled maintenance and updates
-- Emergency patches or security fixes
-- Third-party service dependencies beyond our control
-
-We will endeavour to communicate planned downtime in advance wherever possible.
-
----
-
-**06 — Intellectual Property**
-
-All platform components remain the exclusive property of FREMN TECHNOLOGIES LLP, including:
-- Software code and architecture
-- Design system, branding, and visual identity
-- AI workflows, models, and prompt systems
-- Documentation, guides, and training materials
-
-Unauthorised reproduction, distribution, or modification of any platform component is strictly prohibited.
-
----
-
-**07 — Limitation of Liability**
-
-FREMN TECHNOLOGIES LLP is not responsible for outcomes arising from use of the platform, including:
-- Communication delays or failed message delivery
-- Missed appointments due to platform or third-party failures
-- Clinic workflow decisions made based on platform output
-- Disruptions caused by third-party service providers
-
-Use of the platform is at your own discretion. FREMN TECHNOLOGIES LLP's liability is limited to the maximum extent permitted by applicable law.
-
----
-
-**08 — Updates to Terms**
-
-These Terms may be updated periodically. The effective date at the top of this document will be revised accordingly. Continued use of the platform after an update is published constitutes acceptance of the revised Terms.
-
----
-
-**09 — Contact**
-
-contact@fremn.com
-
----
-
-**Cross-links:**
-- Privacy Policy → `/privacy-policy`
-- DPDP Compliance → `/dpdp-compliance`
-
----
-
----
-
-## Page: `/dpdp-compliance`
-
-**Page title:** DPDP Compliance — FREMN
-**Breadcrumb:** Legal · DPDP Compliance
-
----
-
-**Effective Date:** 17th April 2026
-**Entity:** FREMN TECHNOLOGIES LLP
-
-**Intro:**
-```
-FREMN, operated by FREMN TECHNOLOGIES LLP, follows responsible personal data handling
-practices aligned with India's Digital Personal Data Protection Act, 2023 (DPDP Act).
-This notice explains our role, obligations, and the rights available to individuals.
-```
-
----
-
-**01 — Role of FREMN Under the DPDP Act**
-
-The DPDP Act, 2023 establishes a clear framework for how personal data is handled. Under this framework:
-
-- **Clinics act as Data Fiduciaries** — they determine the purpose and means of processing patient data
-- **FREMN TECHNOLOGIES LLP acts as a Data Processor** — processing communication data only as directed by the clinic, solely to deliver AI receptionist services
-
-FREMN processes personal data strictly to provide the AI receptionist services contracted by each clinic. We do not process data for any independent purpose beyond service delivery.
-
----
-
-**02 — Processing Principles**
-
-FREMN's data handling practices are aligned with the core principles of the DPDP Act, 2023:
-
-- **Purpose limitation** — data is processed only for the specific purpose for which it was collected
-- **Data minimisation** — only the data necessary for service delivery is processed
-- **Secure processing** — appropriate technical safeguards are applied at all times
-- **Consent-based usage** — processing occurs only where a valid lawful basis exists
-- **Reasonable safeguards** — organisational measures are in place to prevent unauthorised access or misuse
-
----
-
-**03 — User Rights Under the DPDP Act**
-
-Individuals whose personal data is processed through FREMN have the following rights:
-
-- **Right of Access** — request information about personal data held and how it is being used
-- **Right to Correction** — request correction of any inaccurate or incomplete personal data
-- **Right to Withdrawal of Consent** — withdraw previously granted consent for data processing
-- **Right to Erasure** — request removal of personal data where applicable under the Act
-
-All requests: privacy@fremn.com
-
----
-
-**04 — Security Safeguards**
-
-FREMN applies the following to meet DPDP Act obligations:
-- Secure authentication for all platform access points
-- Controlled internal system access on a need-to-know basis
-- Cloud infrastructure protections aligned with industry-standard practices
-- Active monitoring for unauthorised access attempts or anomalous activity
-
-These safeguards are reviewed and updated periodically as DPDP Act rules are notified by the Government of India.
-
----
-
-**05 — Grievance Contact**
-
-For any DPDP-related concerns, complaints, or data rights requests:
-
-contact@fremn.com
-
-We aim to acknowledge all DPDP-related requests within 72 hours and resolve them within the timeframes prescribed under the Act.
-
----
-
-**Cross-links:**
-- Privacy Policy → `/privacy-policy`
-- Terms of Service → `/terms-of-service`
-
----
-
----
-
-## Sections Added Beyond PatientDesk Structure
-
-The following sections were added specifically for FREMN (not present on PatientDesk):
-
-| Section | Rationale |
-|---------|-----------|
-| **Revenue Leak Calculator** | High-intent conversion tool — puts a ₹ number on inaction, makes the demo CTA personal |
-| **Channels** | FREMN is multi-channel (WhatsApp + Voice + Web + App); PatientDesk is voice-only. Needed to explain the breadth. |
-| **Trust & Compliance** | DPDP compliance is a real differentiator for Indian clinics worried about patient data. Builds trust before pricing. |
-
----
-
-*content.md covers all copy and page text. See `design.md` for design system and technical implementation.*

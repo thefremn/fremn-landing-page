@@ -136,7 +136,7 @@ export default function Footer() {
                 href={item.href}
                 className="font-sans text-[13.5px] text-[#6b7280] hover:text-[#111827] transition-colors duration-150 w-fit focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563eb]/30 rounded"
               >
-                {"display" in item ? item.display : item.label}
+                {item.label}
               </a>
             ))}
           </div>

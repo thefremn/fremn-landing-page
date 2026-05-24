@@ -26,9 +26,9 @@ function useCountUp(target: number, triggered: boolean, duration = 1500) {
 /* ── Feature Card 1 — Automated Payment Collection ── */
 function PaymentCard() {
   return (
-    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
+    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 h-full transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
-      <div className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 text-[12px] font-sans">
+      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 text-[12px] font-sans">
         <div className="flex items-center justify-between mb-3">
           <span className="font-semibold text-[#111827]">Overdue</span>
           <span className="px-2 py-0.5 rounded-full bg-[#fef3c7] text-[#92400e] font-semibold text-[10px]">3</span>
@@ -83,9 +83,9 @@ function WhatsAppCard({ triggered }: { triggered: boolean }) {
   ];
 
   return (
-    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
+    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 h-full transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
-      <div className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
+      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
         <div className="grid grid-cols-3 gap-3">
           {stats.map((stat) => (
             <div key={stat.label} className="rounded-xl bg-white border border-[#e5e7eb] p-3 flex flex-col gap-1.5">
@@ -126,9 +126,9 @@ function MissedCallCard({ triggered }: { triggered: boolean }) {
   ];
 
   return (
-    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
+    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 h-full transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
-      <div className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
+      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
         <div className="flex items-center justify-between mb-3">
           <span className="font-semibold text-[#111827]">Patient Queue</span>
           <span className="px-2.5 py-1 rounded-full bg-[#eff6ff] text-[#2563eb] font-semibold text-[13px] tabular-nums">
@@ -163,9 +163,9 @@ function MissedCallCard({ triggered }: { triggered: boolean }) {
 /* ── Feature Card 4 — Recall & Re-activation ── */
 function RecallCard() {
   return (
-    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
+    <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 h-full transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
-      <div className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
+      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
         <div className="font-semibold text-[#111827] mb-3">Re-activation Campaigns</div>
         {[
           { label: "6-month recall reminder", status: "Sent",   count: "47 patients",  color: "#16a34a" },
@@ -243,6 +243,7 @@ export default function Features() {
           ].map((card, i) => (
             <div
               key={i}
+              className="h-full"
               style={{
                 opacity: triggered ? 1 : 0,
                 transform: triggered ? "translateY(0)" : "translateY(20px)",

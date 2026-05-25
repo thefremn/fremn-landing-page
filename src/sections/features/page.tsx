@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { UserPlus, RefreshCw, PhoneMissed, MessageSquare } from "lucide-react";
 
 /* ── Count-up hook ───────────────────────────────────────────────────────── */
 function useCountUp(target: number, triggered: boolean, duration = 1500) {
@@ -85,25 +86,25 @@ function WhatsAppCard({ triggered }: { triggered: boolean }) {
   return (
     <div className="group relative rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-6 h-full transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(37,99,235,0.12)] hover:border-[#bfdbfe] cursor-default overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden="true" />
-      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-4 font-sans text-[12px]">
-        <div className="grid grid-cols-3 gap-3">
+      <div className="flex-1 rounded-xl bg-[#f9fafb] border border-[#e5e7eb] p-2.5 sm:p-4 font-sans text-[12px]">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-xl bg-white border border-[#e5e7eb] p-3 flex flex-col gap-1.5">
-              <span className="text-[10px] text-[#9ca3af] leading-tight">{stat.label}</span>
-              <span className="font-bold text-[#111827] text-[22px] leading-none tabular-nums">{stat.value}</span>
+            <div key={stat.label} className="rounded-lg sm:rounded-xl bg-white border border-[#e5e7eb] p-1.5 sm:p-3 flex flex-col gap-1 sm:gap-1.5 min-w-0 overflow-hidden">
+              <span className="text-[8px] sm:text-[10px] text-[#9ca3af] leading-tight break-words">{stat.label}</span>
+              <span className="font-bold text-[#111827] text-[11px] sm:text-[22px] leading-none tabular-nums truncate">{stat.value}</span>
               {stat.badge && (
-                <span className="self-start px-1.5 py-0.5 rounded-full text-[9px] font-semibold"
+                <span className="self-start px-1 sm:px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-semibold"
                   style={{ background: stat.badgeColor, color: stat.badgeText }}>{stat.badge}</span>
               )}
             </div>
           ))}
         </div>
-        <div className="mt-3 rounded-xl bg-[#eff6ff] border border-[#dbeafe] p-3">
-          <div className="flex items-center gap-1.5 mb-2">
-            <div className="w-2 h-2 rounded-full bg-[#22c55e]" />
-            <span className="text-[10px] font-semibold text-[#2563eb]">WhatsApp — Booking confirmed ✓</span>
+        <div className="mt-2 sm:mt-3 rounded-lg sm:rounded-xl bg-[#eff6ff] border border-[#dbeafe] p-2 sm:p-3">
+          <div className="flex items-center gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#22c55e]" />
+            <span className="text-[9px] sm:text-[10px] font-semibold text-[#2563eb]">WhatsApp — Booking confirmed ✓</span>
           </div>
-          <span className="text-[11px] text-[#374151]">Monday 3:30 PM booked for Priya Sharma</span>
+          <span className="text-[10px] sm:text-[11px] text-[#374151]">Monday 3:30 PM booked for Priya Sharma</span>
         </div>
       </div>
       <div>
@@ -120,9 +121,9 @@ function MissedCallCard({ triggered }: { triggered: boolean }) {
   const pending = useCountUp(12, triggered, 1200);
 
   const patients = [
-    { name: "Arjun Sharma", status: "New patient • Teeth cleaning", init: "AS" },
-    { name: "Meera Nair",   status: "Follow-up • Root canal",       init: "MN" },
-    { name: "Suresh K.",    status: "Missed call • Callback",       init: "SK" },
+    { name: "Arjun Sharma", status: "New patient • Teeth cleaning", Icon: UserPlus,    iconBg: "#dbeafe", iconColor: "#2563eb" },
+    { name: "Meera Nair",   status: "Follow-up • Root canal",       Icon: RefreshCw,   iconBg: "#dbeafe", iconColor: "#2563eb" },
+    { name: "Suresh K.",    status: "Missed call • Callback",       Icon: PhoneMissed, iconBg: "#fee2e2", iconColor: "#dc2626" },
   ];
 
   return (
@@ -137,7 +138,9 @@ function MissedCallCard({ triggered }: { triggered: boolean }) {
         </div>
         {patients.map((p) => (
           <div key={p.name} className="flex items-center gap-2.5 py-2 border-b border-[#f3f4f6] last:border-0">
-            <div className="w-7 h-7 rounded-full bg-[#dbeafe] flex items-center justify-center flex-shrink-0 font-semibold text-[#2563eb] text-[9px]">{p.init}</div>
+            <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: p.iconBg }}>
+              <p.Icon size={13} color={p.iconColor} strokeWidth={2} />
+            </div>
             <div className="flex-1 min-w-0">
               <div className="text-[#111827] font-medium truncate">{p.name}</div>
               <div className="text-[#9ca3af] text-[10px]">{p.status}</div>
@@ -146,7 +149,7 @@ function MissedCallCard({ triggered }: { triggered: boolean }) {
         ))}
         <div className="mt-3 flex items-center justify-between rounded-lg bg-[#f0fdf4] border border-[#bbf7d0] px-3 py-2">
           <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" aria-hidden="true" />
+            <MessageSquare size={12} className="text-[#22c55e] animate-pulse" aria-hidden="true" />
             <span className="text-[11px] font-medium text-[#166534]">Messaging now · Arjun Sharma · 0:12</span>
           </div>
           <span className="font-bold text-[#111827] text-[22px] tabular-nums">{handled}</span>

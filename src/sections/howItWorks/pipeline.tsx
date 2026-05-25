@@ -1,32 +1,29 @@
 "use client";
 
+import { PhoneMissed, MessageCircle, CalendarCheck } from "lucide-react";
+
 const features = [
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M10 2a6 6 0 1 0 0 12A6 6 0 0 0 10 2zm0 10V8m0-2.5v.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M3 18c0-2.2 3.1-4 7-4s7 1.8 7 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
+    icon: <PhoneMissed size={20} aria-hidden="true" />,
+    iconColor: "#dc2626",
+    iconBg: "#fef2f2",
+    iconBorder: "#fecaca",
     title: "Missed Call Recovery",
     desc: "Patient calls while you're busy — FREMN sends available slots on WhatsApp in under 60 seconds.",
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M17 12a2 2 0 0 1-2 2H5l-3 3V3a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-      </svg>
-    ),
+    icon: <MessageCircle size={20} aria-hidden="true" />,
+    iconColor: "#16a34a",
+    iconBg: "#f0fdf4",
+    iconBorder: "#bbf7d0",
     title: "AI WhatsApp Receptionist",
     desc: "Books patients in 3 messages, operates 24/7, follows up until the slot is confirmed.",
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.4"/>
-        <path d="M2 8h16M7 1v4M13 1v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-      </svg>
-    ),
+    icon: <CalendarCheck size={20} aria-hidden="true" />,
+    iconColor: "#2563eb",
+    iconBg: "#eff6ff",
+    iconBorder: "#dbeafe",
     title: "Direct Calendar Booking",
     desc: "Books directly into your clinic schedule with real-time slot management. No double bookings, ever.",
   },
@@ -133,7 +130,10 @@ export default function Pipeline() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           {features.map((f, i) => (
             <div key={i} className="rounded-2xl border border-[#e5e7eb] bg-[#f9fafb] p-6">
-              <div className="w-10 h-10 rounded-xl bg-[#eff6ff] border border-[#dbeafe] flex items-center justify-center text-[#2563eb] mb-4">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+                style={{ background: f.iconBg, border: `1px solid ${f.iconBorder}`, color: f.iconColor }}
+              >
                 {f.icon}
               </div>
               <h3 className="font-sans font-semibold text-[16px] text-[#111827] mb-2">{f.title}</h3>

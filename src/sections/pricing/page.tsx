@@ -160,7 +160,7 @@ export default function Calculator() {
 
               {/* big yearly number */}
               <div>
-                <div className="font-sans font-extrabold text-[52px] md:text-[60px] text-[#111827] leading-none tracking-tight tabular-nums">
+                <div className="font-sans font-extrabold text-[32px] sm:text-[52px] md:text-[60px] text-[#111827] leading-none tracking-tight tabular-nums truncate">
                   {fmt(yearly)}
                 </div>
                 <p className="font-sans text-[13px] text-[#9ca3af] mt-2">per year in missed revenue</p>
@@ -172,9 +172,9 @@ export default function Calculator() {
                   { label: "Per day",   value: fmt(daily) },
                   { label: "Per month", value: fmt(monthly) },
                 ].map((r) => (
-                  <div key={r.label} className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] px-4 py-3">
-                    <div className="font-sans font-bold text-[20px] text-[#111827] tabular-nums leading-none">{r.value}</div>
-                    <div className="font-sans text-[11px] text-[#9ca3af] mt-1">{r.label}</div>
+                  <div key={r.label} className="rounded-xl bg-[#f9fafb] border border-[#e5e7eb] px-3 sm:px-4 py-2.5 sm:py-3 min-w-0 overflow-hidden">
+                    <div className="font-sans font-bold text-[14px] sm:text-[20px] text-[#111827] tabular-nums leading-none truncate">{r.value}</div>
+                    <div className="font-sans text-[10px] sm:text-[11px] text-[#9ca3af] mt-1">{r.label}</div>
                   </div>
                 ))}
               </div>
@@ -193,9 +193,9 @@ export default function Calculator() {
               {/* CTA */}
               <a
                 href="#contact"
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-full font-sans font-semibold text-[15px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:shadow-[0_8px_32px_rgba(37,99,235,0.45)] transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
+                className="flex items-center justify-center gap-2 w-full py-3 sm:py-4 rounded-full font-sans font-semibold text-[13px] sm:text-[15px] text-white bg-[#2563eb] hover:bg-[#1d4ed8] shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:shadow-[0_8px_32px_rgba(37,99,235,0.45)] transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
               >
-                Book Now — Recover That Revenue
+                Recover That Revenue
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

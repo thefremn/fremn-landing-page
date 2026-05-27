@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const navLinks = [
@@ -51,8 +52,7 @@ export default function Navbar() {
             className="flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4D9FFF] rounded-lg"
             aria-label="FREMN — home"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="FREMN" className="h-9 w-auto" />
+            <Image src="/logo.png" alt="FREMN" width={160} height={40} className="h-9 w-auto" priority />
           </Link>
 
           {/* Desktop links */}

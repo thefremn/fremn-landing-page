@@ -9,18 +9,104 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fremn.com"),
-  title: "FREMN — AI Receptionist for Outpatient Healthcare",
-  description: "The AI front desk for outpatient clinics. Automatically handle bookings, reminders, missed call recovery, and payment collection on WhatsApp — 24/7. Never miss a patient call again.",
+  metadataBase: new URL("https://www.fremn.com"),
+
+  title: {
+    default: "FREMN — AI Receptionist for OPD Clinics in India",
+    template: "%s | FREMN",
+  },
+
+  description:
+    "FREMN automates front-desk scheduling and patient communication for outpatient clinics across India. Cut no-shows, reduce staff load, and handle appointments in Hindi, Bengali & English — 24/7.",
+
+  alternates: {
+    canonical: "https://www.fremn.com",
+    languages: {
+      "en-IN": "https://www.fremn.com",
+    },
+  },
+
   keywords: [
-    "AI dental receptionist", "AI clinic front desk", "WhatsApp appointment booking",
-    "outpatient clinic automation", "automated appointment reminders", "missed call recovery",
-    "AI phone answering service", "dental virtual receptionist", "after hours clinic answering",
-    "healthcare AI receptionist India", "WhatsApp booking system", "clinic management software",
+    "AI receptionist India",
+    "OPD clinic automation",
+    "dental clinic scheduling software",
+    "patient appointment WhatsApp",
+    "healthcare front desk AI",
+    "clinic management software India",
+    "AI scheduling tool clinics",
+    "AI dental receptionist",
+    "AI clinic front desk",
+    "WhatsApp appointment booking",
+    "outpatient clinic automation",
+    "automated appointment reminders",
+    "missed call recovery",
+    "AI phone answering service",
+    "dental virtual receptionist",
+    "after hours clinic answering",
+    "healthcare AI receptionist India",
+    "WhatsApp booking system",
+    "FREMN",
   ],
-  twitter: { card: "summary_large_image", site: "@fremnai" },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+
   openGraph: {
-    images: [{ url: "/assets/images/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+    url: "https://www.fremn.com",
+    siteName: "FREMN",
+    title: "FREMN — AI Receptionist for OPD Clinics in India",
+    description:
+      "Stop losing patients to missed calls and manual scheduling. FREMN's AI front desk handles appointments in Hindi, Bengali & English via WhatsApp — 24/7, no staff required.",
+    images: [
+      {
+        url: "/assets/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
+      },
+    ],
+    locale: "en_IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@thefremn",
+    creator: "@thefremn",
+    title: "FREMN — AI Receptionist for OPD Clinics",
+    description:
+      "Automate your clinic's front desk. Handle patient scheduling, reminders & follow-ups in Hindi, Bengali & English via WhatsApp. Built for India.",
+    images: ["/assets/images/og-image.png"],
+  },
+
+  authors: [{ name: "FREMN Technologies LLP", url: "https://www.fremn.com" }],
+  creator: "FREMN Technologies LLP",
+  publisher: "FREMN Technologies LLP",
+  applicationName: "FREMN",
+  category: "Healthcare Technology",
+
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
+
+  manifest: "/site.webmanifest",
+
+  other: {
+    "geo.region": "IN",
+    "geo.placename": "India",
+    "format-detection": "telephone=no",
+    "msapplication-TileColor": "#2563eb",
   },
 };
 

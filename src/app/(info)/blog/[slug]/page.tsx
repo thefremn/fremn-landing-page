@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ReadProgressBar from "@/components/custom/read-progress-bar";
@@ -154,8 +155,7 @@ export default async function BlogPostPage({
         <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
           <div className="max-w-4xl mx-auto px-6 md:px-10 flex items-center justify-between h-[64px]">
             <Link href="/" aria-label="FREMN — home">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="FREMN" className="h-8 w-auto" />
+              <Image src="/logo.png" alt="FREMN" width={160} height={40} className="h-8 w-auto" priority />
             </Link>
             <div className="flex items-center gap-4">
               <Link

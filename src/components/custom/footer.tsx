@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { X, Mail, Phone } from "lucide-react";
 
 const productLinks = [
@@ -43,8 +44,7 @@ export default function Footer() {
               className="flex items-center w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]/40 rounded-lg"
               aria-label="FREMN — home"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="FREMN" className="h-9 w-auto" />
+              <Image src="/logo.png" alt="FREMN" width={160} height={40} className="h-9 w-auto" />
             </Link>
 
             <p className="font-sans text-[13.5px] text-[#6b7280] leading-[1.65] max-w-[240px]">

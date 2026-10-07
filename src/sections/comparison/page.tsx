@@ -58,7 +58,7 @@ function Qualifier({ label }: { label: string }) {
   );
 }
 
-function CellDisplay({ cell, isFremnCol }: { cell: Cell; isFremnCol: boolean }) {
+function CellDisplay({ cell }: { cell: Cell }) {
   if (cell.type === "yes") return <Yes />;
   if (cell.type === "no") return <No />;
   if (cell.type === "na") return <Qualifier label={cell.label ?? "N/A"} />;
@@ -204,7 +204,7 @@ export default function ComparisonTable() {
                           } : {}),
                         }}
                       >
-                        <CellDisplay cell={rows[ri][0]} isFremnCol={true} />
+                        <CellDisplay cell={rows[ri][0]} />
                       </td>
 
                       {/* competitor cells */}
@@ -214,7 +214,7 @@ export default function ComparisonTable() {
                           className="py-3 md:py-3.5 px-2 text-center"
                           style={{ borderTop: "1px solid #f3f4f6" }}
                         >
-                          <CellDisplay cell={cell} isFremnCol={false} />
+                          <CellDisplay cell={cell} />
                         </td>
                       ))}
                     </tr>

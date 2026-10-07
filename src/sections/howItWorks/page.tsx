@@ -52,10 +52,17 @@ const messages = [
 
 function PhoneMockup({ play }: { play: boolean }) {
   const [visible, setVisible] = useState<boolean[]>(messages.map(() => false));
+  const [prevPlay, setPrevPlay] = useState(play);
+
+  // Reset the animation when playback (re)starts, during render rather than
+  // in an effect, so the effect below only schedules timers and cleans up.
+  if (play !== prevPlay) {
+    setPrevPlay(play);
+    setVisible(messages.map(() => false));
+  }
 
   useEffect(() => {
     if (!play) return;
-    setVisible(messages.map(() => false));
     const timers = messages.map((m, i) =>
       setTimeout(
         () => setVisible((v) => v.map((x, j) => (j <= i ? true : x))),

@@ -1,4 +1,32 @@
 import LegalLayout from "@/components/custom/legal-format";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "DPDP Compliance",
+  description:
+    "How FREMN Technologies LLP handles personal data in line with India's Digital Personal Data Protection Act, 2023.",
+  alternates: {
+    canonical: "https://fremn.com/dpdp-compliance",
+  },
+  openGraph: {
+    url: "https://fremn.com/dpdp-compliance",
+    title: "DPDP Compliance",
+    description:
+      "How FREMN Technologies LLP handles personal data in line with India's Digital Personal Data Protection Act, 2023.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function DPDPCompliance() {
   return (

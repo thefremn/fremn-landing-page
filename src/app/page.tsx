@@ -10,6 +10,13 @@ import Calculator from "@/sections/pricing/page";
 import FAQ from "@/sections/faq/page";
 import ContactSection from "@/sections/contact/page";
 import Footer from "@/components/custom/footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://fremn.com",
+  },
+};
 
 export default function Home() {
   return (

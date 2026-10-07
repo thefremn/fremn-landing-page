@@ -239,10 +239,10 @@ export default function Features() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
-            <PaymentCard />,
-            <WhatsAppCard triggered={triggered} />,
-            <MissedCallCard triggered={triggered} />,
-            <RecallCard />,
+            <PaymentCard key="payment" />,
+            <WhatsAppCard key="whatsapp" triggered={triggered} />,
+            <MissedCallCard key="missed-call" triggered={triggered} />,
+            <RecallCard key="recall" />,
           ].map((card, i) => (
             <div
               key={i}

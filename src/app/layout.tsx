@@ -5,11 +5,13 @@ import Script from 'next/script';
 import "@/app/globals.css";
 import { inter } from "@/app/fonts";
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#2563eb",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.fremn.com"),
+  metadataBase: new URL("https://fremn.com"),
 
   title: {
     default: "FREMN — AI Receptionist for OPD Clinics in India",
@@ -20,9 +22,8 @@ export const metadata: Metadata = {
     "FREMN automates front-desk scheduling and patient communication for outpatient clinics across India. Cut no-shows, reduce staff load, and handle appointments in Hindi, Bengali & English — 24/7.",
 
   alternates: {
-    canonical: "https://www.fremn.com",
     languages: {
-      "en-IN": "https://www.fremn.com",
+      "en-IN": "https://fremn.com",
     },
   },
 
@@ -62,14 +63,14 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://www.fremn.com",
+    url: "https://fremn.com",
     siteName: "FREMN",
     title: "FREMN — AI Receptionist for OPD Clinics in India",
     description:
       "Stop losing patients to missed calls and manual scheduling. FREMN's AI front desk handles appointments in Hindi, Bengali & English via WhatsApp — 24/7, no staff required.",
     images: [
       {
-        url: "/assets/images/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
@@ -85,10 +86,10 @@ export const metadata: Metadata = {
     title: "FREMN — AI Receptionist for OPD Clinics",
     description:
       "Automate your clinic's front desk. Handle patient scheduling, reminders & follow-ups in Hindi, Bengali & English via WhatsApp. Built for India.",
-    images: ["/assets/images/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 
-  authors: [{ name: "FREMN Technologies LLP", url: "https://www.fremn.com" }],
+  authors: [{ name: "FREMN Technologies LLP", url: "https://fremn.com" }],
   creator: "FREMN Technologies LLP",
   publisher: "FREMN Technologies LLP",
   applicationName: "FREMN",
@@ -97,6 +98,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icon-192.png" },
     ],
   },
 
@@ -329,7 +333,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`hydrated ${inter.variable}`}>
+    <html lang="en-IN" className={`hydrated ${inter.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema1 }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema2 }} />

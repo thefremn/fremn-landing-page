@@ -1,4 +1,32 @@
 import LegalLayout from "@/components/custom/legal-format";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "FREMN Privacy Policy: what we collect, why, and how FREMN Technologies LLP protects personal information across website and AI receptionist services.",
+  alternates: {
+    canonical: "https://fremn.com/privacy-policy",
+  },
+  openGraph: {
+    url: "https://fremn.com/privacy-policy",
+    title: "Privacy Policy",
+    description:
+      "FREMN Privacy Policy: what we collect, why, and how FREMN Technologies LLP protects personal information.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PrivacyPolicy() {
   return (
@@ -38,7 +66,7 @@ export default function PrivacyPolicy() {
               <p>When clinics use FREMN, the platform may process communication content exchanged through:</p>
               <ul className="legal-list">
                 <li>Voice call interactions handled by the AI receptionist</li>
-                <li>WhatsApp messages sent to or from the clinic's FREMN channel</li>
+                <li>WhatsApp messages sent to or from the clinic&apos;s FREMN channel</li>
                 <li>Website widget conversations initiated by patients</li>
               </ul>
               <div className="legal-highlight">

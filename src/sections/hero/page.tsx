@@ -47,6 +47,7 @@ export default function HeroSection() {
           <h1 className="h-a2 font-sans font-extrabold text-[42px] sm:text-6xl md:text-7xl text-[#111827] leading-[1.08] tracking-[-0.03em] mb-6">
             Never miss another<br />
             <span className="text-[#2563eb]">patient call.</span>
+            <span className="sr-only"> AI receptionist for OPD clinics in India</span>
           </h1>
 
           {/* subheading */}

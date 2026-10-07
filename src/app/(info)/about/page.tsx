@@ -3,8 +3,24 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — FREMN",
+  title: "About",
   description: "Learn about FREMN and how we are redefining clinic operations with AI-powered front desks.",
+  alternates: {
+    canonical: "https://fremn.com/about",
+  },
+  openGraph: {
+    url: "https://fremn.com/about",
+    title: "About",
+    description: "Learn about FREMN and how we are redefining clinic operations with AI-powered front desks.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
+      },
+    ],
+  },
 };
 
 export default function AboutPage() {
@@ -21,7 +37,7 @@ export default function AboutPage() {
       <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#f3f4f6]">
         <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between h-[64px]">
           <Link href="/" aria-label="FREMN — home">
-            <Image src="/logo.png" alt="FREMN" width={160} height={40} className="h-8 w-auto" priority />
+            <Image src="/logo.png" alt="FREMN — AI receptionist for clinics" title="FREMN — AI receptionist for clinics" width={160} height={40} className="h-8 w-auto" priority />
           </Link>
           <div className="flex items-center gap-4">
             <Link

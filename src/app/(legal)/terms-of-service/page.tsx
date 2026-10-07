@@ -1,4 +1,32 @@
 import LegalLayout from "@/components/custom/legal-format";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "FREMN Terms of Service: rules for using the AI receptionist platform for outpatient clinics operated by FREMN Technologies LLP.",
+  alternates: {
+    canonical: "https://fremn.com/terms-of-service",
+  },
+  openGraph: {
+    url: "https://fremn.com/terms-of-service",
+    title: "Terms of Service",
+    description:
+      "FREMN Terms of Service: rules for using the AI receptionist platform for outpatient clinics.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FREMN AI Receptionist — OPD Clinic Automation Dashboard",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 export default function TermsOfService() {
   return (
     <LegalLayout
@@ -124,7 +152,7 @@ export default function TermsOfService() {
                 <li>Clinic workflow decisions made based on platform output</li>
                 <li>Disruptions caused by third-party service providers</li>
               </ul>
-              <p>Use of the platform is at your own discretion. FREMN TECHNOLOGIES LLP's liability is limited to the maximum extent permitted by applicable law.</p>
+              <p>Use of the platform is at your own discretion. FREMN TECHNOLOGIES LLP&apos;s liability is limited to the maximum extent permitted by applicable law.</p>
             </>
           ),
         },

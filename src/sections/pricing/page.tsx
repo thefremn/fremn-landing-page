@@ -84,7 +84,7 @@ export default function Calculator() {
   return (
     <section
       ref={sectionRef}
-      id="pricing"
+      id="calculator"
       className="bg-[#f9fafb] px-6 md:px-12 lg:px-24 py-20 md:py-28 border-t border-[#e5e7eb]"
       aria-label="Lost revenue calculator"
     >

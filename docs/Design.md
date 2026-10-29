@@ -4,9 +4,9 @@
 
 - **Brand Name:** FREMN
 - **Full Entity:** FREMN Technologies LLP
-- **Tagline:** "Never miss another patient call." / "AI Front Desk for Dental Clinics"
+- **Tagline:** "Never miss another patient call." / "AI Front Desk for Outpatient Healthcare"
 - **Logo:** `logo.png` — combination mark, clean wordmark. Used at `h-8` (navbar) and `h-9` (footer).
-- **Primary Market:** Indian dental clinics and outpatient practices
+- **Primary Market:** Indian Outpatient Healthcare and outpatient practices
 - **Founders:** Chinton Dutta, Amar Kumar Thakur, Sheikh Sami Akhtar, Krishti Poddar
 - **Meta theme color:** `#2563eb` (blue)
 
@@ -96,7 +96,7 @@
 
 - **Background:** Radial blue gradient on white — `radial-gradient(ellipse 100% 65% at 50% 100%, rgba(96,165,250,0.22)...)` layered with `linear-gradient(180deg, #ffffff, #f0f7ff)`
 - **Layout:** Centered text, `border-radius: 24px` on the section container
-- **Top badge:** Small pill — pulsing green dot + "AI Front Desk for Dental Clinics" — white bg, `border-[#e5e7eb]`, shadow
+- **Top badge:** Small pill — pulsing green dot + "AI Front Desk for Outpatient Healthcare" — white bg, `border-[#e5e7eb]`, shadow
 - **H1:** "Never miss another / patient call." — "patient call." in `#2563eb`
 - **Subheading:** 17–19px `#6b7280`, max-width ~640px
 - **CTA Button:** Large blue pill "Book Now!" with arrow icon + glow shadow
@@ -107,7 +107,7 @@
 
 ## 7. Social Proof Strip
 
-- **Label:** All-caps small text — "Trusted by dental clinics across India"
+- **Label:** All-caps small text — "Trusted by Outpatient Healthcare across India"
 - **Layout:** Single-row infinite marquee, left-to-right scroll
 - **Item style:** White/70 pill with `border-[#e5e7eb]`, small blue avatar circle (initials), clinic name
 - **Animation:** `animate-marquee` CSS infinite scroll, dual-set for seamless loop

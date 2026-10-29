@@ -84,7 +84,7 @@ export default function Calculator() {
   return (
     <section
       ref={sectionRef}
-      id="pricing"
+      id="calculator"
       className="bg-[#f9fafb] px-6 md:px-12 lg:px-24 py-20 md:py-28 border-t border-[#e5e7eb]"
       aria-label="Lost revenue calculator"
     >
@@ -143,7 +143,7 @@ export default function Calculator() {
 
               {/* formula hint */}
               <p className="font-sans text-[11px] text-[#9ca3af] leading-relaxed mt-auto">
-                Based on industry averages for Indian dental clinics.
+                Based on industry averages for Indian Outpatient Healthcare.
                 Formula: missed calls × ticket size × conversion rate.
               </p>
             </div>

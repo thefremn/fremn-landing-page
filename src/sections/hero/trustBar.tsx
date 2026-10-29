@@ -18,10 +18,10 @@ const track = [...clinics, ...clinics];
 
 export default function TrustBar() {
   return (
-    <section className="bg-white border-y border-[#e5e7eb] py-10 overflow-hidden" aria-label="Trusted by dental clinics">
+    <section className="bg-white border-y border-[#e5e7eb] py-10 overflow-hidden" aria-label="Trusted by Outpatient Healthcare">
       <div className="max-w-6xl mx-auto px-6 mb-6 text-center">
         <p className="font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af]">
-          Trusted by dental clinics across India
+          Trusted by Outpatient Healthcare across India
         </p>
       </div>
 

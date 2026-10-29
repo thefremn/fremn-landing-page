@@ -6,7 +6,7 @@ type Cell = { type: "yes" | "no" | "partial" | "na"; label?: string };
 
 const features = [
   "Dedicated 1-to-1 support",
-  "Built for Indian dental clinics",
+  "Built for Indian Outpatient Healthcare",
   "WhatsApp-native booking",
   "Missed call recovery",
   "UPI / Indian payment collection",
@@ -105,7 +105,7 @@ export default function ComparisonTable() {
             How We Compare
           </h2>
           <p className="font-sans text-sm md:text-base text-[#6b7280] max-w-xl mx-auto leading-relaxed">
-            See why dental clinics in India choose FREMN over generic alternatives.
+            See why Outpatient Healthcare in India choose FREMN over generic alternatives.
           </p>
         </div>
 

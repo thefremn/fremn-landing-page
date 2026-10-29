@@ -145,7 +145,7 @@ export default function Infographics() {
               <em className="italic text-[#1B4FD8]">filled chair.</em>
             </h2>
             <p className="font-sans text-sm text-[#111827]/50 max-w-xs mx-auto leading-relaxed">
-              Real outcomes from the FREMN platform across Indian dental clinics.
+              Real outcomes from the FREMN platform across Indian Outpatient Healthcare.
             </p>
           </div>
 

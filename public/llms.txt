@@ -1,7 +1,7 @@
 # FREMN
 
 ## About
-FREMN is an AI-powered front desk platform built for dental clinics and outpatient practices in India. It handles patient calls, WhatsApp messages, appointment bookings, confirmations, payment collection, and follow-up reminders automatically — 24 hours a day, 7 days a week — without adding any staff. FREMN is built specifically for the Indian outpatient market and works across voice, WhatsApp, web, and clinic apps.
+FREMN is an AI-powered front desk platform built for Outpatient Healthcare and outpatient practices in India. It handles patient calls, WhatsApp messages, appointment bookings, confirmations, payment collection, and follow-up reminders automatically — 24 hours a day, 7 days a week — without adding any staff. FREMN is built specifically for the Indian outpatient market and works across voice, WhatsApp, web, and clinic apps.
 
 ## Services
 - AI Receptionist (Voice): Handles inbound patient calls, answers queries, books appointments, and routes urgent calls to staff. Available 24/7. Responds within 60 seconds of a missed call.

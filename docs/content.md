@@ -25,7 +25,7 @@ Twitter:     @fremnai
 - **Type:** Full-width sticky banner, above the nav
 - **Background:** Blue (#1B4FD8) or light blue accent
 - **Icon:** FREMN logo mark (fremn-logomark.svg)
-- **Text:** `🦷  Now live for dental clinics across India  —  Book a free demo`
+- **Text:** `🦷  Now live for Outpatient Healthcare across India  —  Book a free demo`
 - **Link:** `/book-a-demo`
 - **Alignment:** Centered
 - **Style:** Small text, pill badge, clickable full row
@@ -60,7 +60,7 @@ Twitter:     @fremnai
 - **Background:** Full-width dark gradient — deep navy to midnight blue
   `assets/images/backgrounds/hero-bg.png`
 - **Above H1 Badge:**
-  - FREMN logo mark + text: `AI Front Desk for Dental Clinics`
+  - FREMN logo mark + text: `AI Front Desk for Outpatient Healthcare`
   - Style: White pill, shadow, small text
 - **H1 (two lines):**
   ```
@@ -80,7 +80,7 @@ Twitter:     @fremnai
 
 ## SECTION 4 — PARTNERS / SOCIAL PROOF STRIP
 
-- **Label:** `TRUSTED BY DENTAL CLINICS ACROSS INDIA`
+- **Label:** `TRUSTED BY Outpatient Healthcare ACROSS INDIA`
   - Style: Uppercase, letter-spaced, small gray text, centered
 - **Layout:** Two rows of scrolling logo marquee (infinite loop left)
 - **Partner logos:** Clinic/practice logos, grayscale or brand-color
@@ -102,7 +102,7 @@ Twitter:     @fremnai
 ### FEATURES — Subsection Header
 
 - **H2:** `Features`
-- **Subtitle:** `FREMN is a better way to handle patient calls, bookings, and follow-ups for dental clinics`
+- **Subtitle:** `FREMN is a better way to handle patient calls, bookings, and follow-ups for Outpatient Healthcare`
 
 ---
 
@@ -350,12 +350,12 @@ Twitter:     @fremnai
 
 - **Section ID:** `comparison`
 - **H2:** `How We Compare`
-- **Subtitle:** `See why dental clinics in India choose FREMN over generic alternatives.`
+- **Subtitle:** `See why Outpatient Healthcare in India choose FREMN over generic alternatives.`
 
 | Feature                              | FREMN              | Generic AI Chatbots      | Traditional Receptionist | Other SaaS Products     |
 |--------------------------------------|--------------------|--------------------------|--------------------------|-------------------------|
 | Dedicated 1-to-1 support             | ✅                 | Self-serve               | N/A                      | Ticket only             |
-| Built for Indian dental clinics      | ✅                 | Generic                  | Manual only              | Generic                 |
+| Built for Indian Outpatient Healthcare      | ✅                 | Generic                  | Manual only              | Generic                 |
 | WhatsApp-native booking              | ✅                 | ❌                       | ❌                       | Limited                 |
 | Missed call recovery                 | ✅                 | ❌                       | ❌                       | ❌                      |
 | UPI / Indian payment collection      | ✅                 | ❌                       | Manual                   | Limited                 |

@@ -39,7 +39,7 @@ export default function HeroSection() {
           <div className="h-a1 inline-flex items-center gap-2 bg-white border border-[#e5e7eb] rounded-full px-4 py-2 mb-8 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse flex-shrink-0" aria-hidden="true" />
             <span className="font-sans text-[13px] font-medium text-[#374151]">
-              AI Front Desk for Dental Clinics
+              AI Front Desk for Outpatient Healthcare
             </span>
           </div>
 
@@ -72,7 +72,7 @@ export default function HeroSection() {
           {/* ── Trusted by strip ── */}
           <div className="h-a5 w-full">
             <p className="font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-5">
-              Trusted by dental clinics across India
+              Trusted by Outpatient Healthcare across India
             </p>
 
             {/* left + right fade masks */}

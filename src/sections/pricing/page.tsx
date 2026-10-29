@@ -143,7 +143,7 @@ export default function Calculator() {
 
               {/* formula hint */}
               <p className="font-sans text-[11px] text-[#9ca3af] leading-relaxed mt-auto">
-                Based on industry averages for Indian dental clinics.
+                Based on industry averages for Indian Outpatient Healthcare.
                 Formula: missed calls × ticket size × conversion rate.
               </p>
             </div>
